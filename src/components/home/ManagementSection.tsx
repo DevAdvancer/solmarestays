@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Camera, DollarSign, MessageSquare, Sparkles, Wrench, FileText, Palette, Phone } from 'lucide-react';
+import avilaBeachImage from '@/assets/avila-beach.jpg';
 
 const managementSteps = [
   {
@@ -146,10 +147,49 @@ export function ManagementSection() {
     offset: ["start start", "end end"]
   });
 
+  // Parallax effect for background
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const backgroundScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const backgroundOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.2, 0.1]);
+
   return (
-    <section ref={containerRef} className="relative bg-muted/30">
+    <section ref={containerRef} className="relative overflow-hidden">
+      {/* Parallax Background */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        style={{ y: backgroundY, scale: backgroundScale }}
+      >
+        <img
+          src={avilaBeachImage}
+          alt="Avila Beach background"
+          className="w-full h-[120%] object-cover"
+        />
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"
+          style={{ opacity: backgroundOpacity }}
+        />
+        <div className="absolute inset-0 bg-background/85" />
+      </motion.div>
+
+      {/* Floating Decorative Elements */}
+      <motion.div
+        className="absolute top-40 left-10 w-32 h-32 rounded-full bg-gold/5 blur-2xl z-0"
+        animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-1/3 right-20 w-48 h-48 rounded-full bg-ocean/5 blur-3xl z-0"
+        animate={{ y: [0, 30, 0], x: [0, -15, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 left-1/4 w-40 h-40 rounded-full bg-primary/5 blur-2xl z-0"
+        animate={{ y: [0, 25, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      />
+
       {/* Header - Sticky */}
-      <div className="sticky top-0 z-50 bg-muted/95 backdrop-blur-md py-12 md:py-16 border-b border-border/30">
+      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-md py-12 md:py-16 border-b border-border/30">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <motion.span
@@ -173,7 +213,7 @@ export function ManagementSection() {
       </div>
 
       {/* Stacking Cards */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12 relative z-10">
         <div className="max-w-5xl mx-auto">
           {managementSteps.map((step, index) => (
             <StackingCard

@@ -62,13 +62,16 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section ref={heroRef} className="relative pt-24 pb-16 lg:min-h-[70vh] flex items-center">
+        {/* Hero Section - Full Screen */}
+        <section ref={heroRef} className="relative min-h-[80vh] flex items-center">
           <div className="absolute inset-0">
-            <img
+            <motion.img
               src={servicesHeroImage}
               alt="Professional service"
               className="w-full h-full object-cover"
+              initial={{ scale: 1.1 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
           </div>

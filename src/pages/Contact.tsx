@@ -55,14 +55,17 @@ const ContactPage = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section ref={heroRef} className="relative pt-24 pb-16 lg:min-h-[50vh] flex items-center">
+        <section ref={heroRef} className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center">
           <div className="absolute inset-0">
-            <img
+            <motion.img
               src={contactHeroImage}
               alt="California Central Coast landscape"
               className="w-full h-full object-cover"
+              initial={{ scale: 1.1 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 to-foreground/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/60" />
           </div>
           
           <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10 text-center">

@@ -63,48 +63,46 @@ const ForHomeownersPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section ref={heroRef} className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-secondary">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8 }}
-              >
-                <span className="inline-block text-ocean font-medium mb-4">For Property Owners</span>
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
-                  Elevate Your Property.<br />
-                  Maximize Your Returns.
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Partner with Solmaré Stays and transform your Central Coast property into a 
-                  high-performing vacation rental. We handle everything—so you can enjoy the 
-                  returns without the work.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button variant="hero" size="xl" asChild>
-                    <Link to="/contact">Schedule a Consultation</Link>
-                  </Button>
-                  <Button variant="hero-outline" size="xl" asChild>
-                    <Link to="/services">Our Services</Link>
-                  </Button>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                <img
-                  src={homeownersHeroImage}
-                  alt="Property management team"
-                  className="w-full rounded-2xl shadow-elevated"
-                />
-              </motion.div>
-            </div>
+        {/* Hero Section - Full Screen */}
+        <section ref={heroRef} className="relative min-h-[80vh] flex items-center">
+          <div className="absolute inset-0">
+            <motion.img
+              src={homeownersHeroImage}
+              alt="Coastal property"
+              className="w-full h-full object-cover"
+              initial={{ scale: 1.1 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
+          </div>
+          
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl text-white"
+            >
+              <span className="inline-block text-gold font-medium mb-4">For Property Owners</span>
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+                Elevate Your Property.<br />
+                Maximize Your Returns.
+              </h1>
+              <p className="text-lg text-white/90 leading-relaxed mb-8">
+                Partner with Solmaré Stays and transform your Central Coast property into a 
+                high-performing vacation rental. We handle everything—so you can enjoy the 
+                returns without the work.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button variant="hero" size="xl" asChild>
+                  <Link to="/contact">Schedule a Consultation</Link>
+                </Button>
+                <Button variant="hero-outline" size="xl" className="border-white text-white hover:bg-white hover:text-foreground" asChild>
+                  <Link to="/services">Our Services</Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </section>
 

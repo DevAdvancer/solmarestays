@@ -86,61 +86,58 @@ const WhyChooseUsPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section ref={heroRef} className="pt-24 pb-16 lg:pb-0 lg:min-h-screen flex items-center">
-          <div className="container mx-auto px-4 md:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8 }}
-              >
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
-                  Refined Rentals.<br />
-                  Trusted Management.<br />
-                  <span className="text-ocean">Coastal Living, Curated.</span>
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Welcome to Solmaré Stays, where elevated living meets the spirit of the California Coast. 
-                  Our story is rooted in a passion for hospitality, thoughtful design, and creating 
-                  unforgettable experiences.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  At Solmaré Stays, we do more than manage properties—we craft stays that inspire. 
-                  Every home is hand-selected for its character, comfort, and location, and every 
-                  detail is handled with care.
-                </p>
-                <Button variant="hero" size="lg" asChild>
-                  <Link to="/collection">Explore Our Properties</Link>
-                </Button>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src={aboutHeroImage}
-                    alt="Coastal California community"
-                    className="w-full aspect-[4/3] object-cover"
-                  />
-                </div>
-                {/* Floating accent */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-xl shadow-elevated"
-                >
-                  <span className="font-serif text-3xl font-bold block">10+</span>
-                  <span className="text-sm opacity-90">Curated Properties</span>
-                </motion.div>
-              </motion.div>
-            </div>
+        {/* Hero Section - Full Screen with Image */}
+        <section ref={heroRef} className="relative min-h-screen flex items-center">
+          <div className="absolute inset-0">
+            <motion.img
+              src={aboutHeroImage}
+              alt="California Central Coast"
+              className="w-full h-full object-cover"
+              initial={{ scale: 1.1 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-foreground/70 via-foreground/40 to-transparent" />
           </div>
+          
+          <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="max-w-2xl text-white"
+            >
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+                Refined Rentals.<br />
+                Trusted Management.<br />
+                <span className="text-gold">Coastal Living, Curated.</span>
+              </h1>
+              <p className="text-lg text-white/90 leading-relaxed mb-6">
+                Welcome to Solmaré Stays, where elevated living meets the spirit of the California Coast. 
+                Our story is rooted in a passion for hospitality, thoughtful design, and creating 
+                unforgettable experiences.
+              </p>
+              <p className="text-white/80 leading-relaxed mb-8">
+                At Solmaré Stays, we do more than manage properties—we craft stays that inspire. 
+                Every home is hand-selected for its character, comfort, and location, and every 
+                detail is handled with care.
+              </p>
+              <Button variant="hero" size="lg" asChild>
+                <Link to="/collection">Explore Our Properties</Link>
+              </Button>
+            </motion.div>
+          </div>
+          
+          {/* Floating accent card */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="absolute bottom-12 right-12 bg-white/95 backdrop-blur-sm text-foreground p-6 rounded-xl shadow-elevated hidden lg:block"
+          >
+            <span className="font-serif text-3xl font-bold block text-primary">10+</span>
+            <span className="text-sm text-muted-foreground">Curated Properties</span>
+          </motion.div>
         </section>
 
         {/* More Than a Place to Stay */}
