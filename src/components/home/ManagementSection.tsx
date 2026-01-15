@@ -1,165 +1,194 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ChevronDown, Camera, DollarSign, MessageSquare, Sparkles, Wrench, FileText, Palette, Phone } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { Camera, DollarSign, MessageSquare, Sparkles, Wrench, FileText, Palette, Phone } from 'lucide-react';
 
 const managementSteps = [
   {
     icon: Camera,
     title: 'Professional Photography',
     description: 'We capture your property at its best with professional photography and create compelling listings that attract high-quality guests.',
-    details: 'Our professional photographers use high-end equipment and optimal lighting to showcase every detail of your property.',
+    number: '01',
   },
   {
     icon: DollarSign,
     title: 'Dynamic Pricing',
     description: 'Our advanced pricing algorithms adjust nightly rates based on demand, seasonality, and local events to maximize your revenue.',
-    details: 'We analyze market data in real-time and adjust pricing automatically to ensure optimal occupancy and maximum returns.',
+    number: '02',
   },
   {
     icon: MessageSquare,
     title: 'Guest Communication',
     description: '24/7 guest support from booking to checkout. We handle all inquiries, concerns, and ensure 5-star experiences.',
-    details: 'Our dedicated team responds to guests within minutes, handling everything from special requests to emergency situations.',
+    number: '03',
   },
   {
     icon: Sparkles,
     title: 'Professional Cleaning',
     description: 'Meticulous cleaning between every stay with hotel-quality linens and amenities to maintain your property\'s premium feel.',
-    details: 'Our vetted cleaning partners follow a detailed checklist ensuring every corner meets our high standards.',
+    number: '04',
   },
   {
     icon: Wrench,
     title: 'Maintenance & Inspections',
     description: 'Regular property inspections and coordinated maintenance to protect your investment and prevent issues.',
-    details: 'We conduct thorough inspections after each guest and coordinate any repairs with our trusted network of contractors.',
+    number: '05',
   },
   {
     icon: FileText,
     title: 'Financial Reporting',
     description: 'Transparent monthly statements and real-time dashboards so you always know how your property is performing.',
-    details: 'Access detailed reports on occupancy, revenue, expenses, and guest reviews through our owner portal.',
+    number: '06',
   },
   {
     icon: Palette,
     title: 'Interior Design',
     description: 'Expert staging and design consultation to ensure your property photographs beautifully and guests feel at home.',
-    details: 'Our design team can recommend updates that increase booking rates and guest satisfaction scores.',
+    number: '07',
   },
   {
     icon: Phone,
     title: '24/7 Emergency Response',
     description: 'Round-the-clock emergency support for both guests and properties. Peace of mind, always.',
-    details: 'Our emergency line is staffed 24/7 to handle any situation, from lockouts to property emergencies.',
+    number: '08',
   },
 ];
 
-export function ManagementSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
+interface StackingCardProps {
+  step: typeof managementSteps[0];
+  index: number;
+  totalCards: number;
+  scrollYProgress: any;
+}
 
-  const toggleCard = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+function StackingCard({ step, index, totalCards, scrollYProgress }: StackingCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  // Calculate the range for this card
+  const startRange = index / totalCards;
+  const endRange = (index + 1) / totalCards;
+  
+  // Transform values for stacking effect
+  const scale = useTransform(
+    scrollYProgress,
+    [startRange, endRange],
+    [1, 0.95]
+  );
+  
+  const y = useTransform(
+    scrollYProgress,
+    [startRange, endRange],
+    [0, -20]
+  );
+  
+  const opacity = useTransform(
+    scrollYProgress,
+    [startRange, endRange, endRange + 0.1],
+    [1, 1, index === totalCards - 1 ? 1 : 0.6]
+  );
 
   return (
-    <section ref={ref} className="section-padding bg-primary text-primary-foreground overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
-          <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4">
-            How We Manage Your Property
-          </h2>
-          <p className="text-primary-foreground/80 text-lg">
-            Full-service management that handles every detail so you can enjoy the returns without the work.
-          </p>
-        </motion.div>
-
-        {/* Scrollable Cards Container */}
-        <div 
-          ref={scrollRef}
-          className="relative max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-primary-foreground/20 scrollbar-track-transparent"
-        >
-          <div className="space-y-4">
-            {managementSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-              >
-                <div 
-                  className={`bg-primary-foreground/10 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-500 cursor-pointer hover:bg-primary-foreground/15 ${
-                    openIndex === index ? 'ring-2 ring-gold/50' : ''
-                  }`}
-                  onClick={() => toggleCard(index)}
-                >
-                  {/* Card Header */}
-                  <div className="flex items-center gap-4 p-5">
-                    <motion.div
-                      whileHover={{ rotate: 10, scale: 1.1 }}
-                      className="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0"
-                    >
-                      <step.icon className="w-6 h-6 text-gold" />
-                    </motion.div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-serif text-lg font-semibold text-primary-foreground">
-                        {step.title}
-                      </h3>
-                      <p className="text-sm text-primary-foreground/70 line-clamp-1">
-                        {step.description}
-                      </p>
-                    </div>
-                    
-                    <motion.div
-                      animate={{ rotate: openIndex === index ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="flex-shrink-0"
-                    >
-                      <ChevronDown className="w-5 h-5 text-primary-foreground/60" />
-                    </motion.div>
-                  </div>
-                  
-                  {/* Expandable Content */}
-                  <motion.div
-                    initial={false}
-                    animate={{ 
-                      height: openIndex === index ? 'auto' : 0,
-                      opacity: openIndex === index ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.4, ease: 'easeInOut' }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-5 pb-5 pt-0">
-                      <div className="pl-16 border-l-2 border-gold/30 ml-6">
-                        <p className="text-primary-foreground/80 leading-relaxed">
-                          {step.description}
-                        </p>
-                        <p className="text-primary-foreground/60 text-sm mt-3">
-                          {step.details}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
+    <motion.div
+      ref={cardRef}
+      style={{ 
+        scale,
+        y,
+        opacity,
+        zIndex: totalCards - index,
+      }}
+      className="sticky top-24 mb-8"
+    >
+      <div className="bg-card rounded-2xl shadow-xl overflow-hidden border border-border/50 hover:shadow-2xl transition-shadow duration-500 group">
+        <div className="flex flex-col md:flex-row">
+          {/* Left side - Number & Icon */}
+          <div className="md:w-1/4 bg-primary p-8 flex flex-col items-center justify-center text-primary-foreground relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent" />
+            <span className="font-serif text-6xl md:text-7xl font-bold text-gold/30 absolute top-4 left-4">
+              {step.number}
+            </span>
+            <motion.div
+              whileHover={{ rotate: 10, scale: 1.1 }}
+              className="w-20 h-20 rounded-2xl bg-gold/20 flex items-center justify-center relative z-10"
+            >
+              <step.icon className="w-10 h-10 text-gold" />
+            </motion.div>
           </div>
           
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="sticky bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-primary to-transparent pointer-events-none"
-          />
+          {/* Right side - Content */}
+          <div className="md:w-3/4 p-8 md:p-10 flex flex-col justify-center">
+            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+              {step.title}
+            </h3>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              {step.description}
+            </p>
+            
+            {/* Decorative line */}
+            <div className="mt-6 flex items-center gap-3">
+              <motion.div 
+                className="h-1 bg-gradient-to-r from-gold to-gold/30 rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: 60 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+              <div className="w-2 h-2 rounded-full bg-gold/50" />
+            </div>
+          </div>
         </div>
       </div>
+    </motion.div>
+  );
+}
+
+export function ManagementSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  return (
+    <section ref={containerRef} className="relative bg-muted/30">
+      {/* Header - Sticky */}
+      <div className="sticky top-0 z-50 bg-muted/95 backdrop-blur-md py-12 md:py-16 border-b border-border/30">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-block px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-medium mb-4"
+            >
+              Our Process
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground"
+            >
+              How We Manage Our Work
+            </motion.h2>
+          </div>
+        </div>
+      </div>
+
+      {/* Stacking Cards */}
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-12">
+        <div className="max-w-5xl mx-auto">
+          {managementSteps.map((step, index) => (
+            <StackingCard
+              key={index}
+              step={step}
+              index={index}
+              totalCards={managementSteps.length}
+              scrollYProgress={scrollYProgress}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Bottom spacer for scroll effect */}
+      <div className="h-32" />
     </section>
   );
 }
