@@ -79,13 +79,21 @@ export function Header() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
+                  className={`group relative px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
                     location.pathname === link.href
                       ? 'text-primary'
                       : 'text-foreground/80'
                   }`}
                 >
                   {link.label}
+                  {/* Underline animation */}
+                  <span 
+                    className={`absolute left-4 right-4 bottom-0 h-0.5 bg-primary transform origin-left transition-transform duration-300 ${
+                      location.pathname === link.href 
+                        ? 'scale-x-100' 
+                        : 'scale-x-0 group-hover:scale-x-100'
+                    }`}
+                  />
                 </Link>
               ))}
             </nav>
@@ -144,13 +152,21 @@ export function Header() {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`px-4 py-3 text-lg font-medium rounded-lg transition-colors hover:bg-secondary ${
+                    className={`relative px-4 py-3 text-lg font-medium rounded-lg transition-colors hover:bg-secondary group ${
                       location.pathname === link.href
                         ? 'text-primary bg-secondary'
                         : 'text-foreground'
                     }`}
                   >
                     {link.label}
+                    {/* Mobile underline animation */}
+                    <span 
+                      className={`absolute left-4 bottom-2 h-0.5 bg-primary transition-all duration-300 ${
+                        location.pathname === link.href 
+                          ? 'w-8' 
+                          : 'w-0 group-hover:w-8'
+                      }`}
+                    />
                   </Link>
                 ))}
                 <div className="mt-6 pt-6 border-t border-border">

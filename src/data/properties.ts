@@ -16,6 +16,7 @@ export interface Property {
   bathrooms: number;
   startingPrice: number;
   image: string;
+  images: { src: string; alt: string }[];
   description: string;
   amenities: string[];
   hostawayListingId?: string;
@@ -33,6 +34,14 @@ export const properties: Property[] = [
     bathrooms: 2,
     startingPrice: 400,
     image: propertyHummingbird,
+    images: [
+      { src: propertyHummingbird, alt: 'Hummingbird House exterior' },
+      { src: propertyPierside, alt: 'Living room with ocean view' },
+      { src: propertyCoral, alt: 'Modern kitchen' },
+      { src: propertyCasita, alt: 'Master bedroom' },
+      { src: propertyBungalow, alt: 'Private patio' },
+      { src: propertyMonterey, alt: 'Bathroom with luxury finishes' },
+    ],
     description: 'A sophisticated stay steps from the sand in Avila Beach. Tucked in the heart of Avila Beach, this upscale two-bedroom retreat offers the perfect blend of relaxed coastal living and refined comfort.',
     amenities: ['Ocean View', 'Full Kitchen', 'Private Patio', 'WiFi', 'Smart TV', 'A/C'],
     hostawayListingId: '391355',
@@ -48,6 +57,13 @@ export const properties: Property[] = [
     bathrooms: 1,
     startingPrice: 275,
     image: propertyPierside,
+    images: [
+      { src: propertyPierside, alt: 'Pierside Apartment exterior' },
+      { src: propertyHummingbird, alt: 'Cozy living space' },
+      { src: propertyCoral, alt: 'Compact kitchen' },
+      { src: propertyCasita, alt: 'Comfortable bedroom' },
+      { src: propertyBungalow, alt: 'Pier views from balcony' },
+    ],
     description: 'Wake up to stunning pier views in this beautifully appointed one-bedroom apartment. Steps from the beach and local dining.',
     amenities: ['Pier View', 'Full Kitchen', 'WiFi', 'Smart TV', 'Washer/Dryer'],
     hostawayListingId: '391356',
@@ -63,6 +79,14 @@ export const properties: Property[] = [
     bathrooms: 2,
     startingPrice: 450,
     image: propertyCoral,
+    images: [
+      { src: propertyCoral, alt: 'Coral House exterior' },
+      { src: propertyHummingbird, alt: 'Spacious living room' },
+      { src: propertyPierside, alt: 'Chef kitchen' },
+      { src: propertyCasita, alt: 'Master suite' },
+      { src: propertyMonterey, alt: 'Beautiful garden' },
+      { src: propertyBungalow, alt: 'BBQ area' },
+    ],
     description: 'A charming coastal cottage with vibrant character. Perfect for families or groups looking for space and style near the beach.',
     amenities: ['Garden', 'Full Kitchen', 'BBQ Grill', 'WiFi', 'Pet Friendly', 'Parking'],
     hostawayListingId: '391357',
@@ -78,6 +102,13 @@ export const properties: Property[] = [
     bathrooms: 1,
     startingPrice: 225,
     image: propertyCasita,
+    images: [
+      { src: propertyCasita, alt: 'La Casita exterior' },
+      { src: propertyHummingbird, alt: 'Mediterranean style interior' },
+      { src: propertyPierside, alt: 'Cozy kitchen' },
+      { src: propertyCoral, alt: 'Romantic bedroom' },
+      { src: propertyBungalow, alt: 'Courtyard access' },
+    ],
     description: 'A cozy Spanish-style retreat in the heart of San Luis Obispo. Terracotta tiles, arched doorways, and warm Mediterranean charm.',
     amenities: ['Private Entrance', 'Full Kitchen', 'WiFi', 'A/C', 'Courtyard Access'],
     hostawayListingId: '391358',
@@ -93,6 +124,14 @@ export const properties: Property[] = [
     bathrooms: 3,
     startingPrice: 600,
     image: propertyMonterey,
+    images: [
+      { src: propertyMonterey, alt: 'Monterey Heights exterior' },
+      { src: propertyHummingbird, alt: 'Panoramic mountain views' },
+      { src: propertyPierside, alt: 'Modern open kitchen' },
+      { src: propertyCoral, alt: 'Luxurious master bedroom' },
+      { src: propertyCasita, alt: 'Hot tub with views' },
+      { src: propertyBungalow, alt: 'Game room' },
+    ],
     description: 'A modern hilltop retreat with panoramic mountain views. Floor-to-ceiling windows and contemporary design for an elevated escape.',
     amenities: ['Mountain Views', 'Hot Tub', 'Full Kitchen', 'WiFi', 'Game Room', 'Parking'],
     hostawayListingId: '391359',
@@ -108,6 +147,13 @@ export const properties: Property[] = [
     bathrooms: 1,
     startingPrice: 195,
     image: propertyBungalow,
+    images: [
+      { src: propertyBungalow, alt: 'Bungalow #1 exterior' },
+      { src: propertyHummingbird, alt: 'Cozy studio interior' },
+      { src: propertyPierside, alt: 'Kitchenette area' },
+      { src: propertyCoral, alt: 'Comfortable bed' },
+      { src: propertyCasita, alt: 'Outdoor shower' },
+    ],
     description: 'A charming beach bungalow with exposed wood beams and coastal California style. Perfect for a romantic getaway.',
     amenities: ['Beach Access', 'Kitchenette', 'WiFi', 'Outdoor Shower', 'Bikes Included'],
     hostawayListingId: '391360',
