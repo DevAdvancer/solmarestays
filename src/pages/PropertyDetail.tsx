@@ -317,7 +317,7 @@ const PropertyDetailPage = () => {
                   </motion.div>
                 )}
 
-                {/* External Booking Links */}
+                {/* External Booking Links
                 {(property.airbnbListingUrl || property.vrboListingUrl) && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -347,7 +347,7 @@ const PropertyDetailPage = () => {
                       )}
                     </div>
                   </motion.div>
-                )}
+                )} */}
 
                 {/* Location */}
                 <motion.div

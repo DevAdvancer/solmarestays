@@ -77,7 +77,7 @@ export function Header() {
                 className="hidden md:flex border-foreground/20 text-foreground hover:bg-foreground hover:text-white px-8"
                 asChild
               >
-                <Link to="/book">Book Now</Link>
+                <Link to="/collection">Book Now</Link>
               </Button>
 
               {/* Mobile Menu Button */}
@@ -134,7 +134,7 @@ export function Header() {
                 ))}
                 <div className="mt-8 pt-6 border-t border-border">
                   <Button variant="outline" size="lg" className="w-full border-foreground/20" asChild>
-                    <Link to="/book">Book Now</Link>
+                    <Link to="/collection">Book Now</Link>
                   </Button>
                 </div>
               </div>
