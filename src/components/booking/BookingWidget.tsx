@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react';
 import { format, differenceInDays, addDays, isSameDay } from 'date-fns';
 import { useCalendar } from '@/hooks/useCalendar';
-import { Calendar } from '@/components/ui/calendar';
+import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar as CalendarIcon, Users, Loader2, MessageCircle } from 'lucide-react';
+import { Calendar as CalendarIcon, Users, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Property } from '@/data/properties';
 
@@ -136,82 +136,47 @@ export function BookingWidget({ property }: BookingWidgetProps) {
         <span>•</span>
         <span>Check-out: {property.checkOutTime}:00</span>
       </div>
-      <div className="grid grid-cols-2 gap-2 mb-4">
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              className={cn(
-                'justify-start text-left font-normal h-14',
-                !checkIn && 'text-muted-foreground'
-              )}
-            >
-              <CalendarIcon className="mr-2 h-4 w-4" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs uppercase text-muted-foreground">Check-in</span>
-                <span>{checkIn ? format(checkIn, 'MMM d, yyyy') : 'Add date'}</span>
-              </div>
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={checkIn}
-              onSelect={(date) => {
-                setCheckIn(date);
-                if (date && (!checkOut || checkOut <= date)) {
-                  setCheckOut(addDays(date, 1));
-                }
-                setShowPricing(false);
-              }}
-              disabled={(date) => date < new Date() || isDateUnavailable(date)}
-              initialFocus
-              modifiers={{
-                booked: unavailableDates,
-              }}
-              modifiersClassNames={{
-                booked: 'line-through opacity-50',
-              }}
-            />
-          </PopoverContent>
-        </Popover>
-
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              className={cn(
-                'justify-start text-left font-normal h-14',
-                !checkOut && 'text-muted-foreground'
-              )}
-            >
-              <CalendarIcon className="mr-2 h-4 w-4" />
-              <div className="flex flex-col items-start">
-                <span className="text-xs uppercase text-muted-foreground">Check-out</span>
-                <span>{checkOut ? format(checkOut, 'MMM d, yyyy') : 'Add date'}</span>
-              </div>
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={checkOut}
-              onSelect={(date) => {
-                setCheckOut(date);
-                setShowPricing(false);
-              }}
-              disabled={(date) => date < (checkIn ? addDays(checkIn, 1) : new Date()) || isDateUnavailable(date)}
-              initialFocus
-              modifiers={{
-                booked: unavailableDates,
-              }}
-              modifiersClassNames={{
-                booked: 'line-through opacity-50',
-              }}
-            />
-          </PopoverContent>
-        </Popover>
-      </div>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className={cn(
+              'w-full justify-start text-left font-normal h-14 mb-4',
+              !checkIn && !checkOut && 'text-muted-foreground'
+            )}
+          >
+            <CalendarIcon className="mr-2 h-4 w-4 flex-shrink-0" />
+            <div className="flex flex-col items-start flex-1 overflow-hidden">
+              <span className="text-xs uppercase text-muted-foreground">Dates</span>
+              <span className="truncate w-full">
+                {checkIn && checkOut
+                  ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d, yyyy')}`
+                  : checkIn
+                  ? `${format(checkIn, 'MMM d')} → Select checkout`
+                  : 'Select dates'}
+              </span>
+            </div>
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <CalendarTwin
+            value={{ from: checkIn, to: checkOut }}
+            onChange={(range) => {
+              setCheckIn(range.from);
+              setCheckOut(range.to);
+              setShowPricing(false);
+            }}
+            onComplete={() => {
+              // Close popover after both dates selected
+              const trigger = document.querySelector('[data-state="open"]');
+              if (trigger) {
+                (trigger as HTMLElement).click();
+              }
+            }}
+            disabledDates={unavailableDates}
+          />
+        </PopoverContent>
+      </Popover>
 
       {/* Guest Selection */}
       <div className="mb-6">

@@ -14,7 +14,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Luxury Vacation Rentals on the Central Coast"
+        title="Solmare Stays"
         description="Experience the finest vacation rentals in Avila Beach, Pismo Beach, and San Luis Obispo. Book your perfect coastal getaway with Solmaré Stays."
       />
       <Header />

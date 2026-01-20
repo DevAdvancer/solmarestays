@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState, useMemo } from 'react';
-import { format, addDays, isSameDay, isWithinInterval } from 'date-fns';
+import { format } from 'date-fns';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
@@ -9,7 +9,7 @@ import { PropertyMap } from '@/components/properties/PropertyMap';
 import { useProperties } from '@/hooks/useProperties';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
+import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
@@ -98,59 +98,39 @@ const CollectionPage = () => {
         <section className="py-6 border-b border-border bg-card">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <div className="flex flex-wrap gap-4 items-center">
-              {/* Date Filters */}
+              {/* Date Range Filter */}
               <div className="flex items-center gap-2">
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
                       className={cn(
-                        'w-[140px] justify-start text-left font-normal',
-                        !checkIn && 'text-muted-foreground'
+                        'w-[260px] justify-start text-left font-normal',
+                        !checkIn && !checkOut && 'text-muted-foreground'
                       )}
                     >
                       <CalendarIcon className="mr-2 h-4 w-4" />
-                      {checkIn ? format(checkIn, 'MMM d') : 'Check-in'}
+                      {checkIn && checkOut
+                        ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d')}`
+                        : checkIn
+                        ? `${format(checkIn, 'MMM d')} → Select end`
+                        : 'Select dates'}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={checkIn}
-                      onSelect={(date) => {
-                        setCheckIn(date);
-                        if (date && (!checkOut || checkOut <= date)) {
-                          setCheckOut(addDays(date, 1));
+                    <CalendarTwin
+                      value={{ from: checkIn, to: checkOut }}
+                      onChange={(range) => {
+                        setCheckIn(range.from);
+                        setCheckOut(range.to);
+                      }}
+                      onComplete={() => {
+                        // Close popover by clicking outside or via state
+                        const trigger = document.querySelector('[data-state="open"]');
+                        if (trigger) {
+                          (trigger as HTMLElement).click();
                         }
                       }}
-                      disabled={(date) => date < new Date()}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-
-                <span className="text-muted-foreground">→</span>
-
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        'w-[140px] justify-start text-left font-normal',
-                        !checkOut && 'text-muted-foreground'
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {checkOut ? format(checkOut, 'MMM d') : 'Check-out'}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={checkOut}
-                      onSelect={setCheckOut}
-                      disabled={(date) => date < (checkIn ? addDays(checkIn, 1) : new Date())}
-                      initialFocus
                     />
                   </PopoverContent>
                 </Popover>
