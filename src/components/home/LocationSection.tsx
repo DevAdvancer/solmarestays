@@ -71,7 +71,7 @@ export function LocationSection() {
             </h2>
 
             {/* Buttons Row */}
-            <div className="flex justify-end gap-3 mb-8">
+            <div className="flex flex-wrap justify-end gap-2 md:gap-3 mb-8">
               {locations.map((loc, index) => (
                 <Button
                   key={loc.id}
