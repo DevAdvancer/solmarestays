@@ -25,3 +25,5 @@ dist-ssr
 *.sw?
 
 fetch.json
+.agent
+.cursor

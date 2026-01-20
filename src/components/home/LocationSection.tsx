@@ -4,6 +4,7 @@ import avilaImg from '@/assets/avila-beach.jpg';
 import sloImg from '@/assets/hero-2.jpg';
 import { MapPin, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const locations = [
   {
@@ -49,7 +50,7 @@ export function LocationSection() {
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: 'easeOut' }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
             src={activeLocation.image}
             alt={activeLocation.name}
             className="absolute inset-0 w-full h-full object-cover"
@@ -59,8 +60,8 @@ export function LocationSection() {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-black/20 transition-colors duration-500" />
 
-        {/* Content Box */}
-        <div className="absolute bottom-0 right-0 w-full md:w-[600px] lg:w-[650px] bg-white p-8 md:p-12 lg:p-16 rounded-tl-[4rem] shadow-2xl z-10 transition-all duration-500">
+        {/* Glass Content Box */}
+        <div className="absolute bottom-0 right-0 w-full md:w-[600px] lg:w-[650px] bg-white/85 backdrop-blur-md border-t border-l border-white/40 p-8 md:p-12 lg:p-16 rounded-tl-[4rem] shadow-elevated z-10 transition-all duration-500">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -73,40 +74,43 @@ export function LocationSection() {
             {/* Buttons Row */}
             <div className="flex flex-wrap justify-end gap-2 md:gap-3 mb-8">
               {locations.map((loc, index) => (
-                <Button
+                <button
                   key={loc.id}
-                  variant={index === activeLocationIndex ? 'default' : 'outline'}
-                  size="lg"
-                  className="rounded-full px-6 transition-all duration-300"
-                  onMouseEnter={() => setActiveLocationIndex(index)}
                   onClick={() => setActiveLocationIndex(index)}
+                  onMouseEnter={() => setActiveLocationIndex(index)}
+                  className={cn(
+                    "rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover-3d",
+                    index === activeLocationIndex
+                      ? "bg-primary text-white shadow-medium"
+                      : "bg-white/50 text-foreground hover:bg-white/80"
+                  )}
                 >
                   {loc.name}
-                </Button>
+                </button>
               ))}
             </div>
 
             {/* Dynamic Content */}
-            <div className="text-right mb-6">
+            <div className="text-right mb-8">
               <motion.div
                 key={activeLocation.name}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.5 }}
               >
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
                   {activeLocation.description}
                 </p>
               </motion.div>
             </div>
 
-            {/* Map Container */}
-            <div className="relative w-full h-[200px] rounded-2xl overflow-hidden shadow-inner bg-secondary/30 group">
+            {/* Map Container - Floating 3D Look */}
+            <div className="relative w-full h-[240px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500">
               <motion.div
                  key={activeLocation.mapEmbed}
                  initial={{ opacity: 0 }}
                  animate={{ opacity: 1 }}
-                 transition={{ duration: 0.5 }}
+                 transition={{ duration: 0.6 }}
                  className="w-full h-full"
               >
                 <iframe
@@ -117,7 +121,7 @@ export function LocationSection() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                  className="grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
 
@@ -126,16 +130,16 @@ export function LocationSection() {
                 href={activeLocation.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-full shadow-sm hover:scale-110 transition-transform text-foreground"
+                className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-medium hover:scale-110 transition-transform text-foreground hover:text-primary"
                 title="Open in Google Maps"
               >
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="w-5 h-5" />
               </a>
             </div>
 
             <div className="mt-8 text-right">
-                <p className="text-sm uppercase tracking-widest text-muted-foreground flex items-center justify-end gap-2">
-                  <MapPin className="w-4 h-4" /> California Central Coast
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-end gap-2 font-medium">
+                  <MapPin className="w-3 h-3" /> California Central Coast
                 </p>
             </div>
           </motion.div>
