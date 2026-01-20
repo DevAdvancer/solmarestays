@@ -4,7 +4,7 @@ import { useCalendar } from '@/hooks/useCalendar';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Calendar as CalendarIcon, Users, Loader2 } from 'lucide-react';
+import { Calendar as CalendarIcon, Users, Loader2, MessageCircle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Property } from '@/data/properties';
 
@@ -19,8 +19,8 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
 
-  // Fetch calendar availability data
-  const { unavailableDates, isLoading: isCalendarLoading } = useCalendar(
+  // Fetch calendar availability data with pricing
+  const { unavailableDates, getPriceForDate, calendarDays, isLoading: isCalendarLoading } = useCalendar(
     property.hostawayListingId,
     { monthsAhead: 12 }
   );
@@ -33,15 +33,57 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   }, [unavailableDates]);
 
   const nights = checkIn && checkOut ? differenceInDays(checkOut, checkIn) : 0;
-  const subtotal = nights * property.startingPrice;
+
+  // Calculate dynamic pricing from calendar data
+  const dynamicPricing = useMemo(() => {
+    if (!checkIn || !checkOut || nights === 0) {
+      return {
+        nightlyPrices: [],
+        subtotal: 0,
+        averageNightlyRate: property.startingPrice,
+        usedDynamicPricing: false,
+      };
+    }
+
+    const nightlyPrices: { date: Date; price: number }[] = [];
+    let currentDate = new Date(checkIn);
+    let total = 0;
+    let hasDynamicData = false;
+
+    // Iterate through each night of the stay
+    while (currentDate < checkOut) {
+      const calendarPrice = getPriceForDate(currentDate);
+      const nightPrice = calendarPrice ?? property.startingPrice;
+
+      if (calendarPrice !== null) {
+        hasDynamicData = true;
+      }
+
+      nightlyPrices.push({
+        date: new Date(currentDate),
+        price: nightPrice,
+      });
+
+      total += nightPrice;
+      currentDate = addDays(currentDate, 1);
+    }
+
+    return {
+      nightlyPrices,
+      subtotal: total,
+      averageNightlyRate: nights > 0 ? Math.round(total / nights) : property.startingPrice,
+      usedDynamicPricing: hasDynamicData,
+    };
+  }, [checkIn, checkOut, nights, getPriceForDate, property.startingPrice]);
+
   const cleaningFee = property.cleaningFee;
-  const serviceFee = Math.round(subtotal * 0.12);
+  const serviceFee = Math.round(dynamicPricing.subtotal * 0.12);
 
   // Apply weekly discount if applicable (and staying 7+ nights)
   const hasWeeklyDiscount = property.weeklyDiscount && property.weeklyDiscount < 1 && nights >= 7;
   const discountMultiplier = hasWeeklyDiscount ? property.weeklyDiscount! : 1;
-  const discountedSubtotal = Math.round(subtotal * discountMultiplier);
-  const discountAmount = subtotal - discountedSubtotal;
+  const discountedSubtotal = Math.round(dynamicPricing.subtotal * discountMultiplier);
+  const discountAmount = dynamicPricing.subtotal - discountedSubtotal;
   const total = discountedSubtotal + cleaningFee + serviceFee;
 
   // Validate minimum nights
@@ -237,8 +279,11 @@ export function BookingWidget({ property }: BookingWidgetProps) {
           {/* Pricing Breakdown */}
           <div className="space-y-3 mb-6 pb-6 border-b border-border">
             <div className="flex justify-between text-muted-foreground">
-              <span>${property.startingPrice} × {nights} nights</span>
-              <span>${subtotal}</span>
+              <span>
+                ${dynamicPricing.averageNightlyRate} avg/night × {nights} nights
+                {dynamicPricing.usedDynamicPricing}
+              </span>
+              <span>${dynamicPricing.subtotal}</span>
             </div>
             {hasWeeklyDiscount && (
               <div className="flex justify-between text-ocean">

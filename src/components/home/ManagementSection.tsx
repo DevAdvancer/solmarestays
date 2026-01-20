@@ -46,7 +46,7 @@ export function ManagementSection() {
                 How we manage our work?
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                We are a dedicated team of hospitality professionals committed to delivering elevated vacation experiences along California's Central Coast. Specializing in luxury short-term rentals, we manage high-end properties with an emphasis on design, cleanliness, and guest satisfaction.
+                We are a dedicated team of hospitality professionals committed to delivering elevated vacation experiences along California’s Central Coast. Specializing in luxury short-term rentals, we manage high-end properties with an emphasis on design, cleanliness, and guest satisfaction. Our work goes beyond traditional property management—we curate every stay with thoughtful touches, local expertise, and meticulous care. From listing creation to guest communication and on-the-ground operations, we ensure every home is presented at its best and every guest feels at home.
               </p>
               <Button variant="outline" size="lg" asChild className="mb-8 lg:mb-0">
                 <Link to="/why-choose-us">About Us</Link>

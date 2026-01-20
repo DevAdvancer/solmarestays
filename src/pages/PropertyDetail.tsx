@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { SEO } from '@/components/SEO';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useMemo } from 'react';
 import { Header } from '@/components/layout/Header';
@@ -6,7 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { BookingWidget } from '@/components/booking/BookingWidget';
 import { ImageGallery } from '@/components/properties/ImageGallery';
 import { usePropertyBySlug, useProperties } from '@/hooks/useProperties';
-import { MapPin, Users, BedDouble, Bath, Check, ChevronLeft, Star, Wifi, Car, Coffee, Clock, ExternalLink, Book, FileText, AlertCircle } from 'lucide-react';
+import { MapPin, Users, BedDouble, Bath, Check, ChevronLeft, Star, Wifi, Car, Coffee, Clock, ExternalLink, Book, FileText, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import {
@@ -16,6 +17,64 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import { LucideIcon } from 'lucide-react';
+
+// Collapsible Amenities Section Component
+interface AmenitiesSectionProps {
+  amenities: string[];
+  getAmenityIcon: (amenity: string) => LucideIcon;
+}
+
+function AmenitiesSection({ amenities, getAmenityIcon }: AmenitiesSectionProps) {
+  const [showAll, setShowAll] = useState(false);
+  const INITIAL_COUNT = 6;
+
+  const visibleAmenities = showAll ? amenities : amenities.slice(0, INITIAL_COUNT);
+  const hasMore = amenities.length > INITIAL_COUNT;
+
+  return (
+    <div>
+      <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">
+        Amenities
+      </h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {visibleAmenities.map((amenity) => {
+          const Icon = getAmenityIcon(amenity);
+          return (
+            <div
+              key={amenity}
+              className="flex items-center gap-3 text-foreground bg-secondary p-4 rounded-xl hover:bg-secondary/80 transition-colors cursor-default"
+            >
+              <div className="w-10 h-10 rounded-lg bg-ocean/10 flex items-center justify-center">
+                <Icon className="w-5 h-5 text-ocean" />
+              </div>
+              <span className="font-medium">{amenity}</span>
+            </div>
+          );
+        })}
+      </div>
+      {hasMore && (
+        <Button
+          variant="ghost"
+          onClick={() => setShowAll(!showAll)}
+          className="mt-4 gap-2"
+        >
+          {showAll ? (
+            <>
+              <ChevronUp className="w-4 h-4" />
+              Show less
+            </>
+          ) : (
+            <>
+              <ChevronDown className="w-4 h-4" />
+              Show all {amenities.length} amenities
+            </>
+          )}
+        </Button>
+      )}
+    </div>
+  );
+}
 
 const PropertyDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -28,6 +87,7 @@ const PropertyDetailPage = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
+        <SEO title="Loading Property..." />
         <Header />
         <main className="pt-32 md:pt-36">
           <section className="py-4 bg-secondary">
@@ -56,6 +116,7 @@ const PropertyDetailPage = () => {
   if (error) {
     return (
       <div className="min-h-screen bg-background">
+        <SEO title="Error Loading Property" />
         <Header />
         <main className="pt-24 pb-16">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center py-16">
@@ -79,6 +140,7 @@ const PropertyDetailPage = () => {
   if (!property) {
     return (
       <div className="min-h-screen bg-background">
+        <SEO title="Property Not Found" />
         <Header />
         <main className="pt-24 pb-16">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center py-16">
@@ -111,6 +173,11 @@ const PropertyDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title={property.name}
+        description={property.description ? property.description.replace(/<[^>]+>/g, '').substring(0, 160).trim() + '...' : undefined}
+        image={property.image}
+      />
       <Header />
       <main className="pt-32 md:pt-36">
         {/* Back Navigation */}
@@ -224,27 +291,7 @@ const PropertyDetailPage = () => {
                 </motion.div>
 
                 {/* Amenities */}
-                <div>
-                  <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">
-                    Amenities
-                  </h2>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {property.amenities.map((amenity) => {
-                      const Icon = getAmenityIcon(amenity);
-                      return (
-                        <div
-                          key={amenity}
-                          className="flex items-center gap-3 text-foreground bg-secondary p-4 rounded-xl hover:bg-secondary/80 transition-colors cursor-default"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-ocean/10 flex items-center justify-center">
-                            <Icon className="w-5 h-5 text-ocean" />
-                          </div>
-                          <span className="font-medium">{amenity}</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <AmenitiesSection amenities={property.amenities} getAmenityIcon={getAmenityIcon} />
 
                 {/* House Rules */}
                 {property.houseRules && (

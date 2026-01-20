@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -24,21 +25,21 @@ const ContactPage = () => {
 
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
-  
+
   const formRef = useRef(null);
   const isFormInView = useInView(formRef, { once: true, margin: '-100px' });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    
+
     setIsSubmitting(false);
     setIsSubmitted(true);
     toast.success('Message sent successfully! We\'ll be in touch soon.');
-    
+
     // Reset form after delay
     setTimeout(() => {
       setIsSubmitted(false);
@@ -52,6 +53,10 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Solmaré Stays. Whether you're booking a stay or looking for property management, we're here to help."
+      />
       <Header />
       <main>
         {/* Hero Section */}
@@ -67,7 +72,7 @@ const ContactPage = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/60" />
           </div>
-          
+
           <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -79,7 +84,7 @@ const ContactPage = () => {
                 Get In Touch
               </h1>
               <p className="text-lg text-white/90 leading-relaxed">
-                Have questions about booking, property management, or partnering with us? 
+                Have questions about booking, property management, or partnering with us?
                 We'd love to hear from you.
               </p>
             </motion.div>
@@ -101,7 +106,7 @@ const ContactPage = () => {
                   Contact Information
                 </h2>
                 <p className="text-muted-foreground mb-8">
-                  Reach out to us directly or fill out the form and we'll get back to you 
+                  Reach out to us directly or fill out the form and we'll get back to you
                   within 24 hours.
                 </p>
 

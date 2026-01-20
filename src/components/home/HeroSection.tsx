@@ -55,8 +55,8 @@ export function HeroSection() {
         </AnimatePresence>
       </div>
 
-      {/* Content Box - Bottom Left */}
-      <div className="absolute bottom-0 left-0 z-20 w-full md:max-w-xl lg:max-w-2xl bg-white p-8 md:p-12 lg:p-16 rounded-tr-[3rem] shadow-2xl">
+      {/* Content Box - Floating Glass Card */}
+      <div className="absolute bottom-4 left-4 right-4 md:right-auto md:bottom-20 md:left-20 z-20 md:max-w-xl lg:max-w-2xl bg-white/95 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-elevated border border-white/20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -9,7 +9,7 @@ const navLinks = [
   { href: '/collection', label: 'The Collection' },
   { href: '/why-choose-us', label: 'Why Choose Us' },
   { href: '/for-homeowners', label: 'For Homeowners' },
-  { href: '/services', label: 'Services & Partners' },
+  { href: '/guest-experience', label: 'Guest Experience' },
   { href: '/contact', label: 'Get In Touch' },
 ];
 

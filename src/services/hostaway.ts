@@ -112,7 +112,7 @@ function transformListing(listing: HostawayListing): Property {
     address: listing.publicAddress || listing.address,
 
     // Reviews
-    averageReviewRating: listing.averageReviewRating,
+    averageReviewRating: listing.averageReviewRating ? listing.averageReviewRating / 2 : null,
 
     // External links
     hostawayListingId: String(listing.id),

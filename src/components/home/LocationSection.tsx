@@ -22,6 +22,14 @@ const locations = [
     mapLink: 'https://www.google.com/maps/search/?api=1&query=San+Luis+Obispo,+CA',
     mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.66!3d35.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ecf523a871483d%3A0x7c8c8c8c8c8c8c8c!2sSan%20Luis%20Obispo%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
   },
+  {
+    id: 'pismo',
+    name: 'Pismo Beach',
+    image: avilaImg, // Will be replaced with Kyle's image when provided
+    description: 'A classic California beach town with stunning sunsets, fresh seafood, and coastal adventures.',
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=Pismo+Beach,+CA',
+    mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25884.25447087949!2d-120.64!3d35.14!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec4319abe8f8d5%3A0x8c8c8c8c8c8c8c8c!2sPismo%20Beach%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
+  },
 ];
 
 export function LocationSection() {

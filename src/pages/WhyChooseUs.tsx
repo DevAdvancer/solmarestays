@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Search, ShieldCheck, Handshake, Star } from 'lucide-react';
 import aboutHeroImage from '@/assets/about-hero.jpg';
@@ -84,6 +85,10 @@ const WhyChooseUsPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Why Choose Us"
+        description="Discover the Solmaré difference. We offer refined rentals, trusted management, and curated coastal living experiences."
+      />
       <Header />
       <main>
         {/* Hero Section - Full Screen with Image */}

@@ -85,7 +85,7 @@ export function StatsSection() {
           className="text-center max-w-3xl mx-auto mb-20"
         >
           <p className="font-serif text-2xl md:text-3xl text-foreground leading-relaxed font-light">
-            Solmaré Stays offers curated, high-end vacation rentals along California's Central Coast—delivering elevated coastal stays with style, comfort, and personalized hospitality.
+            Solmaré Stays offers curated, high-end vacation rentals along California’s Central Coast—delivering elevated coastal stays with style, comfort, and personalized hospitality.
           </p>
         </motion.div>
 
