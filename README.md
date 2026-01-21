@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
+# Solmaré Stays
 
-## Project info
+A modern real estate and booking platform for luxury stays, designed to provide an exceptional user experience for finding and booking premium properties.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Tech Stack
 
-## How can I edit this code?
+This project is built with a modern frontend stack focused on performance and developer experience:
 
-There are several ways of editing your application.
+-   **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Maps**: [Leaflet](https://leafletjs.com/) via `react-leaflet`
+-   **Routing**: [React Router](https://reactrouter.com/)
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Follow these steps to set up the project locally.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+-   Node.js (v18 or higher recommended)
+-   npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1.  **Clone the repository**
 
-Follow these steps:
+    ```bash
+    git clone <repository-url>
+    cd solmarestays
+    ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2.  **Install dependencies**
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3.  **Start the development server**
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-**Edit a file directly in GitHub**
+    The application will be available at `http://localhost:8080` (or the port shown in your terminal).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+The project follows a standard Vite + React structure:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+-   `src/pages`: Main application views (e.g., `Index.tsx`, `Collection.tsx`, `PropertyDetail.tsx`).
+-   `src/components`: Reusable UI components.
+    -   `ui`: Base components from shadcn/ui.
+    -   `booking`: Booking-related components.
+-   `src/hooks`: Custom React hooks.
+-   `src/lib`: Utility functions and configurations.
 
-## What technologies are used for this project?
+## Features
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+-   **Property Collection**: Browse a curated list of luxury stays.
+-   **Interactive Maps**: View property locations on an interactive map.
+-   **Property Details**: Detailed views with images, descriptions, and amenities.
+-   **Booking System**: Integrated booking widgets and calendar availability.
+-   **Responsive Design**: Fully responsive layout for mobile, tablet, and desktop.
