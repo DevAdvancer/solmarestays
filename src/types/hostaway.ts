@@ -80,6 +80,7 @@ export interface HostawayListing {
   bathroomsNumber: number;
   minNights: number;
   maxNights: number;
+  guestsIncluded: number;
   cleaningFee: number;
   checkinFee: number;
   priceForExtraPerson: number;

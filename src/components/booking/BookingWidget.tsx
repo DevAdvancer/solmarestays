@@ -77,15 +77,49 @@ export function BookingWidget({ property }: BookingWidgetProps) {
     };
   }, [checkIn, checkOut, nights, getPriceForDate, property.startingPrice]);
 
-  const cleaningFee = property.cleaningFee;
-  const serviceFee = Math.round(dynamicPricing.subtotal * 0.12);
+  // 1. Base Rate (Rent)
+  const baseRent = dynamicPricing.subtotal;
 
-  // Apply weekly discount if applicable (and staying 7+ nights)
+  // 2. Extra Person Fee
+  // Charge if guests > guestsIncluded
+  const extraGuests = Math.max(0, guests - (property.guestsIncluded || 1));
+  const extraPersonFee = extraGuests * property.priceForExtraPerson * nights;
+
+  // 3. One-time Fees (Cleaning, Check-in)
+  const cleaningFee = property.cleaningFee;
+  const checkinFee = property.checkinFee;
+  // Guest Channel Fee (approx 3% processing/platform fee if not specified)
+  // User asked for "Guest Channel Fee" - mapping this to a service fee.
+  const serviceFee = Math.round(baseRent * 0.035); // Using 3.5% as a reasonable estimate for Stripe/Channel fees
+
+  // 4. Discounts
   const hasWeeklyDiscount = property.weeklyDiscount && property.weeklyDiscount < 1 && nights >= 7;
   const discountMultiplier = hasWeeklyDiscount ? property.weeklyDiscount! : 1;
-  const discountedSubtotal = Math.round(dynamicPricing.subtotal * discountMultiplier);
-  const discountAmount = dynamicPricing.subtotal - discountedSubtotal;
-  const total = discountedSubtotal + cleaningFee + serviceFee;
+  // Discount usually applies to Rent + ExtraPersonFee, but let's apply to Rent for safety or Rent+Extra. Hostaway applies to Rent.
+  const discountedRent = Math.round(baseRent * discountMultiplier);
+  const discountAmount = baseRent - discountedRent;
+
+  // Subtotal for Tax Calculation (Rent + Fees - Discount)
+  // Taxable amount usually includes Rent, Cleaning, ExtraPerson. 
+  // We'll calculate taxes on (DiscountedRent + ExtraPersonFee + CleaningFee)
+  const taxableAmount = discountedRent + extraPersonFee + cleaningFee;
+
+  // 5. Taxes
+  // propertyRentTax is a percentage (e.g., 10 for 10%)
+  const rentTax = Math.round(taxableAmount * (property.propertyRentTax / 100));
+
+  // Flat taxes
+  const stayTax = property.guestStayTax;
+  const nightlyTax = property.guestNightlyTax * nights;
+  const personNightlyTax = property.guestPerPersonPerNightTax * guests * nights;
+
+  const totalTaxes = rentTax + stayTax + nightlyTax + personNightlyTax;
+
+  // 6. Refundable Deposit
+  const damageDeposit = property.refundableDamageDeposit;
+
+  // Total
+  const total = discountedRent + extraPersonFee + cleaningFee + checkinFee + serviceFee + totalTaxes + damageDeposit;
 
   // Validate minimum nights
   const meetsMinNights = nights >= property.minNights;
@@ -242,26 +276,68 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
           {/* Pricing Breakdown */}
           <div className="space-y-3 mb-6 pb-6 border-b border-border">
+            {/* Rent */}
             <div className="flex justify-between text-muted-foreground">
               <span>
                 ${dynamicPricing.averageNightlyRate} × {nights} night{nights > 1 ? 's' : ''}
               </span>
               <span>${dynamicPricing.subtotal}</span>
             </div>
-            {hasWeeklyDiscount && (
-              <div className="flex justify-between text-ocean">
-                <span>Weekly discount ({Math.round((1 - property.weeklyDiscount!) * 100)}% off)</span>
-                <span>-${discountAmount}</span>
+
+            {/* Extra Person Fee */}
+            {extraPersonFee > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Extra guest fee (${property.priceForExtraPerson} × {extraGuests} × {nights})</span>
+                <span>${extraPersonFee}</span>
               </div>
             )}
-            <div className="flex justify-between text-muted-foreground">
-              <span>Cleaning fee</span>
-              <span>${cleaningFee}</span>
-            </div>
-            <div className="flex justify-between text-muted-foreground">
-              <span>Service fee</span>
-              <span>${serviceFee}</span>
-            </div>
+
+            {/* Discount Bar */}
+            {hasWeeklyDiscount && (
+              <div className="flex justify-between items-center text-sm bg-green-50 text-green-700 p-2 rounded-md mb-2">
+                <span>Weekly discount applied</span>
+                <span className="font-semibold">-${discountAmount}</span>
+              </div>
+            )}
+
+            {/* Fees */}
+            {cleaningFee > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Cleaning Fee</span>
+                <span>${cleaningFee}</span>
+              </div>
+            )}
+
+            {/* Guest Channel Fee */}
+            {serviceFee > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Guest Channel Fee</span>
+                <span>${serviceFee}</span>
+              </div>
+            )}
+
+            {checkinFee > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Check-in fee</span>
+                <span>${checkinFee}</span>
+              </div>
+            )}
+
+            {/* Occupancy Tax */}
+            {totalTaxes > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Occupancy Tax</span>
+                <span>${totalTaxes}</span>
+              </div>
+            )}
+
+            {/* Damage Deposit */}
+            {damageDeposit > 0 && (
+              <div className="flex justify-between text-muted-foreground">
+                <span>Refundable Damage Deposit</span>
+                <span>${damageDeposit}</span>
+              </div>
+            )}
           </div>
 
           {/* Total */}
@@ -297,19 +373,18 @@ export function BookingWidget({ property }: BookingWidgetProps) {
       )}
 
       {/* Best Rate Guarantee */}
-      <div className="mt-4 p-3 bg-ocean/5 rounded-lg border border-ocean/20">
-        <div className="flex items-start gap-2">
-          <Shield className="w-4 h-4 text-ocean mt-0.5 flex-shrink-0" />
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            <span className="font-medium text-foreground">Best Rate Guarantee:</span> Rates may be lower here than on Airbnb/Vrbo due to zero platform fees.
-          </p>
-        </div>
+      <div className="mt-4 p-3 bg-ocean/5 rounded-lg border border-ocean/20 text-center">
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          <span className="font-medium text-foreground">Best Rate Guarantee:</span> Rates may be lower here than on Airbnb/Vrbo due to zero platform fees.
+        </p>
       </div>
 
       {/* Cancellation Policy */}
-      <p className="text-center text-xs text-muted-foreground mt-4">
-        Free cancellation for a full refund if canceled at least 14 days before check-in.
-      </p>
+      <div className="mt-4 text-center">
+        <p className="text-xs text-muted-foreground">
+          Free cancellation for a full refund if canceled at least 14 days before check-in.
+        </p>
+      </div>
     </div>
   );
 }

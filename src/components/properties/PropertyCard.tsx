@@ -6,9 +6,10 @@ import { Property } from '@/data/properties';
 interface PropertyCardProps {
   property: Property;
   index?: number;
+  maskPrice?: boolean;
 }
 
-export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
+export function PropertyCard({ property, index = 0, maskPrice = false }: PropertyCardProps) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -34,7 +35,7 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
           {/* Price Tag */}
           <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
             <span className="text-xs text-white font-medium bg-foreground/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
-              From ${property.startingPrice}/night
+              {maskPrice ? '$XXX' : `$${property.startingPrice}`}/night
             </span>
           </div>
 
@@ -56,11 +57,10 @@ export function PropertyCard({ property, index = 0 }: PropertyCardProps) {
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`w-3.5 h-3.5 ${
-                      i < Math.round(property.averageReviewRating!)
-                        ? 'fill-gold text-gold'
-                        : 'text-muted-foreground/30'
-                    }`}
+                    className={`w-3.5 h-3.5 ${i < Math.round(property.averageReviewRating!)
+                      ? 'fill-gold text-gold'
+                      : 'text-muted-foreground/30'
+                      }`}
                   />
                 ))}
               </div>

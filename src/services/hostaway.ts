@@ -71,9 +71,9 @@ function transformListing(listing: HostawayListing): Property {
     // Basic info
     id: String(listing.id),
     slug: generateSlug(listing.internalListingName || listing.name),
-    name: listing.internalListingName || listing.name,
+    name: listing.name,
     location: listing.city,
-    unitType: getUnitType(listing.bedroomsNumber),
+    unitType: listing.internalListingName || getUnitType(listing.bedroomsNumber),
     description: listing.description,
 
     // Capacity & layout
@@ -125,9 +125,11 @@ function transformListing(listing: HostawayListing): Property {
     // Additional fees and taxes
     checkinFee: listing.checkinFee,
     priceForExtraPerson: listing.priceForExtraPerson,
+    guestsIncluded: listing.guestsIncluded,
     propertyRentTax: listing.propertyRentTax,
     guestStayTax: listing.guestStayTax,
     guestNightlyTax: listing.guestNightlyTax,
+    guestPerPersonPerNightTax: listing.guestPerPersonPerNightTax,
     refundableDamageDeposit: listing.refundableDamageDeposit,
   };
 }
@@ -158,7 +160,19 @@ export async function fetchListings(): Promise<Property[]> {
     throw new Error('Hostaway API returned an error');
   }
 
-  return data.result.map(transformListing);
+  const result = data.result.map(transformListing);
+
+  // Cache the result
+  try {
+    localStorage.setItem('solmare_properties_cache_v2', JSON.stringify({
+      timestamp: Date.now(),
+      data: result
+    }));
+  } catch (e) {
+    console.warn('Failed to cache properties:', e);
+  }
+
+  return result;
 }
 
 /**

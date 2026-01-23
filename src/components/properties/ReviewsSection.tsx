@@ -3,65 +3,22 @@ import { motion } from 'framer-motion';
 import { Star, ChevronDown, ArrowUpDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-interface Review {
-  id: string;
-  guestName: string;
-  rating: number;
-  date: string;
-  comment: string;
-}
+import { getReviewsForProperty } from '@/data/reviews';
 
 interface ReviewsSectionProps {
   propertyName: string;
+  propertyId: string;
   averageRating?: number | null;
 }
 
-// Sample reviews - in production these would come from Hostaway API
-const sampleReviews: Review[] = [
-  {
-    id: '1',
-    guestName: 'Sarah M.',
-    rating: 5,
-    date: '2025-12-15',
-    comment: 'Absolutely stunning property! The views were incredible and the host was so responsive. Everything was spotless and exactly as described. We will definitely be back!',
-  },
-  {
-    id: '2',
-    guestName: 'Michael R.',
-    rating: 5,
-    date: '2025-11-28',
-    comment: 'Perfect getaway spot. The location is unbeatable - walking distance to the beach and great restaurants. The bungalow had everything we needed.',
-  },
-  {
-    id: '3',
-    guestName: 'Jennifer L.',
-    rating: 5,
-    date: '2025-11-10',
-    comment: 'We had an amazing stay! The property exceeded our expectations. So cozy and beautifully decorated. Kyle was an excellent host.',
-  },
-  {
-    id: '4',
-    guestName: 'David K.',
-    rating: 4,
-    date: '2025-10-22',
-    comment: 'Great place for a weekend escape. Very clean and comfortable. Would recommend to anyone visiting Avila Beach.',
-  },
-  {
-    id: '5',
-    guestName: 'Emily T.',
-    rating: 5,
-    date: '2025-10-05',
-    comment: 'This was our second stay and it was just as wonderful as the first. The fire pit is perfect for evening relaxation. Can\'t wait to return!',
-  },
-];
-
-export function ReviewsSection({ propertyName, averageRating }: ReviewsSectionProps) {
+export function ReviewsSection({ propertyName, propertyId, averageRating }: ReviewsSectionProps) {
   const [showAll, setShowAll] = useState(false);
   const [sortBy, setSortBy] = useState<'date' | 'rating-high' | 'rating-low'>('date');
 
+  const allReviews = useMemo(() => getReviewsForProperty(propertyId), [propertyId]);
+
   const sortedReviews = useMemo(() => {
-    const reviews = [...sampleReviews];
+    const reviews = [...allReviews];
     switch (sortBy) {
       case 'rating-high':
         return reviews.sort((a, b) => b.rating - a.rating);
@@ -71,10 +28,10 @@ export function ReviewsSection({ propertyName, averageRating }: ReviewsSectionPr
       default:
         return reviews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     }
-  }, [sortBy]);
+  }, [sortBy, allReviews]);
 
   const visibleReviews = showAll ? sortedReviews : sortedReviews.slice(0, 3);
-  const averageScore = averageRating ?? (sampleReviews.reduce((acc, r) => acc + r.rating, 0) / sampleReviews.length);
+  const averageScore = averageRating ?? (allReviews.reduce((acc, r) => acc + r.rating, 0) / allReviews.length);
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
@@ -104,14 +61,14 @@ export function ReviewsSection({ propertyName, averageRating }: ReviewsSectionPr
                 <Star
                   key={star}
                   className={`w-5 h-5 ${star <= Math.round(averageScore)
-                      ? 'fill-gold text-gold'
-                      : 'text-muted-foreground/30'
+                    ? 'fill-gold text-gold'
+                    : 'text-muted-foreground/30'
                     }`}
                 />
               ))}
             </div>
             <span className="font-semibold text-foreground">{averageScore.toFixed(1)}</span>
-            <span className="text-muted-foreground">({sampleReviews.length} reviews)</span>
+            <span className="text-muted-foreground">({allReviews.length} reviews)</span>
           </div>
         </div>
 
@@ -148,8 +105,8 @@ export function ReviewsSection({ propertyName, averageRating }: ReviewsSectionPr
                   <Star
                     key={star}
                     className={`w-4 h-4 ${star <= review.rating
-                        ? 'fill-gold text-gold'
-                        : 'text-muted-foreground/30'
+                      ? 'fill-gold text-gold'
+                      : 'text-muted-foreground/30'
                       }`}
                   />
                 ))}
@@ -161,14 +118,14 @@ export function ReviewsSection({ propertyName, averageRating }: ReviewsSectionPr
       </div>
 
       {/* View All Button */}
-      {sampleReviews.length > 3 && (
+      {allReviews.length > 3 && (
         <Button
           variant="ghost"
           onClick={() => setShowAll(!showAll)}
           className="mt-4 gap-2"
         >
           <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? 'rotate-180' : ''}`} />
-          {showAll ? 'Show less' : `View all ${sampleReviews.length} reviews`}
+          {showAll ? 'Show less' : `View all ${allReviews.length} reviews`}
         </Button>
       )}
     </motion.div>

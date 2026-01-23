@@ -150,7 +150,7 @@ const ForHomeownersPage = () => {
             />
           </div>
 
-          <div className="absolute bottom-0 left-0 w-full md:w-[600px] lg:w-[700px] bg-white pt-12 pb-10 pr-12 pl-4 md:pl-8 lg:pl-16 rounded-tr-[3rem]">
+          <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isHeroInView ? { opacity: 1, x: 0 } : {}}

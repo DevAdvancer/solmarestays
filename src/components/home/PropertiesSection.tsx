@@ -45,7 +45,7 @@ export function PropertiesSection() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             {featuredProperties?.map((property, index) => (
-              <PropertyCard key={property.id} property={property} index={index} />
+              <PropertyCard key={property.id} property={property} index={index} maskPrice={true} />
             ))}
           </div>
         )}

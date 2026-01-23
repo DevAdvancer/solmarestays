@@ -19,9 +19,11 @@ export interface Property {
   cleaningFee: number;
   checkinFee: number;
   priceForExtraPerson: number;
+  guestsIncluded: number;
   propertyRentTax: number;
   guestStayTax: number;
   guestNightlyTax: number;
+  guestPerPersonPerNightTax: number;
   refundableDamageDeposit: number;
   weeklyDiscount: number | null;
 

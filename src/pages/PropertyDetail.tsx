@@ -306,6 +306,7 @@ const PropertyDetailPage = () => {
                 {/* Reviews Section - After Description, Before Amenities */}
                 <ReviewsSection
                   propertyName={property.name}
+                  propertyId={property.id}
                   averageRating={property.averageReviewRating}
                 />
 

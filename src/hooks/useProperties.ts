@@ -9,8 +9,23 @@ export function useProperties() {
   return useQuery<Property[], Error>({
     queryKey: ['properties'],
     queryFn: fetchListings,
-    staleTime: 5 * 60 * 1000, // Consider data fresh for 5 minutes
-    gcTime: 30 * 60 * 1000, // Keep in cache for 30 minutes
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
+    initialData: () => {
+      try {
+        const cached = localStorage.getItem('solmare_properties_cache_v2');
+        if (cached) {
+          const { timestamp, data } = JSON.parse(cached);
+          // Use cache if less than 24 hours old
+          if (Date.now() - timestamp < 24 * 60 * 60 * 1000) {
+            return data;
+          }
+        }
+      } catch (e) {
+        console.warn('Failed to load properties from cache:', e);
+      }
+      return undefined;
+    }
   });
 }
 

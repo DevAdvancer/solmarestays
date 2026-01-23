@@ -205,14 +205,30 @@ export function HeroSection() {
         </div>
 
         {/* Mobile Sticky Book Now Button */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-border lg:hidden pb-safe">
-          <Button
-            size="lg"
-            className="w-full h-14 text-lg font-medium shadow-xl"
-            onClick={handleSearch}
-          >
-            Book Your Stay
-          </Button>
+        <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/80 backdrop-blur-md border-t border-white/20 lg:hidden pb-safe">
+          <div className="flex gap-3">
+            <Button
+              size="lg"
+              className="flex-1 h-12 shadow-lg bg-primary text-primary-foreground font-semibold text-lg"
+              onClick={handleSearch}
+            >
+              Book Now
+            </Button>
+
+            <Popover>
+              <PopoverTrigger asChild>
+                <button className="w-12 h-12 flex items-center justify-center rounded-lg bg-white/50 border border-black/5 active:scale-95 transition-transform hover:bg-white/80 shrink-0">
+                  <Calendar className="w-6 h-6 text-foreground" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0 mb-4" align="end" side="top">
+                <CalendarTwin
+                  value={{ from: checkIn, to: checkOut }}
+                  onChange={(range) => setDateRange(range.from, range.to)}
+                />
+              </PopoverContent>
+            </Popover>
+          </div>
         </div>
 
         {/* Navigation Controls - Minimal (Desktop Only) */}
