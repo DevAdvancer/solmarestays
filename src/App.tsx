@@ -8,6 +8,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { BookingProvider } from "@/context/BookingContext";
 import Index from "./pages/Index";
 import Collection from "./pages/Collection";
+import Checkout from "./pages/Checkout";
 import PropertyDetail from "./pages/PropertyDetail";
 import WhyChooseUs from "./pages/WhyChooseUs";
 import ForHomeowners from "./pages/ForHomeowners";
@@ -29,6 +30,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/collection" element={<Collection />} />
+              <Route path="/checkout" element={<Checkout />} />
               <Route path="/property/:slug" element={<PropertyDetail />} />
               <Route path="/philosophy" element={<WhyChooseUs />} />
               <Route path="/management" element={<ForHomeowners />} />
@@ -50,4 +52,3 @@ const App = () => (
 );
 
 export default App;
-

@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
 import { format, differenceInDays, addDays, isSameDay } from 'date-fns';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCalendar } from '@/hooks/useCalendar';
 import { CalendarTwin } from '@/components/ui/calendar-twin';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar as CalendarIcon, Users, Loader2, MessageCircle, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -17,8 +17,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   const [checkIn, setCheckIn] = useState<Date>();
   const [checkOut, setCheckOut] = useState<Date>();
   const [guests, setGuests] = useState(2);
-  const [isLoading, setIsLoading] = useState(false);
-  const [showPricing, setShowPricing] = useState(false);
+
 
   // Fetch calendar availability data with pricing
   const { unavailableDates, getPriceForDate, isLoading: isCalendarLoading } = useCalendar(
@@ -86,11 +85,11 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   const extraPersonFee = extraGuests * property.priceForExtraPerson * nights;
 
   // 3. One-time Fees (Cleaning, Check-in)
+  // 3. One-time Fees (Cleaning, Check-in)
   const cleaningFee = property.cleaningFee;
   const checkinFee = property.checkinFee;
-  // Guest Channel Fee (approx 3% processing/platform fee if not specified)
-  // User asked for "Guest Channel Fee" - mapping this to a service fee.
-  const serviceFee = Math.round(baseRent * 0.035); // Using 3.5% as a reasonable estimate for Stripe/Channel fees
+  // Guest Channel Fee (approx 1.91% based on $40 fee for $2095 rent)
+  const serviceFee = Math.round(baseRent * 0.0191);
 
   // 4. Discounts
   const hasWeeklyDiscount = property.weeklyDiscount && property.weeklyDiscount < 1 && nights >= 7;
@@ -104,16 +103,16 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   // We'll calculate taxes on (DiscountedRent + ExtraPersonFee + CleaningFee)
   const taxableAmount = discountedRent + extraPersonFee + cleaningFee;
 
-  // 5. Taxes
+  // 5. Taxes (Excluded by user request)
   // propertyRentTax is a percentage (e.g., 10 for 10%)
-  const rentTax = Math.round(taxableAmount * (property.propertyRentTax / 100));
+  // const rentTax = Math.round(taxableAmount * (property.propertyRentTax / 100));
 
   // Flat taxes
-  const stayTax = property.guestStayTax;
-  const nightlyTax = property.guestNightlyTax * nights;
-  const personNightlyTax = property.guestPerPersonPerNightTax * guests * nights;
+  // const stayTax = property.guestStayTax;
+  // const nightlyTax = property.guestNightlyTax * nights;
+  // const personNightlyTax = property.guestPerPersonPerNightTax * guests * nights;
 
-  const totalTaxes = rentTax + stayTax + nightlyTax + personNightlyTax;
+  const totalTaxes = 0; // rentTax + stayTax + nightlyTax + personNightlyTax;
 
   // 6. Refundable Deposit
   const damageDeposit = property.refundableDamageDeposit;
@@ -124,25 +123,88 @@ export function BookingWidget({ property }: BookingWidgetProps) {
   // Validate minimum nights
   const meetsMinNights = nights >= property.minNights;
 
-  const handleCheckAvailability = async () => {
-    if (!checkIn || !checkOut) return;
 
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setShowPricing(true);
-    setIsLoading(false);
-  };
+
+  const navigate = useNavigate();
 
   const handleBookNow = () => {
-    const checkInStr = checkIn ? format(checkIn, 'yyyy-MM-dd') : '';
-    const checkOutStr = checkOut ? format(checkOut, 'yyyy-MM-dd') : '';
+    if (!checkIn || !checkOut) return;
 
-    if (property.hostawayListingId) {
-      window.open(
-        `https://117087_2.holidayfuture.com/listings/${property.hostawayListingId}?checkin=${checkInStr}&checkout=${checkOutStr}&guests=${guests}`,
-        '_blank'
-      );
+    // Construct breakdown for the checkout page
+    const breakdown = [
+      {
+        label: `$${dynamicPricing.averageNightlyRate} × ${nights} night${nights > 1 ? 's' : ''}`,
+        amount: dynamicPricing.subtotal,
+      },
+    ];
+
+    if (extraPersonFee > 0) {
+      breakdown.push({
+        label: `Extra guest fee`,
+        amount: extraPersonFee,
+      });
     }
+
+    if (hasWeeklyDiscount) {
+      breakdown.push({
+        label: `Weekly discount`,
+        amount: -discountAmount,
+      });
+    }
+
+    if (cleaningFee > 0) {
+      breakdown.push({
+        label: `Cleaning Fee`,
+        amount: cleaningFee,
+      });
+    }
+
+    if (serviceFee > 0) {
+      breakdown.push({
+        label: `Guest Channel Fee`,
+        amount: serviceFee,
+      });
+    }
+
+    if (checkinFee > 0) {
+      breakdown.push({
+        label: `Check-in fee`,
+        amount: checkinFee,
+      });
+    }
+
+    // Taxes excluded by user request
+    /*
+    if (totalTaxes > 0) {
+      breakdown.push({
+        label: `Occupancy Tax`,
+        amount: totalTaxes,
+      });
+    }
+    */
+
+    if (damageDeposit > 0) {
+      breakdown.push({
+        label: `Refundable Damage Deposit`,
+        amount: damageDeposit,
+      });
+    }
+
+    navigate('/checkout', {
+      state: {
+        property,
+        checkIn,
+        checkOut,
+        guests,
+        pricing: {
+          nightlyPrices: dynamicPricing.nightlyPrices,
+          subtotal: dynamicPricing.subtotal,
+          averageNightlyRate: dynamicPricing.averageNightlyRate,
+          total,
+          breakdown,
+        },
+      },
+    });
   };
 
   return (
@@ -150,11 +212,11 @@ export function BookingWidget({ property }: BookingWidgetProps) {
       {/* Dynamic Price Display */}
       <div className="mb-4">
         <span className="font-serif text-2xl font-semibold text-foreground">
-          ${showPricing && dynamicPricing.usedDynamicPricing
-            ? dynamicPricing.averageNightlyRate
-            : property.startingPrice}
+          {checkIn && checkOut && dynamicPricing.usedDynamicPricing
+            ? `$${dynamicPricing.averageNightlyRate}`
+            : 'Select dates'}
         </span>
-        <span className="text-muted-foreground"> / night</span>
+        {checkIn && checkOut && <span className="text-muted-foreground"> / night</span>}
         {property.weeklyDiscount && property.weeklyDiscount < 1 && (
           <span className="ml-2 px-2 py-1 bg-ocean/10 text-ocean text-xs rounded-full font-medium">
             {Math.round((1 - property.weeklyDiscount) * 100)}% off weekly
@@ -198,7 +260,6 @@ export function BookingWidget({ property }: BookingWidgetProps) {
             onChange={(range) => {
               setCheckIn(range.from);
               setCheckOut(range.to);
-              setShowPricing(false);
             }}
             onComplete={() => {
               const trigger = document.querySelector('[data-state="open"]');
@@ -213,9 +274,11 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
       {/* Guest Selection */}
       <div className="mb-6">
-        <Button
-          variant="outline"
-          className="w-full justify-start text-left font-normal h-14"
+        <div
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "w-full justify-start text-left font-normal h-14 cursor-default px-4"
+          )}
         >
           <Users className="mr-2 h-4 w-4" />
           <div className="flex flex-col items-start flex-1">
@@ -226,7 +289,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
             <button
               type="button"
               onClick={(e) => {
-                e.stopPropagation();
+                e.preventDefault();
                 setGuests(Math.max(1, guests - 1));
               }}
               className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
@@ -236,7 +299,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
             <button
               type="button"
               onClick={(e) => {
-                e.stopPropagation();
+                e.preventDefault();
                 setGuests(Math.min(property.sleeps, guests + 1));
               }}
               className="w-8 h-8 rounded-full border border-border flex items-center justify-center hover:bg-secondary transition-colors"
@@ -244,132 +307,132 @@ export function BookingWidget({ property }: BookingWidgetProps) {
               +
             </button>
           </div>
-        </Button>
+        </div>
       </div>
 
-      {/* Check Availability / Pricing View */}
-      {!showPricing ? (
-        <Button
-          variant="hero"
-          size="xl"
-          className="w-full"
-          onClick={handleCheckAvailability}
-          disabled={!checkIn || !checkOut || isLoading}
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Checking...
-            </>
-          ) : (
-            'Check Availability'
-          )}
-        </Button>
-      ) : (
+      {/* Pricing View */}
+      {checkIn && checkOut ? (
         <>
-          {/* Min nights warning */}
-          {!meetsMinNights && (
-            <div className="mb-4 p-3 bg-destructive/10 rounded-lg text-destructive text-sm">
-              Minimum stay is {property.minNights} nights
+          {/* Loading State */}
+          {isCalendarLoading ? (
+            <div className="py-8 flex flex-col items-center justify-center text-muted-foreground">
+              <Loader2 className="h-6 w-6 animate-spin mb-2" />
+              <span className="text-sm">Calculating best rates...</span>
             </div>
+          ) : (
+            <>
+              {/* Min nights warning */}
+              {!meetsMinNights && (
+                <div className="mb-4 p-3 bg-destructive/10 rounded-lg text-destructive text-sm">
+                  Minimum stay is {property.minNights} nights
+                </div>
+              )}
+
+              {/* Pricing Breakdown */}
+              <div className="space-y-3 mb-6 pb-6 border-b border-border">
+                {/* Rent */}
+                <div className="flex justify-between text-muted-foreground">
+                  <span>
+                    ${dynamicPricing.averageNightlyRate} × {nights} night{nights > 1 ? 's' : ''}
+                  </span>
+                  <span>${dynamicPricing.subtotal}</span>
+                </div>
+
+                {/* Extra Person Fee */}
+                {extraPersonFee > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Extra guest fee (${property.priceForExtraPerson} × {extraGuests} × {nights})</span>
+                    <span>${extraPersonFee}</span>
+                  </div>
+                )}
+
+                {/* Discount Bar */}
+                {hasWeeklyDiscount && (
+                  <div className="flex justify-between items-center text-sm bg-green-50 text-green-700 p-2 rounded-md mb-2">
+                    <span>Weekly discount applied</span>
+                    <span className="font-semibold">-${discountAmount}</span>
+                  </div>
+                )}
+
+                {/* Fees */}
+                {cleaningFee > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Cleaning Fee</span>
+                    <span>${cleaningFee}</span>
+                  </div>
+                )}
+
+                {/* Guest Channel Fee */}
+                {serviceFee > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Guest Channel Fee</span>
+                    <span>${serviceFee}</span>
+                  </div>
+                )}
+
+                {checkinFee > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Check-in fee</span>
+                    <span>${checkinFee}</span>
+                  </div>
+                )}
+
+                {/* Occupancy Tax - Excluded
+                {totalTaxes > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Occupancy Tax</span>
+                    <span>${totalTaxes}</span>
+                  </div>
+                )}
+                */}
+
+                {/* Damage Deposit */}
+                {damageDeposit > 0 && (
+                  <div className="flex justify-between text-muted-foreground">
+                    <span>Refundable Damage Deposit</span>
+                    <span>${damageDeposit}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Total */}
+              <div className="flex justify-between font-semibold text-lg mb-6">
+                <span>Total</span>
+                <span>${total}</span>
+              </div>
+
+              {/* Book Now Button */}
+              <Button
+                variant="hero"
+                size="xl"
+                className="w-full mb-3"
+                onClick={handleBookNow}
+                disabled={!meetsMinNights}
+              >
+                Book Now
+              </Button>
+
+              {/* Send Inquiry Button */}
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full gap-2"
+                asChild
+              >
+                <Link to="/contact">
+                  <MessageCircle className="w-4 h-4" />
+                  Have a question? Message Host
+                </Link>
+              </Button>
+            </>
           )}
-
-          {/* Pricing Breakdown */}
-          <div className="space-y-3 mb-6 pb-6 border-b border-border">
-            {/* Rent */}
-            <div className="flex justify-between text-muted-foreground">
-              <span>
-                ${dynamicPricing.averageNightlyRate} × {nights} night{nights > 1 ? 's' : ''}
-              </span>
-              <span>${dynamicPricing.subtotal}</span>
-            </div>
-
-            {/* Extra Person Fee */}
-            {extraPersonFee > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Extra guest fee (${property.priceForExtraPerson} × {extraGuests} × {nights})</span>
-                <span>${extraPersonFee}</span>
-              </div>
-            )}
-
-            {/* Discount Bar */}
-            {hasWeeklyDiscount && (
-              <div className="flex justify-between items-center text-sm bg-green-50 text-green-700 p-2 rounded-md mb-2">
-                <span>Weekly discount applied</span>
-                <span className="font-semibold">-${discountAmount}</span>
-              </div>
-            )}
-
-            {/* Fees */}
-            {cleaningFee > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Cleaning Fee</span>
-                <span>${cleaningFee}</span>
-              </div>
-            )}
-
-            {/* Guest Channel Fee */}
-            {serviceFee > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Guest Channel Fee</span>
-                <span>${serviceFee}</span>
-              </div>
-            )}
-
-            {checkinFee > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Check-in fee</span>
-                <span>${checkinFee}</span>
-              </div>
-            )}
-
-            {/* Occupancy Tax */}
-            {totalTaxes > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Occupancy Tax</span>
-                <span>${totalTaxes}</span>
-              </div>
-            )}
-
-            {/* Damage Deposit */}
-            {damageDeposit > 0 && (
-              <div className="flex justify-between text-muted-foreground">
-                <span>Refundable Damage Deposit</span>
-                <span>${damageDeposit}</span>
-              </div>
-            )}
-          </div>
-
-          {/* Total */}
-          <div className="flex justify-between font-semibold text-lg mb-6">
-            <span>Total</span>
-            <span>${total}</span>
-          </div>
-
-          {/* Book Now Button */}
-          <Button
-            variant="hero"
-            size="xl"
-            className="w-full mb-3"
-            onClick={handleBookNow}
-            disabled={!meetsMinNights}
-          >
-            Book Now
-          </Button>
-
-          {/* Send Inquiry Button */}
-          <Button
-            variant="outline"
-            size="lg"
-            className="w-full gap-2"
-            asChild
-          >
-            <Link to="/contact">
-              <MessageCircle className="w-4 h-4" />
-              Have a question? Message Host
-            </Link>
-          </Button>
         </>
+      ) : (
+        /* Prompt to select dates if none selected */
+        <div className="text-center py-6 text-muted-foreground bg-secondary/30 rounded-lg border border-border/50 border-dashed">
+          <CalendarIcon className="w-8 h-8 mx-auto mb-2 opacity-20" />
+          <p className="text-sm">Select check-in and check-out dates to see pricing</p>
+        </div>
       )}
 
       {/* Best Rate Guarantee */}

@@ -70,7 +70,7 @@ function transformListing(listing: HostawayListing): Property {
   return {
     // Basic info
     id: String(listing.id),
-    slug: generateSlug(listing.internalListingName || listing.name),
+    slug: String(listing.id),
     name: listing.name,
     location: listing.city,
     unitType: listing.bookingcomPropertyRoomName || getUnitType(listing.bedroomsNumber),
@@ -109,7 +109,7 @@ function transformListing(listing: HostawayListing): Property {
     // Location
     lat: listing.lat,
     lng: listing.lng,
-    address: listing.publicAddress || listing.address,
+    address: listing.publicAddress || listing.address || `${listing.street}, ${listing.city}`,
 
     // Reviews
     averageReviewRating: listing.averageReviewRating ? listing.averageReviewRating / 2 : null,
@@ -207,6 +207,8 @@ export async function fetchListingById(id: string): Promise<Property | null> {
   return transformListing(data.result);
 }
 
+// ... (previous code)
+
 /**
  * Fetch calendar data for a listing from Hostaway API
  * Returns day-by-day availability, pricing, and reservations
@@ -218,7 +220,8 @@ export async function fetchCalendar(
   includeResources: boolean = true
 ): Promise<HostawayCalendarDay[]> {
   if (!API_TOKEN) {
-    throw new Error('Hostaway API token is not configured. Please set VITE_HOSTAWAY_API_TOKEN in .env');
+    console.error('Hostaway API token is missing');
+    throw new Error('Hostaway API token is not configured');
   }
 
   const startDateStr = format(startDate, 'yyyy-MM-dd');
@@ -254,9 +257,73 @@ export async function fetchCalendar(
 /**
  * Get dates that are not available for booking
  * Filters calendar data to return only dates that are booked/blocked
+ * Logic: A date is unavailable if its status is NOT 'available'
  */
 export function getUnavailableDates(calendarDays: HostawayCalendarDay[]): Date[] {
   return calendarDays
-    .filter((day) => !day.isAvailable || day.status !== 'available')
-    .map((day) => new Date(day.date));
+    .filter((day) => {
+      // User requirement: "it will only show if the status is available"
+      // Therefore, if status is distinct from 'available', it is unavailable.
+      return day.status !== 'available';
+    })
+    .map((day) => {
+      // Parse YYYY-MM-DD as local date to prevent timezone shifts
+      const [year, month, date] = day.date.split('-').map(Number);
+      return new Date(year, month - 1, date);
+    });
+}
+
+/**
+ * Calculate reservation price using Hostaway API
+ */
+export interface CalculatePriceResponse {
+  totalPrice: number;
+  basePrice: number;
+  cleaningFee: number;
+  taxes: number;
+  // Add other fields as discovered from API response
+  breakdown: any; // We'll inspect this for details
+}
+
+export async function calculateReservationPrice(
+  listingId: string,
+  startDate: Date,
+  endDate: Date,
+  guests: number
+): Promise<any> {
+  if (!API_TOKEN) {
+    throw new Error('Hostaway API token is not configured');
+  }
+
+  const payload = {
+    listingId: Number(listingId), // Hostaway usually expects integer ID
+    startingDate: format(startDate, 'yyyy-MM-dd'),
+    endingDate: format(endDate, 'yyyy-MM-dd'),
+    numberOfGuests: guests,
+  };
+
+  const response = await fetch(`${API_URL}/reservations/calculate-price`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+      'Cache-control': 'no-cache',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    // Attempt to read error message
+    const errorBody = await response.text();
+    console.error('Price calculation failed:', errorBody);
+    throw new Error(`Failed to calculate price: ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  if (data.status !== 'success') {
+    throw new Error(data.errorMessage || 'Hostaway API returned an error');
+  }
+
+  return data.result;
 }

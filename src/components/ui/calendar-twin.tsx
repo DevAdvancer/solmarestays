@@ -36,26 +36,68 @@ export function CalendarTwin({
     value?.from && !value?.to ? "to" : "from"
   )
 
-  // Check if a date is disabled
-  const isDateDisabled = React.useCallback((date: Date): boolean => {
-    // Check if before minDate
+  // Check if a date is occupied (in disabledDates)
+  const isDayOccupied = React.useCallback((date: Date): boolean => {
+    return disabledDates.some((disabled) => isSameDay(date, disabled))
+  }, [disabledDates])
+
+  // Find the first occupied date after the selected start date
+  // This limits the range so users can't book *across* an existing reservation
+  const rangeLimitDate = React.useMemo(() => {
+    if (!value?.from) return null
+    let closest: Date | null = null
+    for (const d of disabledDates) {
+      if (isAfter(d, value.from)) {
+        if (!closest || isBefore(d, closest)) {
+          closest = d
+        }
+      }
+    }
+    return closest
+  }, [disabledDates, value?.from])
+
+  // Determine if a date can be selected based on current state
+  const isDateSelectable = React.useCallback((date: Date): boolean => {
+    // Min date check
     const minDateStart = new Date(minDate)
     minDateStart.setHours(0, 0, 0, 0)
-    if (isBefore(date, minDateStart)) {
+    if (isBefore(date, minDateStart)) return false
+
+    // If selecting start date (from)
+    if (selectionState === "from") {
+      // Cannot start on an occupied day
+      return !isDayOccupied(date)
+    }
+
+    // If selecting end date (to)
+    if (selectionState === "to" && value?.from) {
+      // If date is before start, we are effectively picking a new start
+      if (isBefore(date, value.from)) {
+        return !isDayOccupied(date)
+      }
+
+      // If date is same as start, disable (min 1 night)
+      if (isSameDay(date, value.from)) return false
+
+      // If date is after range limit (spanning across reservation), disable
+      // But allow the limit date itself (Checkout on reserved day allowed)
+      if (rangeLimitDate && isAfter(date, rangeLimitDate)) {
+        return false
+      }
+
       return true
     }
-    // Check if in disabled dates
-    return disabledDates.some((disabled) => isSameDay(date, disabled))
-  }, [disabledDates, minDate])
 
-  // Check if date is in the selected range
+    return !isDayOccupied(date)
+  }, [minDate, selectionState, value?.from, isDayOccupied, rangeLimitDate])
+
   const isInRange = React.useCallback((date: Date): boolean => {
     if (!value?.from || !value?.to) return false
     return isAfter(date, value.from) && isBefore(date, value.to)
   }, [value])
 
   const handleSelect = (date: Date) => {
-    if (isDateDisabled(date)) return
+    if (!isDateSelectable(date)) return
 
     if (selectionState === "from") {
       // Selecting start date
@@ -125,7 +167,14 @@ export function CalendarTwin({
             const isRangeStart = value?.from && isSameDay(day, value.from)
             const isRangeEnd = value?.to && isSameDay(day, value.to)
             const inRange = isInRange(day)
-            const disabled = isDateDisabled(day)
+
+            // Check formatted disabled state
+            const selectable = isDateSelectable(day)
+            const disabled = !selectable
+
+            // Visual check for occupied days (even if selectable as checkout)
+            // This allows us to style selectable-checkout-days differently if needed
+            const occupied = isDayOccupied(day)
 
             return (
               <button
@@ -136,6 +185,8 @@ export function CalendarTwin({
                   "h-8 w-8 sm:h-9 sm:w-9 m-0.5 flex items-center justify-center rounded-md text-xs sm:text-sm transition-colors touch-manipulation",
                   disabled && "text-muted-foreground/50 line-through cursor-not-allowed",
                   !disabled && !isSelected && !inRange && "hover:bg-accent hover:text-foreground active:bg-accent",
+                  // Special style for "checkout only" days (occupied but selectable)
+                  !disabled && occupied && !isSelected && "bg-stripes-gray text-muted-foreground",
                   isSelected && "bg-primary text-primary-foreground",
                   inRange && !isSelected && "bg-primary/20 text-foreground",
                   isRangeStart && value?.to && "rounded-r-none",

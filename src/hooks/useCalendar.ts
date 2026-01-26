@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
-import { startOfMonth, endOfMonth, addMonths, isSameDay } from 'date-fns';
+import { startOfMonth, endOfMonth, addMonths, isSameDay, format } from 'date-fns';
 import { fetchCalendar, getUnavailableDates } from '@/services/hostaway';
 import { HostawayCalendarDay } from '@/types/hostaway';
 
@@ -81,7 +81,8 @@ export function useCalendar(
   // Helper to find calendar day by date
   const getCalendarDay = useMemo(() => {
     return (date: Date): HostawayCalendarDay | undefined => {
-      return calendarDays.find((day) => isSameDay(new Date(day.date), date));
+      const dateStr = format(date, 'yyyy-MM-dd');
+      return calendarDays.find((day) => day.date === dateStr);
     };
   }, [calendarDays]);
 
