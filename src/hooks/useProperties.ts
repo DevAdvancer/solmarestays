@@ -10,14 +10,14 @@ export function useProperties() {
     queryKey: ['properties'],
     queryFn: fetchListings,
     staleTime: 5 * 60 * 1000,
-    gcTime: 30 * 60 * 1000,
+    gcTime: 15 * 60 * 1000,
     initialData: () => {
       try {
         const cached = localStorage.getItem('solmare_properties_cache_v3');
         if (cached) {
           const { timestamp, data } = JSON.parse(cached);
-          // Use cache if less than 24 hours old
-          if (Date.now() - timestamp < 24 * 60 * 60 * 1000) {
+          // Use cache if less than 10 minutes old
+          if (Date.now() - timestamp < 10 * 60 * 1000) {
             return data;
           }
         }
