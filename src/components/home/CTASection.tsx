@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import heroImage from '/home/home-29.jpg';
+import heroImage from '/home/home-29.webp';
 
 export function CTASection({ data }: { data?: any }) {
   const ref = useRef(null);
