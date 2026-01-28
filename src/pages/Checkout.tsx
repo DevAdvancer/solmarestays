@@ -11,7 +11,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { ChevronLeft, Calendar as CalendarIcon, Users, Shield, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Property } from '@/data/properties';
-import { format, addDays } from 'date-fns';
+import { format, addDays, isSameDay, differenceInCalendarDays } from 'date-fns';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -105,7 +105,11 @@ export default function Checkout() {
   const [isFetchingAddress, setIsFetchingAddress] = useState(false);
 
   // Date range for calendar
-  const dateRange: DateRange | undefined = checkIn && checkOut ? { from: checkIn, to: checkOut } : undefined;
+  // Ensure we pass a valid DateRange object even if only checkIn is set, so the Calendar knows 'from' is selected.
+  const dateRange: DateRange | undefined = {
+    from: checkIn,
+    to: checkOut,
+  };
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutSchema),
@@ -295,10 +299,26 @@ export default function Checkout() {
   const validateStayRules = (start: Date, end: Date): boolean => {
     const startStr = format(start, 'yyyy-MM-dd');
     const dayData = calendarDays.find(d => d.date === startStr);
+    const nights = differenceInCalendarDays(end, start);
+
+    if (nights < 1) return false;
+
+    // Check for blocked dates in between
+    // We iterate from start date until (end - 1 day) because checkout day can be blocked (someone else checking in)
+    // unless strict gap rules apply, but usually checkout on blocked day is allowed if it's the start of the block.
+    // However, safest to check if any night of stay is blocked.
+    // A night is "Date X". If Date X is blocked, you can't sleep there.
+    for (let i = 0; i < nights; i++) {
+      const d = addDays(start, i);
+      // Check if this date is in unavailableDates
+      const isBlocked = unavailableDates.some(unavailable => isSameDay(d, unavailable));
+      if (isBlocked) {
+        toast.error('Selected dates include unavailable days', { description: 'Please choose different dates.' });
+        return false;
+      }
+    }
 
     if (dayData) {
-      const nights = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-
       if (dayData.minimumStay && nights < dayData.minimumStay) {
         toast.error(`Minimum stay is ${dayData.minimumStay} nights`, { description: `For check-in on ${format(start, 'MMM d')}` });
         return false;
@@ -313,25 +333,51 @@ export default function Checkout() {
   };
 
   const handleDateSelect = async (range: DateRange | undefined) => {
-    if (range?.from) {
+    // 1. Reset if undefined
+    if (!range) {
+      setCheckIn(undefined);
+      setCheckOut(undefined);
+      return;
+    }
+
+    // 2. Handle 'from' date update
+    if (range.from) {
+      // If we are starting a new selection (click on start date), we set checkIn
+      // We keep checkOut ONLY if it's valid with the new checkIn (after the new checkIn)
+      // Standard range picker behavior usually clears 'to' if 'from' changes in a way that invalidates 'to'
+      // But react-day-picker usually handles this in the 'range' object passed back.
+
       setCheckIn(range.from);
+
+      // 3. Handle 'to' date
       if (range.to) {
-        // Validate before setting checkout
-        if (validateStayRules(range.from, range.to)) {
-          setCheckOut(range.to);
-          updatePricing(range.from, range.to, guests, appliedCoupon);
+        // Check if user is selecting the same day twice (range.to == range.from) for a 1-night stay
+        // or a valid range.
+        const isSame = range.from.getTime() === range.to.getTime();
+
+        // If range.to is valid (after from)
+        if (!isSame) {
+          // Validate availability and rules for the full range
+          const isValid = validateStayRules(range.from, range.to);
+          if (isValid) {
+            setCheckOut(range.to);
+            updatePricing(range.from, range.to, guests, appliedCoupon);
+          } else {
+            // If invalid range selected, keep 'from' but clear 'to' so user can try again
+            setCheckOut(undefined);
+          }
         } else {
-          // Invalid range, reset selection to just start date effectively (by not setting to)
-          // The Calendar component might need to be reset visually if it keeps the selection
-          // Usually passing undefined to 'selected' or 'to' works if controlled.
-          // However, 'selected={dateRange}' relies on 'checkIn' and 'checkOut'.
-          // If we don't setCheckOut, it remains undefined (single day selected).
+          // Same date clicked for check-out? Usually means 1 night if allowed
+          // But if min stay > 1, this will be caught by validateStayRules eventually
+          // For now, let's treat 1-night selection attempts as just setting CheckIn
           setCheckOut(undefined);
         }
       } else {
+        // 'to' is undefined (in progress selection)
         setCheckOut(undefined);
       }
     } else {
+      // Fallback
       setCheckIn(undefined);
       setCheckOut(undefined);
     }
@@ -594,27 +640,24 @@ export default function Checkout() {
                           placeholder="0000 0000 0000 0000"
                           maxLength={19}
                           onChange={(e) => {
-                            // Simple formatting
-                            let v = e.target.value.replace(/\D/g, '');
-                            if (v.length > 16) v = v.substring(0, 16);
-                            const matches = v.match(/\d{4,16}/g);
-                            const match = (matches && matches[0]) || '';
-                            const parts = [];
-                            for (let i = 0, len = match.length; i < len; i += 4) {
-                              parts.push(match.substring(i, i + 4));
-                            }
-                            if (parts.length) {
-                              e.target.value = parts.join(' ');
-                              register('cardNumber').onChange(e);
-                            } else {
-                              register('cardNumber').onChange(e); // allow empty
-                            }
+                            // Allow alphanumeric
+                            let v = e.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+                            // Limit to 16 characters
+                            if (v.length > 16) v = v.slice(0, 16);
+                            // Format groups of 4
+                            v = v.replace(/(.{4})(?=.)/g, '$1 ');
+
+                            e.target.value = v;
+                            register('cardNumber').onChange(e);
                           }}
                         />
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
                           {/* Icons can go here */}
                         </div>
                       </div>
+                      <p className="text-[0.8rem] text-muted-foreground mt-1">
+                        Enter your 16-digit card number
+                      </p>
                       {errors.cardNumber && <span className="text-xs text-destructive">{errors.cardNumber.message}</span>}
                     </div>
 
@@ -627,18 +670,61 @@ export default function Checkout() {
                           placeholder="MM / YY"
                           className={errors.expiryDate ? 'border-destructive' : ''}
                           maxLength={5}
+                          onChange={(e) => {
+                            const inputType = (e.nativeEvent as any).inputType;
+                            if (inputType && inputType.includes('delete')) {
+                              register('expiryDate').onChange(e);
+                              return;
+                            }
+
+                            let v = e.target.value.replace(/\D/g, '');
+
+                            // Auto-prefix single digit months 2-9
+                            if (v.length === 1 && parseInt(v) > 1) {
+                              v = '0' + v;
+                            }
+
+                            // Validate Month (1-12)
+                            if (v.length >= 2) {
+                              const month = parseInt(v.slice(0, 2));
+                              if (month === 0 || month > 12) {
+                                // Reject the second digit if it creates invalid month
+                                v = v.slice(0, 1);
+                              }
+                            }
+
+                            if (v.length >= 2) {
+                              v = v.slice(0, 2) + '/' + v.slice(2);
+                            }
+                            if (v.length > 5) v = v.slice(0, 5);
+
+                            e.target.value = v;
+                            register('expiryDate').onChange(e);
+                          }}
                         />
+                        <p className="text-[0.8rem] text-muted-foreground mt-1">
+                          MM / YY (Month 01-12)
+                        </p>
                         {errors.expiryDate && <span className="text-xs text-destructive">{errors.expiryDate.message}</span>}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="cvc">Security code</Label>
                         <Input
                           id="cvc"
+                          type="password"
                           {...register('cvc')}
                           placeholder="CVC"
                           className={errors.cvc ? 'border-destructive' : ''}
                           maxLength={4}
+                          onChange={(e) => {
+                            // Enforce numeric only and max length
+                            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+                            register('cvc').onChange(e);
+                          }}
                         />
+                        <p className="text-[0.8rem] text-muted-foreground mt-1">
+                          3 or 4 digits (CVV/CVC)
+                        </p>
                         {errors.cvc && <span className="text-xs text-destructive">{errors.cvc.message}</span>}
                       </div>
                     </div>
@@ -812,7 +898,11 @@ export default function Checkout() {
                             selected={dateRange}
                             onSelect={handleDateSelect}
                             numberOfMonths={2}
-                            disabled={(date) => date < new Date() || unavailableDates.some(bgDate => bgDate.toDateString() === date.toDateString())}
+                            disabled={(date) => {
+                              const today = new Date();
+                              today.setHours(0, 0, 0, 0);
+                              return date < today || unavailableDates.some(unavailable => isSameDay(date, unavailable));
+                            }}
                           />
                         </PopoverContent>
                       </Popover>

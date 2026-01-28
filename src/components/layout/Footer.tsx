@@ -133,7 +133,7 @@ export function Footer() {
                 Privacy Policy
               </Link>
               <Link to="/terms" className="hover:opacity-100 transition-opacity">
-                Terms of Service
+                Terms and Conditions
               </Link>
             </div>
           </div>

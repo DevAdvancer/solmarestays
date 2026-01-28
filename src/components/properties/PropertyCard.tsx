@@ -57,7 +57,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className={`w-3.5 h-3.5 ${i < Math.round(property.averageReviewRating!)
+                    className={`w-3.5 h-3.5 ${i < Math.round(property.averageReviewRating! / 2)
                       ? 'fill-gold text-gold'
                       : 'text-muted-foreground/30'
                       }`}
@@ -65,7 +65,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
                 ))}
               </div>
               <span className="text-xs text-muted-foreground ml-1">
-                {(property.averageReviewRating).toFixed(1)}
+                {(property.averageReviewRating / 2).toFixed(1)}
               </span>
             </div>
           )}

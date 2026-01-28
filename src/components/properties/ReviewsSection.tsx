@@ -63,7 +63,8 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
       : 0);
 
   // For star display (out of 5)
-  const averageStars = averageScore;
+  // Hostaway returns ratings out of 10, so we divide by 2
+  const averageStars = averageScore / 2;
 
   const formatDate = (dateStr: string) => {
     return new Date(dateStr).toLocaleDateString('en-US', {
@@ -118,7 +119,7 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
                 />
               ))}
             </div>
-            {/* Display raw score out of 10 as requested */}
+            {/* Display score out of 5 */}
             <span className="font-semibold text-foreground">{averageStars.toFixed(1)}</span>
             <span className="text-muted-foreground">({allReviews.length} reviews)</span>
           </div>
@@ -168,7 +169,7 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
             {review.revieweeResponse && (
               <div className="mt-4 pl-4 border-l-2 border-primary/20">
                 <p className="text-sm font-medium text-foreground mb-1">Response from Host:</p>
-                <p className="text-sm text-muted-foreground">{review.hostResponse}</p>
+                <p className="text-sm text-muted-foreground">{review.revieweeResponse}</p>
               </div>
             )}
           </motion.div>

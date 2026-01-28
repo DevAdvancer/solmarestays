@@ -15,6 +15,8 @@ import ForHomeowners from "./pages/ForHomeowners";
 import GuestExperience from "./pages/GuestExperience";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const App = () => (
               <Route path="/guest-experience" element={<GuestExperience />} />
               <Route path="/services" element={<GuestExperience />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="/book" element={<Collection />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

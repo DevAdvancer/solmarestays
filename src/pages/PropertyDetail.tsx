@@ -297,12 +297,12 @@ const PropertyDetailPage = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${i < Math.round(property.averageReviewRating!) ? 'fill-current' : 'opacity-30'}`}
+                          className={`w-4 h-4 ${i < Math.round(property.averageReviewRating! / 2) ? 'fill-current' : 'opacity-30'}`}
                         />
                       ))}
                     </div>
                     <span className="text-sm text-muted-foreground underline-offset-2 hover:underline">
-                      {(property.averageReviewRating).toFixed(1)} rating
+                      {(property.averageReviewRating! / 2).toFixed(1)} rating
                     </span>
                   </a>
                 )}
