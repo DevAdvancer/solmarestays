@@ -51,7 +51,7 @@ const Index = () => {
         <LocationSection data={locationData} />
         <ManagementSection data={managementData} />
         <ReviewsSection data={reviewsData} />
-        <ExperienceSection data={partnersData} />
+        {/* <ExperienceSection data={partnersData} /> */}
         <CTASection data={ctaData} />
       </main>
       <Footer />

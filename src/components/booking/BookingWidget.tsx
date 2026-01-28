@@ -411,7 +411,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
       {/* Best Rate Guarantee */}
       <div className="mt-4 p-3 bg-ocean/5 rounded-lg border border-ocean/20 text-center">
         <p className="text-xs text-muted-foreground leading-relaxed">
-          <span className="font-medium text-foreground">Best Rate Guarantee:</span> Rates may be lower here than on Airbnb/Vrbo due to zero platform fees.
+          <span className="font-medium text-foreground">Book Direct & Save:</span>Our lowest rates are guaranteed here no third-party fees.
         </p>
       </div>
 

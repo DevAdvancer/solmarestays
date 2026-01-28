@@ -97,7 +97,7 @@ export function HeroSection({ data }: { data?: any }) {
                   className="bg-white text-foreground hover:bg-white/90 rounded-lg px-8 h-12 text-base font-medium transition-all"
                   asChild
                 >
-                  <Link to="/collection">Book Now</Link>
+                  <Link to="/collection">Explore Properties</Link>
                 </Button>
                 <Button
                   variant="ghost"

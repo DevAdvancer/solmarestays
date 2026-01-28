@@ -863,7 +863,7 @@ export default function Checkout() {
                   <div className="space-y-2 pb-6 border-b border-border">
                     <h3 className="font-semibold">Cancellation policy</h3>
                     <p className="text-sm text-muted-foreground whitespace-pre-line">
-                      {property.cancellationPolicy || 'Standard cancellation policy applies.'}
+                      Flexible - 100% refund up to 14 days before arrival
                     </p>
                   </div>
 
