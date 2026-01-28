@@ -31,7 +31,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm opacity-80 leading-relaxed max-w-xs">
-              Where the Sun Meets the Sea in Style. Boutique vacation rentals on California's Central Coast.
+              Boutique vacation rentals on California's Central Coast.
             </p>
           </div>
 
