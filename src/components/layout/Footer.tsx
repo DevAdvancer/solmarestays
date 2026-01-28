@@ -141,7 +141,7 @@ export function Footer() {
 
         {/* Partnership Message */}
         <div className="mt-8 pt-6 border-t border-primary-foreground/10 text-center">
-          <p className="text-sm opacity-80 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm text-ocean leading-relaxed max-w-2xl mx-auto">
             Interested in partnering with Solmaré? We're always open to collaborating with local businesses that share our commitment to quality and guest experience.{' '}
             <Link to="/contact" className="underline hover:opacity-100 transition-opacity font-medium">
               Contact Us
