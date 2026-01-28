@@ -194,8 +194,9 @@ export interface HostawayCreditCard {
  * Payload for creating a reservation
  */
 export interface HostawayReservationPayload {
-  listingId: number;
+  listingMapId: number; // Was listingId
   channelId: number; // 2000 for Direct Booking usually, or check documentation
+  guestName: string; // Full name
   guestFirstName: string;
   guestLastName: string;
   guestEmail: string;
@@ -203,11 +204,13 @@ export interface HostawayReservationPayload {
   guestCity: string;
   guestZipCode: string;
   guestCountry: string;
-  guestPhone: string;
+  phone: string; // Was guestPhone
   numberOfGuests: number;
   arrivalDate: string; // YYYY-MM-DD
   departureDate: string; // YYYY-MM-DD
   comment?: string;
+  isManuallyChecked?: number;
+  isInitial?: number;
 
   // Payment fields
   ccNumber?: string;

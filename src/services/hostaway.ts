@@ -378,20 +378,24 @@ export async function createReservation(
   }
 
   const payload = {
-    listingId: Number(listingId),
-    channelId: 2000, // Direct booking channel ID, or generic
+    listingMapId: Number(listingId),
+    channelId: 2000, // Direct booking channel ID
+    guestName: `${guestDetails.firstName} ${guestDetails.lastName}`,
     guestFirstName: guestDetails.firstName,
     guestLastName: guestDetails.lastName,
     guestEmail: guestDetails.email,
-    guestPhone: guestDetails.phone,
+    phone: guestDetails.phone,
     guestAddress: guestDetails.address,
     guestCity: guestDetails.city,
     guestZipCode: guestDetails.zipCode,
     guestCountry: guestDetails.country,
     numberOfGuests: stayDetails.guests,
+    adults: stayDetails.guests, // Often required to match numberOfGuests if no children info
     arrivalDate: format(stayDetails.checkIn, 'yyyy-MM-dd'),
     departureDate: format(stayDetails.checkOut, 'yyyy-MM-dd'),
     comment: guestDetails.message,
+    isManuallyChecked: 0,
+    isInitial: 0,
 
     // Add payment fields if provided
     ...(payment && {
@@ -407,6 +411,8 @@ export async function createReservation(
   if (validatePayment && payment) {
     params.append('validatePaymentMethod', '1');
   }
+  // Ensure we DO NOT force overbooking
+  params.append('forceOverbooking', '0');
 
   const response = await fetch(`${API_URL}/reservations?${params.toString()}`, {
     method: 'POST',
