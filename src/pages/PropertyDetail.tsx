@@ -8,7 +8,7 @@ import { BookingWidget } from '@/components/booking/BookingWidget';
 import { ImageGallery } from '@/components/properties/ImageGallery';
 import { ReviewsSection } from '@/components/properties/ReviewsSection';
 import { usePropertyBySlug, useProperties } from '@/hooks/useProperties';
-import { MapPin, Users, BedDouble, Bath, Check, ChevronLeft, Star, Wifi, Car, Coffee, Clock, ExternalLink, Book, FileText, AlertCircle, ChevronDown, ChevronUp } from 'lucide-react';
+import { MapPin, Users, BedDouble, Bath, Check, ChevronLeft, Star, Wifi, Car, Coffee, Clock, ExternalLink, Book, FileText, AlertCircle, ChevronDown, ChevronUp, Tv, Snowflake, Wind, Waves, Trees, Utensils, UtensilsCrossed, WashingMachine, Dumbbell, Flame, ParkingCircle, Home, Sofa, Bath as Bathtub, Shirt, Fan, Thermometer, Lock, Baby, Accessibility, Cigarette, Dog, Camera, Music, Gamepad2, Moon, Sun, Shield, Sparkles, Package, Heart, Leaf, Droplets, Heater } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import {
@@ -171,12 +171,77 @@ const PropertyDetailPage = () => {
     );
   }
 
-  // Get amenity icon
+  // Get amenity icon - comprehensive mapping
   const getAmenityIcon = (amenity: string) => {
     const lower = amenity.toLowerCase();
-    if (lower.includes('wifi')) return Wifi;
-    if (lower.includes('parking') || lower.includes('car')) return Car;
-    if (lower.includes('coffee') || lower.includes('kitchen')) return Coffee;
+
+    // Internet & Communication
+    if (lower.includes('wifi') || lower.includes('internet') || lower.includes('wireless')) return Wifi;
+    if (lower.includes('tv') || lower.includes('television') || lower.includes('cable') || lower.includes('streaming')) return Tv;
+
+    // Parking & Transportation
+    if (lower.includes('parking') || lower.includes('garage')) return ParkingCircle;
+    if (lower.includes('ev') || lower.includes('electric vehicle') || lower.includes('charger')) return Car;
+
+    // Kitchen & Dining
+    if (lower.includes('kitchen') || lower.includes('microwave') || lower.includes('oven') || lower.includes('stove') || lower.includes('dishwasher')) return UtensilsCrossed;
+    if (lower.includes('coffee') || lower.includes('espresso')) return Coffee;
+    if (lower.includes('dining') || lower.includes('breakfast') || lower.includes('refrigerator') || lower.includes('fridge')) return Utensils;
+
+    // Laundry
+    if (lower.includes('washer') || lower.includes('dryer') || lower.includes('laundry') || lower.includes('washing machine')) return WashingMachine;
+    if (lower.includes('iron') || lower.includes('ironing')) return Shirt;
+
+    // Climate Control
+    if (lower.includes('air conditioning') || lower.includes('ac ') || lower.includes('a/c') || lower.includes('cooling')) return Snowflake;
+    if (lower.includes('heating') || lower.includes('heater') || lower.includes('fireplace')) return Heater;
+    if (lower.includes('fan') || lower.includes('ceiling fan')) return Fan;
+    if (lower.includes('thermostat')) return Thermometer;
+
+    // Outdoor & Recreation
+    if (lower.includes('pool') || lower.includes('hot tub') || lower.includes('jacuzzi') || lower.includes('spa')) return Waves;
+    if (lower.includes('beach') || lower.includes('ocean') || lower.includes('waterfront')) return Waves;
+    if (lower.includes('patio') || lower.includes('balcony') || lower.includes('deck') || lower.includes('garden') || lower.includes('yard')) return Trees;
+    if (lower.includes('bbq') || lower.includes('grill') || lower.includes('barbecue')) return Flame;
+    if (lower.includes('outdoor') || lower.includes('backyard')) return Trees;
+
+    // Entertainment
+    if (lower.includes('game') || lower.includes('xbox') || lower.includes('playstation') || lower.includes('nintendo')) return Gamepad2;
+    if (lower.includes('music') || lower.includes('sound') || lower.includes('speaker') || lower.includes('stereo')) return Music;
+    if (lower.includes('book') || lower.includes('library') || lower.includes('reading')) return Book;
+
+    // Bedroom & Bathroom
+    if (lower.includes('bed') || lower.includes('mattress') || lower.includes('pillow') || lower.includes('linens')) return BedDouble;
+    if (lower.includes('bath') || lower.includes('shower') || lower.includes('towel') || lower.includes('shampoo') || lower.includes('conditioner')) return Bathtub;
+    if (lower.includes('hair dryer') || lower.includes('hairdryer')) return Wind;
+
+    // Living Spaces
+    if (lower.includes('living room') || lower.includes('sofa') || lower.includes('couch')) return Sofa;
+    if (lower.includes('workspace') || lower.includes('desk') || lower.includes('office')) return Coffee;
+
+    // Safety & Security
+    if (lower.includes('smoke') || lower.includes('carbon monoxide') || lower.includes('detector') || lower.includes('alarm')) return Shield;
+    if (lower.includes('first aid') || lower.includes('fire extinguisher')) return Heart;
+    if (lower.includes('lock') || lower.includes('safe') || lower.includes('security') || lower.includes('keypad')) return Lock;
+    if (lower.includes('camera') || lower.includes('surveillance')) return Camera;
+
+    // Family & Accessibility
+    if (lower.includes('crib') || lower.includes('baby') || lower.includes('high chair') || lower.includes('child')) return Baby;
+    if (lower.includes('accessible') || lower.includes('wheelchair') || lower.includes('disabled')) return Accessibility;
+    if (lower.includes('pet') || lower.includes('dog') || lower.includes('cat') || lower.includes('animal')) return Dog;
+
+    // Other Amenities
+    if (lower.includes('gym') || lower.includes('fitness') || lower.includes('exercise') || lower.includes('workout')) return Dumbbell;
+    if (lower.includes('essentials') || lower.includes('toiletries') || lower.includes('soap')) return Sparkles;
+    if (lower.includes('luggage') || lower.includes('storage')) return Package;
+    if (lower.includes('smoking') || lower.includes('smoke-free') || lower.includes('no smoking')) return Cigarette;
+    if (lower.includes('eco') || lower.includes('sustainable') || lower.includes('green')) return Leaf;
+    if (lower.includes('water') || lower.includes('drinking water')) return Droplets;
+    if (lower.includes('view') || lower.includes('scenic')) return Sun;
+    if (lower.includes('private') || lower.includes('entrance')) return Home;
+    if (lower.includes('long term') || lower.includes('monthly')) return Clock;
+
+    // Default fallback
     return Check;
   };
 
