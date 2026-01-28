@@ -326,11 +326,11 @@ const GuestExperiencePage = () => {
         </section>
 
         {/* Partner Micro-Copy */}
-        <section className="py-8 bg-secondary border-t border-border">
+        <section className="py-8 bg-primary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-            <p className="text-sm text-ocean">
+            <p className="text-sm text-white">
               Interested in partnering with Solmaré? We're always open to collaborating with local businesses that share our commitment to quality and guest experience.{' '}
-              <Link to="/contact" className="text-ocean hover:underline font-medium">
+              <Link to="/contact" className="underline hover:opacity-100 transition-opacity font-medium">
                 Contact Us
               </Link>
             </p>

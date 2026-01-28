@@ -70,7 +70,7 @@ export function HeroSection() {
 
         {/* Split Layout Container */}
         <div className="relative z-20 h-full container mx-auto px-4 md:px-8 lg:px-12 flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.8fr] gap-8 lg:gap-16 w-full items-center">
 
             {/* Left: Text Content */}
             <motion.div

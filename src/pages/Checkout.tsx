@@ -986,7 +986,7 @@ export default function Checkout() {
                           ${pricing?.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                         </span>
                         <span className="text-xs text-muted-foreground">
-                          ${pricing?.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          $0.00
                         </span>
                       </div>
                     )}
