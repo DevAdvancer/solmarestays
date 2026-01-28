@@ -264,13 +264,14 @@ export default function Checkout() {
       if (coupon) {
         let rawDiscount = 0;
         if (coupon.type === 'percentage') {
-          rawDiscount = total * (coupon.amount / 100);
+          // User requirement: "Coupon code will only work on the Base Price"
+          rawDiscount = subtotal * (coupon.amount / 100);
         } else if (coupon.type === 'amount') {
           rawDiscount = coupon.amount;
         }
 
         const discount = round(rawDiscount);
-        // Ensure we don't discount more than total
+        // Ensure we don't discount more than total (or should it be more than subtotal? Safe to cap at total to avoid negative)
         const appliedDiscount = Math.min(discount, total);
 
         finalTotal = total - appliedDiscount;
