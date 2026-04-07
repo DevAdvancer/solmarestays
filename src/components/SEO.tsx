@@ -14,7 +14,7 @@ export function SEO({ title, description, image, type = 'website', schema }: SEO
   const siteTitle = 'Solmaré Stays';
   const fullTitle = `${title} | ${siteTitle}`;
   const defaultDescription = 'Refined vacation rentals on California\'s Central Coast. Experience elevated hospitality in Avila Beach, Pismo Beach, and San Luis Obispo.';
-  const siteUrl = 'https://solmarestays.com';
+  const siteUrl = 'https://www.solmarestays.com';
 
   // Construct canonical URL safely
   const canonicalUrl = `${siteUrl}${location.pathname}`;
