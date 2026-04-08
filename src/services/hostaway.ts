@@ -552,29 +552,46 @@ export async function fetchReviews(listingId?: string): Promise<HostawayReview[]
     throw new Error('Hostaway API token is not configured');
   }
 
-  const params = new URLSearchParams();
-  if (listingId) {
-    params.append('listingId', listingId);
+  const allReviews: HostawayReview[] = [];
+  let offset = 0;
+  const limit = 100;
+  let hasMore = true;
+
+  while (hasMore) {
+    const params = new URLSearchParams();
+    if (listingId) {
+      params.append('listingId', listingId);
+    }
+    params.append('sortOrder', 'DESC');
+    params.append('limit', String(limit));
+    params.append('offset', String(offset));
+
+    const response = await fetch(`${API_URL}/reviews?${params.toString()}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${API_TOKEN}`,
+        'Cache-control': 'no-cache',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch reviews: ${response.status}`);
+    }
+
+    const data: HostawayReviewsResponse = await response.json();
+    if (data.status !== 'success') {
+      throw new Error('Hostaway API returned an error');
+    }
+
+    const results = data.result || [];
+    allReviews.push(...results);
+
+    if (results.length < limit) {
+      hasMore = false;
+    } else {
+      offset += limit;
+    }
   }
-  // Sort by newest first
-  params.append('sortOrder', 'DESC');
 
-  const response = await fetch(`${API_URL}/reviews?${params.toString()}`, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${API_TOKEN}`,
-      'Cache-control': 'no-cache',
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch reviews: ${response.status}`);
-  }
-
-  const data: HostawayReviewsResponse = await response.json();
-  if (data.status !== 'success') {
-    throw new Error('Hostaway API returned an error');
-  }
-
-  return data.result;
+  return allReviews;
 }
