@@ -273,6 +273,8 @@ export interface HostawayReview {
   insertedOn: string;
   updatedOn: string;
   status: string;
+  isHidden: number;
+  bookingEngineVisibility: number;
   listingName: string;
 }
 
