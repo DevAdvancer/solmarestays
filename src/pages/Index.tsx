@@ -46,6 +46,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection data={heroData} />
+        <StatsSection data={statsData} />
         <PropertiesSection />
         <LocationSection data={locationData} />
         <ManagementSection data={managementData} />

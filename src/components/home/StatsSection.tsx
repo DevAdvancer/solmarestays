@@ -39,35 +39,12 @@ export function StatsSection({ data }: { data?: any }) {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto"
         >
           <p className="font-serif text-xl md:text-2xl lg:text-3xl text-foreground leading-relaxed font-light">
             {introText}
           </p>
         </motion.div>
-
-        {/* Horizontal Stats Row - No Icons */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 border-t border-border/40 pt-12">
-          {displayStats.map((stat: any, index: number) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              className="text-center"
-            >
-              {/* Bold Title */}
-              <h3 className="font-serif text-lg md:text-xl lg:text-2xl font-semibold text-foreground mb-2 leading-tight">
-                {stat.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm md:text-base text-muted-foreground font-light">
-                {stat.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );
