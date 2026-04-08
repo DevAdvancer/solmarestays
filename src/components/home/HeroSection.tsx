@@ -117,12 +117,12 @@ export function HeroSection({ data }: { data?: any }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white shadow-elevated relative z-50 rounded-2xl w-[380px]"
+                className="bg-white shadow-elevated relative z-50 rounded-xl w-[300px]"
               >
                 {/* Expanded Content */}
-                <div className="p-5 min-w-[380px]">
-                  <h3 className="font-serif text-lg font-medium text-foreground mb-5">
-                    Find Your Perfect Stay
+                <div className="p-4 min-w-[300px]">
+                  <h3 className="font-serif text-base font-medium text-foreground mb-3">
+                    Find Your Stay
                   </h3>
 
                   <div className="space-y-4">
