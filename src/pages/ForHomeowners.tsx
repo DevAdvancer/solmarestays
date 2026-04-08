@@ -62,7 +62,7 @@ const ownerReviews = [
     text: 'Solmaré Stays has done an amazing job managing Hummingbird House. The team handles all aspects of property management for me — bookings, cleaning, refilling supplies, and troubleshooting. The whole process is hands-off for me, and I get an organized revenue summary each month.',
   },
   {
-    name: 'Monterey Heights Owner',
+    name: 'Michael H., Owner',
     property: 'Monterey Heights | San Luis Obispo',
     stats: ['+32% Revenue Growth', '+48% Guest Satisfaction'],
     rating: 5,
