@@ -34,7 +34,7 @@ export function Header() {
     <>
       {/* Book Direct Banner */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground text-center text-xs sm:text-sm font-medium" style={{ height: '36px', lineHeight: '36px' }}>
-        <span className="hidden sm:inline">Book Direct &amp; Save up to 15% — Best Rate Guarantee | <a href="tel:+18058016429" className="underline underline-offset-2 hover:opacity-80">(805) 801-6429</a></span>
+        <span className="hidden sm:inline">Book Direct &amp; Save up to 15% — Best Rate Guarantee</span>
         <span className="sm:hidden">Book Direct &amp; Save 15%</span>
       </div>
 
