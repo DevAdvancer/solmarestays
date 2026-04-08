@@ -17,6 +17,12 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import PetFriendly from "./pages/PetFriendly";
+import GroupStays from "./pages/GroupStays";
+import AvilaBeach from "./pages/locations/AvilaBeach";
+import PismoBeach from "./pages/locations/PismoBeach";
+import SanLuisObispo from "./pages/locations/SanLuisObispo";
+import CentralCoast from "./pages/locations/CentralCoast";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +51,12 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/pet-friendly" element={<PetFriendly />} />
+              <Route path="/group-stays" element={<GroupStays />} />
+              <Route path="/avila-beach" element={<AvilaBeach />} />
+              <Route path="/pismo-beach" element={<PismoBeach />} />
+              <Route path="/san-luis-obispo" element={<SanLuisObispo />} />
+              <Route path="/central-coast" element={<CentralCoast />} />
               <Route path="/book" element={<Collection />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

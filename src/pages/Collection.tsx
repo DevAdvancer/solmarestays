@@ -89,8 +89,8 @@ const CollectionPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Our Collection"
-        description="Browse our curated collection of luxury vacation rentals in Avila Beach and Pismo Beach. Find the perfect home for your coastal retreat."
+        title="Browse Our Vacation Rental Collection"
+        description="Explore 13 handpicked vacation rentals on California's Central Coast. Studios to estates in Avila Beach, Pismo Beach, and SLO County. Pet-friendly options available. Book direct and save."
       />
       <Header />
       <main className="pt-24">

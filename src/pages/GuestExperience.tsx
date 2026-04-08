@@ -95,8 +95,8 @@ const GuestExperiencePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={pageData?.title || "Guest Experience"}
-        description={pageData?.metaDescription || "Discover curated local experiences and partners. From wineries to adventure, explore the best of the Central Coast with Solmaré Stays."}
+        title={pageData?.title || "Central Coast Experiences & Local Partners"}
+        description={pageData?.metaDescription || "Curated local experiences for Solmaré Stays guests. Wine tasting, dining, outdoor adventures, and more on California's Central Coast. Exclusive partner perks included with every stay."}
       />
       <Header />
       <main>

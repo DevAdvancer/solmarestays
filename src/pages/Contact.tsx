@@ -96,8 +96,8 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Contact Us"
-        description="Get in touch with Solmaré Stays. Whether you're booking a stay or looking for property management, we're here to help."
+        title="Contact Solmaré Stays"
+        description="Get in touch with Solmaré Stays. Book a vacation rental, list your property, or get guest support. Located in Avila Beach on California's Central Coast."
       />
       <Header />
       <main>

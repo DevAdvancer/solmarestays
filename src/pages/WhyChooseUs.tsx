@@ -113,8 +113,8 @@ const WhyChooseUsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={pageData?.title || "The Solmaré Standard"}
-        description={pageData?.metaDescription || "Hotel reliability meets vacation home freedom. Discover immaculate standards, curated comfort, and local expertise on California's Central Coast."}
+        title={pageData?.title || "The Solmaré Standard — Our Philosophy"}
+        description={pageData?.metaDescription || "What sets Solmaré Stays apart. 50-point cleaning standard, 24/7 guest support, local concierge service, and the best rate guarantee. Elevated hospitality on California's Central Coast."}
       />
       <Header />
       <main>
