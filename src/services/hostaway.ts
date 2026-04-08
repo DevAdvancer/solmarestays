@@ -169,6 +169,23 @@ export async function fetchListings(): Promise<Property[]> {
 
   const result = data.result.map(transformListing);
 
+  // Custom display order (Kyle's preferred property ranking)
+  const DISPLAY_ORDER: Record<string, number> = {
+    '504852': 1,   // Casitas Estate
+    '391355': 2,   // Hummingbird House
+    '335980': 3,   // La Casita
+    '335976': 4,   // Bungalow 1: The Deckhouse
+    '335975': 5,   // Bungalow 4: Emberlight
+    '335979': 6,   // Bungalow 5: Casa Azul
+    '335977': 7,   // Bungalow 6: The Nest
+    '335978': 8,   // Shoreline Suite
+    '434918': 9,   // The Coral House
+    '429263': 10,  // The Palm House
+    '429264': 11,  // The Pine House
+    '400378': 12,  // Monterey Heights
+  };
+  result.sort((a, b) => (DISPLAY_ORDER[a.id] ?? 99) - (DISPLAY_ORDER[b.id] ?? 99));
+
   // Cache the result
   try {
     localStorage.setItem('solmare_properties_cache_v3', JSON.stringify({
