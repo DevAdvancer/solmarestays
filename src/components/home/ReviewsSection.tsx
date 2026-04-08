@@ -112,11 +112,7 @@ export function ReviewsSection({ data }: { data?: any }) {
     setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
   }, [totalPages]);
 
-  // Auto-advance every 6 seconds
-  useEffect(() => {
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next]);
+  // No auto-scroll — guests click through manually
 
   const currentReviews = displayReviews.slice(
     currentIndex * itemsPerPage,
