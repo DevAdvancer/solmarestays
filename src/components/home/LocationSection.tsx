@@ -21,7 +21,7 @@ const locations = [
     id: 'ag',
     name: 'Arroyo Grande',
     image: pismoImg,
-    description: 'A charming village nestled between the coast and rolling hills. Home to Casitas Estate — our premier retreat set among oak trees and vineyards.',
+    description: 'A charming village nestled between the coast and rolling hills. Surrounded by award-winning wineries, scenic trails, and the historic Village of Arroyo Grande.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Arroyo+Grande,+CA',
   },
   {
