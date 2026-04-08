@@ -9,7 +9,7 @@
 @layer base {
   :root {
     /* Core brand colors - warm sand and deep ocean */
-    --background: 40 20% 98%;
+    --background: 40 15% 96%;
     --foreground: 220 30% 15%;
 
     --card: 0 0% 100%;
@@ -22,13 +22,13 @@
     --primary: 220 40% 20%;
     --primary-foreground: 40 20% 98%;
 
-    /* Warm sand secondary */
-    --secondary: 40 25% 94%;
+    /* Warm sand secondary - more visible contrast */
+    --secondary: 38 30% 89%;
     --secondary-foreground: 220 30% 15%;
 
     /* Soft muted tones */
-    --muted: 40 15% 92%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 38 20% 86%;
+    --muted-foreground: 220 15% 42%;
 
     /* Coastal accent - ocean teal */
     --accent: 190 50% 45%;
@@ -37,8 +37,8 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 10% 90%;
-    --input: 40 10% 90%;
+    --border: 38 15% 85%;
+    --input: 38 15% 88%;
     --ring: 220 40% 20%;
 
     --radius: 0.5rem;
@@ -48,18 +48,18 @@
     --gold-foreground: 220 30% 15%;
     --ocean: 195 70% 45%;
     --ocean-light: 195 60% 85%;
-    --sand: 40 30% 92%;
-    --sand-dark: 40 20% 75%;
+    --sand: 38 30% 89%;
+    --sand-dark: 38 20% 72%;
     --coral: 15 70% 60%;
 
     /* Typography */
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
 
-    /* Shadows - Minimalist */
-    --shadow-soft: 0 2px 12px -2px hsl(220 30% 15% / 0.05);
-    --shadow-medium: 0 4px 20px -4px hsl(220 30% 15% / 0.08);
-    --shadow-elevated: 0 12px 32px -8px hsl(220 30% 15% / 0.10);
+    /* Shadows - Slightly deeper for contrast */
+    --shadow-soft: 0 2px 12px -2px hsl(220 30% 15% / 0.07);
+    --shadow-medium: 0 4px 20px -4px hsl(220 30% 15% / 0.10);
+    --shadow-elevated: 0 12px 32px -8px hsl(220 30% 15% / 0.13);
 
     /* Sidebar (keeping defaults) */
     --sidebar-background: 0 0% 98%;

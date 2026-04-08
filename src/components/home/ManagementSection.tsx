@@ -27,7 +27,7 @@ export function ManagementSection({ data }: { data?: any }) {
   })) || standards;
 
   return (
-    <section ref={ref} className="section-padding bg-[#f5f0e8] relative">
+    <section ref={ref} className="section-padding bg-secondary relative">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

@@ -161,7 +161,7 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 2: More Than a Place to Stay */}
-            <section className="section-padding bg-[#F9F7F2]">
+            <section className="section-padding bg-secondary">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
                   {/* Left: Image */}
@@ -245,7 +245,7 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 4: Seamless Service (NEW) */}
-            <section ref={seamlessRef} className="section-padding bg-[#f5f5f5]">
+            <section ref={seamlessRef} className="section-padding bg-muted">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}

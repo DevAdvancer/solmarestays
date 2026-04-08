@@ -220,7 +220,7 @@ const SanLuisObispoPage = () => {
         </section>
 
         {/* Highlights Grid */}
-        <section className="section-padding bg-[#F9F7F2]">
+        <section className="section-padding bg-secondary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -303,7 +303,7 @@ const SanLuisObispoPage = () => {
         </section>
 
         {/* Deep Content: Outdoors & Wine */}
-        <section className="section-padding bg-[#F9F7F2]">
+        <section className="section-padding bg-secondary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <motion.div
@@ -392,7 +392,7 @@ const SanLuisObispoPage = () => {
         </section>
 
         {/* Properties Section */}
-        <section id="properties" className="section-padding bg-[#F9F7F2] scroll-mt-24">
+        <section id="properties" className="section-padding bg-secondary scroll-mt-24">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -503,7 +503,7 @@ const SanLuisObispoPage = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="section-padding bg-[#F9F7F2]">
+        <section className="section-padding bg-secondary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
