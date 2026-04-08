@@ -21,7 +21,7 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
   // Filter reviews for this specific property and handle new data structure
   const allReviews = useMemo(() => {
     return rawReviews.filter(
-      r => String(r.listingMapId) === propertyId && Number(r.rating) >= 8
+      r => String(r.listingMapId) === propertyId && Number(r.rating) > 0
     );
   }, [rawReviews, propertyId, propertyName]);
 
