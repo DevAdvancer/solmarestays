@@ -161,7 +161,7 @@ export function ReviewsSection({ propertyName, propertyId, averageRating }: Revi
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{review.publicReview}</p>
-            {review.revieweeResponse && (
+            {review.revieweeResponse && review.rating < 10 && (
               <div className="mt-4 pl-4 border-l-2 border-primary/20">
                 <p className="text-sm font-medium text-foreground mb-1">Response from Host:</p>
                 <p className="text-sm text-muted-foreground">{review.revieweeResponse}</p>
