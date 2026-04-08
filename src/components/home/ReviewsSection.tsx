@@ -47,11 +47,11 @@ const reviews = [
   },
   {
     id: 6,
-    name: 'Melanie',
-    date: 'February 2026',
-    property: 'Hummingbird House',
+    name: 'Melinda',
+    date: 'December 2025',
+    property: 'La Casita',
     rating: 5,
-    text: 'Such a beautiful place! It is well laid out, spacious, and the views are fantastic. The furniture and linens are top notch, including the kitchen and all of the appliances. Super clean. We enjoyed our stay very much!',
+    text: 'We had a fantastic stay at La Casita over Thanksgiving weekend. The layout of the property is comfortable and well thought out — spacious, cozy, and perfect for relaxing after a full day out. The amenities were excellent and made our stay feel like home.',
   },
   {
     id: 7,
@@ -63,11 +63,11 @@ const reviews = [
   },
   {
     id: 8,
-    name: 'Mark',
-    date: 'July 2025',
-    property: 'Hummingbird House',
+    name: 'Vero',
+    date: 'March 2025',
+    property: 'Shoreline Suite',
     rating: 5,
-    text: 'This place was breathtaking! Beautiful views, exceptional decor and design, and comfortable furnishings. Wish we could have stayed longer!',
+    text: 'Location was very convenient, close to the beach and the commercial strip, but yet it is not noisy. The unit is well-appointed and spotlessly clean. We will definitely be coming back!',
   },
   {
     id: 9,
