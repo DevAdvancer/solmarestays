@@ -374,6 +374,18 @@ export function BookingWidget({ property }: BookingWidgetProps) {
                 </div>
               )}
 
+              {/* Airbnb Savings Callout */}
+              {apiPricing && apiPricing.basePrice > 0 && (
+                <div className="mb-4 p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg text-center">
+                  <p className="text-emerald-700 dark:text-emerald-400 font-semibold text-base">
+                    💰 You're saving ${Math.round(apiPricing.basePrice * 0.14)} by booking direct
+                  </p>
+                  <p className="text-emerald-600 dark:text-emerald-500 text-xs mt-1">
+                    Skip the 14% Airbnb service fee
+                  </p>
+                </div>
+              )}
+
               {/* Book Now Button */}
               <Button
                 variant="hero"

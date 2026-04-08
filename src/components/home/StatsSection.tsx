@@ -3,8 +3,9 @@ import { useRef } from 'react';
 
 const stats = [
   {
-    title: '5.0★ Average Rating',
-    description: 'Across Airbnb, Vrbo & Direct Bookings',
+    value: '2,400+',
+    title: 'Five-Star Guest Reviews',
+    description: 'Across Airbnb, Vrbo & Direct',
   },
   {
     title: 'Locally Owned & Operated',
@@ -56,6 +57,13 @@ export function StatsSection({ data }: { data?: any }) {
               transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               className="text-center"
             >
+              {/* Value (if present) */}
+              {stat.value && (
+                <p className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-primary mb-1 leading-none">
+                  {stat.value}
+                </p>
+              )}
+
               {/* Bold Title */}
               <h3 className="font-serif text-lg md:text-xl lg:text-2xl font-semibold text-foreground mb-2 leading-tight">
                 {stat.title}

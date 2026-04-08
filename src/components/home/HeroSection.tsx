@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Calendar, Users, Search, ChevronDown, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, Users, Search, ChevronDown } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { useBooking } from '@/context/BookingContext';
@@ -25,7 +25,7 @@ export function HeroSection({ data }: { data?: any }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [datePopoverOpen, setDatePopoverOpen] = useState(false);
   const [guestPopoverOpen, setGuestPopoverOpen] = useState(false);
-  const [isWidgetExpanded, setIsWidgetExpanded] = useState(false);
+
   const navigate = useNavigate();
 
   const { checkIn, checkOut, guests, setDateRange, setGuests } = useBooking();
@@ -111,34 +111,17 @@ export function HeroSection({ data }: { data?: any }) {
               </div>
             </motion.div>
 
-            {/* Right: Floating Booking Widget (Desktop Only) - Push-out Card */}
+            {/* Right: Floating Booking Widget (Desktop Only) - Always Visible */}
             <div className="hidden lg:flex justify-end w-full lg:w-auto">
               <motion.div
-                initial="collapsed"
-                animate={isWidgetExpanded ? 'expanded' : 'collapsed'}
-                variants={{
-                  collapsed: { width: '60px', height: '60px', borderRadius: '30px', overflow: 'hidden' },
-                  expanded: { width: '380px', height: 'auto', borderRadius: '16px', overflow: 'visible' }
-                }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className="bg-white shadow-elevated relative z-50 origin-top-right group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="bg-white shadow-elevated relative z-50 rounded-2xl w-[380px]"
               >
-                {/* Collapsed Trigger (Visible always, handles toggle) */}
-                <div
-                  className="absolute right-0 top-0 w-[60px] h-[60px] flex items-center justify-center cursor-pointer z-20 bg-foreground text-white rounded-full hover:bg-foreground/90 transition-colors"
-                  onClick={() => setIsWidgetExpanded(!isWidgetExpanded)}
-                >
-                  {isWidgetExpanded ? <X className="w-6 h-6" /> : <Calendar className="w-6 h-6" />}
-                </div>
-
                 {/* Expanded Content */}
-                <div
-                  className={cn(
-                    "p-5 min-w-[380px] transition-opacity duration-200 delay-100",
-                    isWidgetExpanded ? "opacity-100 visible" : "opacity-0 invisible"
-                  )}
-                >
-                  <h3 className="font-serif text-lg font-medium text-foreground mb-5 pr-12">
+                <div className="p-5 min-w-[380px]">
+                  <h3 className="font-serif text-lg font-medium text-foreground mb-5">
                     Find Your Perfect Stay
                   </h3>
 

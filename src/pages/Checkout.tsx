@@ -499,10 +499,10 @@ export default function Checkout() {
               <CheckCircle className="w-10 h-10" />
             </div>
             <h1 className="font-serif text-3xl font-semibold text-foreground">
-              Booking Request Received!
+              Booking Confirmed!
             </h1>
             <p className="text-muted-foreground">
-              Thank you! Your reservation <strong>#{reservationId}</strong> for <strong>{property.name}</strong> has been created.
+              Thank you! Your reservation <strong>#{reservationId}</strong> for <strong>{property.name}</strong> is confirmed.
               A confirmation email has been sent.
             </p>
             <div className="pt-4">

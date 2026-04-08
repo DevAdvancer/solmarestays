@@ -45,7 +45,7 @@ const Terms = () => {
                   </p>
 
                   <p className="mb-6">
-                    These terms and conditions outline the rules and regulations for the use of Solmaré Escapes's Website, located at solmarestays.com.
+                    These terms and conditions outline the rules and regulations for the use of Solmaré Stays's Website, located at solmarestays.com.
                   </p>
 
                   <p className="mb-6">
@@ -58,10 +58,10 @@ const Terms = () => {
 
                   <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">License</h2>
                   <p className="mb-4">
-                    Unless otherwise stated, Solmaré Escapes and/or its licensors own the intellectual property rights for all material on Solmaré Escapes.
+                    Unless otherwise stated, Solmaré Stays and/or its licensors own the intellectual property rights for all material on Solmaré Stays.
                   </p>
                   <p className="mb-4">
-                    All intellectual property rights are reserved. You may access this from Solmaré Escapes for your own personal use subjected to restrictions set in these terms and conditions.
+                    All intellectual property rights are reserved. You may access this from Solmaré Stays for your own personal use subjected to restrictions set in these terms and conditions.
                   </p>
                   <p className="mb-4">You must not:</p>
                   <ul className="list-disc pl-6 mb-6">
@@ -74,7 +74,7 @@ const Terms = () => {
                   <p className="mb-6">This Agreement shall begin on the date hereof.</p>
 
                   <p className="mb-6">
-                    Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Solmaré Escapes does not filter, edit, publish or review Comments prior to their presence on the website.
+                    Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Solmaré Stays does not filter, edit, publish or review Comments prior to their presence on the website.
                     Comments do not reflect the views and opinions of Solmaré Stays, its agents and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, Solmaré Stays shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website. Solmaré Stays reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.
                   </p>
 
@@ -113,13 +113,13 @@ const Terms = () => {
                     <li>educational institutions and trade associations.</li>
                   </ul>
                   <p className="mb-6">
-                    We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Solmaré Escapes; and (d) the link is in the context of general resource information.
+                    We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Solmaré Stays; and (d) the link is in the context of general resource information.
                   </p>
                   <p className="mb-6">
                     These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.
                   </p>
                   <p className="mb-6">
-                    If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Solmaré Escapes. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.
+                    If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Solmaré Stays. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.
                   </p>
 
                   <p className="mb-4">Approved organizations may hyperlink to our Website as follows:</p>
@@ -129,7 +129,7 @@ const Terms = () => {
                     <li>By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party's site.</li>
                   </ul>
                   <p className="mb-6">
-                    No use of Solmaré Escapes's logo or other artwork will be allowed for linking absent a trademark license agreement.
+                    No use of Solmaré Stays's logo or other artwork will be allowed for linking absent a trademark license agreement.
                   </p>
 
                   <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">iFrames</h2>
