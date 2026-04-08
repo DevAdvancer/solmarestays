@@ -18,11 +18,11 @@ const locations = [
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Avila+Beach,+CA',
   },
   {
-    id: 'pismo',
-    name: 'Pismo Beach',
+    id: 'ag',
+    name: 'Arroyo Grande',
     image: pismoImg,
-    description: 'Classic California soul. From the iconic pier to the sweeping dunes, Pismo offers an adventurous yet refined seaside escape.',
-    mapLink: 'https://www.google.com/maps/search/?api=1&query=Pismo+Beach,+CA',
+    description: 'A charming village nestled between the coast and rolling hills. Home to Casitas Estate — our premier retreat set among oak trees and vineyards.',
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=Arroyo+Grande,+CA',
   },
   {
     id: 'slo',
