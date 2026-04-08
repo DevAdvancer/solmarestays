@@ -16,7 +16,7 @@ const reviews = [
   {
     id: 2,
     name: 'Emily',
-    date: 'March 2026',
+    date: 'November 2025',
     property: 'The Coral House',
     rating: 5,
     text: 'A great location — multiple different restaurants within a block or two, one block from the beach boardwalk and close to the Bob Jones trail. The bikes were great to ride down to the different piers and beaches.',
@@ -24,7 +24,7 @@ const reviews = [
   {
     id: 3,
     name: 'Jasmin',
-    date: 'March 2026',
+    date: 'August 2024',
     property: 'The Deckhouse',
     rating: 5,
     text: 'This was the perfect spot for my fiancé and I. We loved how clean it was and how it had everything we needed inside plus more. Overall it was very quiet, comfortable, convenient, and in a beautiful area.',
@@ -40,7 +40,7 @@ const reviews = [
   {
     id: 5,
     name: 'Salvatore',
-    date: 'March 2026',
+    date: 'June 2025',
     property: 'The Palm House',
     rating: 5,
     text: 'We had a great experience with this host! There was an unexpected repair issue with our original booking, but the host handled it perfectly. They communicated the situation immediately and seamlessly moved us to another beautiful property.',
@@ -48,7 +48,7 @@ const reviews = [
   {
     id: 6,
     name: 'Melanie',
-    date: 'April 2026',
+    date: 'February 2026',
     property: 'Hummingbird House',
     rating: 5,
     text: 'Such a beautiful place! It is well laid out, spacious, and the views are fantastic. The furniture and linens are top notch, including the kitchen and all of the appliances. Super clean. We enjoyed our stay very much!',
@@ -56,7 +56,7 @@ const reviews = [
   {
     id: 7,
     name: 'Catherine',
-    date: 'March 2026',
+    date: 'October 2024',
     property: 'Casa Azul',
     rating: 5,
     text: 'Great location! Kyle and team were really responsive as well as proactive. Nice to have a dedicated parking spot. The bungalow is just two blocks from the beach and was clean, cozy, and well-appointed.',
@@ -64,7 +64,7 @@ const reviews = [
   {
     id: 8,
     name: 'Mark',
-    date: 'March 2026',
+    date: 'July 2025',
     property: 'Hummingbird House',
     rating: 5,
     text: 'This place was breathtaking! Beautiful views, exceptional decor and design, and comfortable furnishings. Wish we could have stayed longer!',
@@ -72,7 +72,7 @@ const reviews = [
   {
     id: 9,
     name: 'Sydney',
-    date: 'April 2026',
+    date: 'January 2025',
     property: 'The Coral House',
     rating: 5,
     text: 'Well-appointed, comfortable, conveniently located, and a great home base for our SLO area vacation. We enjoyed morning walks to the beach, afternoons on the deck, and evening streaming on the big screen.',
