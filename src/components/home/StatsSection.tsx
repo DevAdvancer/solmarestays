@@ -24,7 +24,7 @@ export function StatsSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const introText = data?.introText || "Solmaré Stays is a premier collection of high-end vacation rentals along California's Central Coast. We specialize in curated hospitality, blending sophisticated design with the effortless ease of coastal living.";
+  const introText = data?.introText || "Solmaré Stays is a curated collection of high-end vacation rentals along California's Central Coast, where refined design meets effortless coastal living. Each home is thoughtfully prepared to deliver a seamless, elevated stay from arrival to departure.";
 
   const displayStats = data?.stats?.map((s: any) => ({
     title: s.title,
