@@ -52,10 +52,10 @@ export function useFeaturedProperties() {
 
   const featured = properties ? (() => {
     const targets = [
+      'Casitas Estate',
       'Hummingbird House',
-      'The Coral House',
       'La Casita',
-      'bungalow-1-1021'
+      'The Coral House'
     ];
 
     const selected: Property[] = [];
