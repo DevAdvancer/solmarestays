@@ -9,7 +9,7 @@ import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote } from 'lucide-react';
 import homeownersHeroImage from '/homeowners/drone.jpg';
-import propertyHummingbird from '/homeowners/ipad.jpg';
+
 
 // 6 Pillars - Sharpened Copy
 const benefits = [
@@ -185,62 +185,51 @@ const ForHomeownersPage = () => {
               </div>
             </section>
 
-            {/* SECTION 2 & 3: Why Partner + Value Cards */}
-            <section ref={benefitsRef} className="section-padding bg-secondary relative">
+            {/* SECTION 2: Comprehensive Management */}
+            <section ref={servicesRef} className="section-padding bg-secondary">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isServicesInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="text-center max-w-3xl mx-auto mb-16"
+                >
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
+                    Comprehensive Management
+                  </h2>
+                  <p className="text-muted-foreground text-lg">
+                    We handle every operational detail required to run a successful short-term rental.
+                  </p>
+                </motion.div>
 
-                  {/* Left Content - Sticky */}
-                  <div className="lg:sticky lg:top-32 h-fit mb-12 lg:mb-0">
+                {/* 5-Column Service Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                  {serviceCategories.map((category, index) => (
                     <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={isBenefitsInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.8 }}
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={isServicesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      className="bg-card p-6 rounded-xl shadow-soft"
                     >
-                      <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
-                        Why Partner With Solmaré?
-                      </h2>
-                      <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                        We treat your home as a high-performing asset, not just inventory. By combining local stewardship with sophisticated revenue strategies, we deliver higher net income and better property care than large, impersonal management firms.
-                      </p>
-                      <Button variant="default" size="lg" asChild className="rounded-full">
-                        <Link to="/contact">Schedule a Consultation</Link>
-                      </Button>
+                      <h3 className="font-serif text-lg font-semibold text-foreground mb-4 pb-3 border-b border-border">
+                        {category.title}
+                      </h3>
+                      <ul className="space-y-3">
+                        {category.items.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <Check className="w-4 h-4 text-ocean flex-shrink-0 mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </motion.div>
-                  </div>
-
-                  {/* Right Benefits - Stacking Cards */}
-                  <div className="relative flex flex-col gap-8 pb-12">
-                    {benefits.map((benefit, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={isBenefitsInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                        className="bg-card p-8 md:p-12 rounded-3xl shadow-lg border border-border/50 sticky top-24 lg:top-32 min-h-[280px] flex flex-col justify-center"
-                      >
-                        <div className="flex flex-col gap-6">
-                          <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
-                            <benefit.icon className="w-7 h-7 text-ocean" />
-                          </div>
-                          <div>
-                            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                              {benefit.title}
-                            </h3>
-                            <p className="text-muted-foreground text-lg leading-relaxed">
-                              {benefit.description}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
+                  ))}
                 </div>
               </div>
             </section>
 
-            {/* SECTION 4: Owner Reviews - MOVED UP */}
+            {/* SECTION 3: Owner Reviews */}
             <section ref={testimonialsRef} className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
@@ -313,102 +302,62 @@ const ForHomeownersPage = () => {
               </div>
             </section>
 
-            {/* SECTION 5: Comprehensive Management - Detailed Bullet List */}
-            <section ref={servicesRef} className="section-padding bg-secondary">
+            {/* SECTION 5: Why Partner With Solmaré */}
+            <section ref={benefitsRef} className="section-padding bg-secondary relative">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isServicesInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8 }}
-                  className="text-center max-w-3xl mx-auto mb-16"
-                >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
-                    Comprehensive Management
-                  </h2>
-                  <p className="text-muted-foreground text-lg">
-                    We handle every operational detail required to run a successful short-term rental.
-                  </p>
-                </motion.div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
-                {/* 5-Column Service Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-                  {serviceCategories.map((category, index) => (
+                  {/* Left Content - Sticky */}
+                  <div className="lg:sticky lg:top-32 h-fit mb-12 lg:mb-0">
                     <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={isServicesInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="bg-card p-6 rounded-xl shadow-soft"
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={isBenefitsInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.8 }}
                     >
-                      <h3 className="font-serif text-lg font-semibold text-foreground mb-4 pb-3 border-b border-border">
-                        {category.title}
-                      </h3>
-                      <ul className="space-y-3">
-                        {category.items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <Check className="w-4 h-4 text-ocean flex-shrink-0 mt-0.5" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
+                        Why Partner With Solmaré?
+                      </h2>
+                      <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                        We treat your home as a high-performing asset, not just inventory. By combining local stewardship with sophisticated revenue strategies, we deliver higher net income and better property care than large, impersonal management firms.
+                      </p>
+                      <Button variant="default" size="lg" asChild className="rounded-full">
+                        <Link to="/contact">Schedule a Consultation</Link>
+                      </Button>
                     </motion.div>
-                  ))}
-                </div>
-              </div>
-            </section>
+                  </div>
 
-            {/* SECTION 6: Full Service Visual Summary */}
-            <section className="section-padding bg-primary text-primary-foreground">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-6">
-                      Full-Service Management
-                    </h2>
-                    <p className="text-primary-foreground/80 text-lg mb-8">
-                      From listing creation to guest checkout, we handle every aspect of your
-                      vacation rental business. Our comprehensive approach ensures nothing falls
-                      through the cracks.
-                    </p>
-                    <div className="space-y-3">
-                      {[
-                        'Professional photography & listing optimization',
-                        'Dynamic pricing & revenue management',
-                        'Guest screening & 24/7 communication',
-                        'Professional cleaning & linen service',
-                        'Maintenance coordination & inspections',
-                        'Financial reporting & tax documents',
-                      ].map((item, index) => (
-                        <div key={index} className="flex items-center gap-3">
-                          <Check className="w-5 h-5 text-gold flex-shrink-0" />
-                          <span className="text-primary-foreground/90">{item}</span>
+                  {/* Right Benefits - Stacking Cards */}
+                  <div className="relative flex flex-col gap-8 pb-12">
+                    {benefits.map((benefit, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={isBenefitsInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                        className="bg-card p-8 md:p-12 rounded-3xl shadow-lg border border-border/50 sticky top-24 lg:top-32 min-h-[280px] flex flex-col justify-center"
+                      >
+                        <div className="flex flex-col gap-6">
+                          <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
+                            <benefit.icon className="w-7 h-7 text-ocean" />
+                          </div>
+                          <div>
+                            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                              {benefit.title}
+                            </h3>
+                            <p className="text-muted-foreground text-lg leading-relaxed">
+                              {benefit.description}
+                            </p>
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  </motion.div>
+                      </motion.div>
+                    ))}
+                  </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                  >
-                    <img
-                      src={propertyHummingbird}
-                      alt="Beautifully managed property"
-                      className="rounded-2xl shadow-elevated"
-                    />
-                  </motion.div>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 7: Final CTA */}
+            {/* SECTION 6: Final CTA */}
             <section className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
                 <motion.div
