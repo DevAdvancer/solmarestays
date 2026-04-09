@@ -56,7 +56,7 @@ const faqSchema = {
 const locationSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
-  name: 'Solmare Stays - San Luis Obispo Vacation Rentals',
+  name: 'Solmaré Stays - San Luis Obispo Vacation Rentals',
   description:
     'Vacation rentals in San Luis Obispo, California. Explore downtown SLO, Cal Poly, wine country, and the Central Coast beaches from professionally managed homes.',
   url: 'https://www.solmarestays.com/san-luis-obispo',
@@ -380,7 +380,7 @@ const SanLuisObispoPage = () => {
                     offering the kind of relaxed home base that hotels simply cannot match.
                   </p>
                   <p>
-                    Like all Solmare Stays properties, our San Luis Obispo home is professionally managed to hotel-quality
+                    Like all Solmaré Stays properties, our San Luis Obispo home is professionally managed to hotel-quality
                     standards. Expect a spotless home, premium linens, a fully equipped kitchen, and a digital guidebook
                     packed with our personal recommendations for the best restaurants, hikes, wineries, and hidden gems
                     in the area.
@@ -455,7 +455,7 @@ const SanLuisObispoPage = () => {
               className="text-center mb-16"
             >
               <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Why Book with Solmare Stays
+                Why Book with Solmaré Stays
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 We are a local team that lives on the Central Coast. This is not a side hustle — it is our business and our passion.

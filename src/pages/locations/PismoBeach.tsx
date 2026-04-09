@@ -56,7 +56,7 @@ const faqSchema = {
 const locationSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
-  name: 'Solmare Stays - Near Pismo Beach Vacation Rentals',
+  name: 'Solmaré Stays - Near Pismo Beach Vacation Rentals',
   description:
     'Vacation rentals minutes from Pismo Beach, California. Stay in nearby Avila Beach and enjoy easy access to the Pismo pier, Oceano Dunes, downtown shopping, and more.',
   url: 'https://www.solmarestays.com/pismo-beach',
@@ -131,7 +131,7 @@ const PismoBeachPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Pismo Beach Vacation Rentals"
-        description="Find vacation rentals near Pismo Beach, California. Stay minutes from the pier, Oceano Dunes, and downtown Pismo in professionally managed coastal homes. Best rate guaranteed when you book direct with Solmare Stays."
+        description="Find vacation rentals near Pismo Beach, California. Stay minutes from the pier, Oceano Dunes, and downtown Pismo in professionally managed coastal homes. Best rate guaranteed when you book direct with Solmaré Stays."
         schema={locationSchema}
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com' },
@@ -367,7 +367,7 @@ const PismoBeachPage = () => {
                   <p>
                     The two towns complement each other beautifully. Pismo brings the energy, the iconic pier, the
                     shopping, and the adventure. Avila brings the relaxation, the wine tasting, the hot springs, and the
-                    sunshine. By staying with Solmare Stays in Avila Beach, you are positioned to enjoy the best of both
+                    sunshine. By staying with Solmaré Stays in Avila Beach, you are positioned to enjoy the best of both
                     without compromise.
                   </p>
                   <p>
@@ -445,7 +445,7 @@ const PismoBeachPage = () => {
               className="text-center mb-16"
             >
               <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Why Book with Solmare Stays
+                Why Book with Solmaré Stays
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 Locally managed, professionally maintained, and always priced right.

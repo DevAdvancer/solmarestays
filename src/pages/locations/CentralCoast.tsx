@@ -7,7 +7,7 @@ import { PropertyCard } from '@/components/properties/PropertyCard';
 import { useProperties } from '@/hooks/useProperties';
 import { Button } from '@/components/ui/button';
 import {
-  MapPin, Waves, Wine, Sun, Mountain, Palmtree,
+  MapPin, Waves, Wine, Sun, Mountain,
   ChevronDown, ChevronUp, MessageCircle, Star, ShieldCheck, Clock, ArrowRight
 } from 'lucide-react';
 import { useState } from 'react';
@@ -55,7 +55,7 @@ const faqSchema = {
 const locationSchema = {
   '@context': 'https://schema.org',
   '@type': 'LodgingBusiness',
-  name: 'Solmare Stays - Central Coast California Vacation Rentals',
+  name: 'Solmaré Stays - Central Coast California Vacation Rentals',
   description:
     'Premium vacation rentals on California\'s Central Coast. Properties in Avila Beach, Pismo Beach, San Luis Obispo, and surrounding communities. Professionally managed with best rate guarantee.',
   url: 'https://www.solmarestays.com/central-coast',
@@ -172,7 +172,7 @@ const CentralCoastPage = () => {
                     The Central Coast of California is one of the most stunning and diverse destinations in the United
                     States. Stretching along the Pacific between Los Angeles and San Francisco, this region offers an
                     unmatched combination of pristine beaches, rolling wine country, charming small towns, and dramatic
-                    coastal scenery. San Luis Obispo County, the heart of the Central Coast, is where Solmare Stays
+                    coastal scenery. San Luis Obispo County, the heart of the Central Coast, is where Solmaré Stays
                     calls home — and where our guests experience the very best of California's coastal lifestyle.
                   </p>
                   <p>
@@ -186,7 +186,7 @@ const CentralCoastPage = () => {
                     Our vacation rentals are spread across the Central Coast's most desirable communities: Avila Beach,
                     the sunniest town on the coast; the charming neighborhoods near Pismo Beach; and the vibrant city of
                     San Luis Obispo. Each property is professionally managed, impeccably maintained, and designed to feel
-                    like a true home away from home. When you book with Solmare Stays, you get the reliability of a
+                    like a true home away from home. When you book with Solmaré Stays, you get the reliability of a
                     hotel, the space and privacy of a vacation home, and the local expertise of a team that lives and
                     breathes the Central Coast.
                   </p>
@@ -277,7 +277,7 @@ const CentralCoastPage = () => {
                     considered one of the most scenic drives in the world. From San Simeon (home of Hearst Castle) south
                     through Cambria, Cayucos, Morro Bay, and into San Luis Obispo, the drive offers jaw-dropping views
                     of rugged coastline, elephant seal beaches, and the famous Morro Rock. Many of our guests plan day
-                    trips along Highway 1 as part of their Central Coast vacation, returning to their Solmare Stays
+                    trips along Highway 1 as part of their Central Coast vacation, returning to their Solmaré Stays
                     vacation rental each evening.
                   </p>
                   <p>
@@ -398,7 +398,7 @@ const CentralCoastPage = () => {
               className="text-center mb-16"
             >
               <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Why Book Direct with Solmare Stays
+                Why Book Direct with Solmaré Stays
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 We live here. We manage every property personally. And we guarantee the best rates.

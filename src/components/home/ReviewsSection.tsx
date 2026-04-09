@@ -135,7 +135,7 @@ export function ReviewsSection({ data }: { data?: any }) {
   };
 
   return (
-    <section ref={ref} className="section-padding bg-secondary/50">
+    <section ref={ref} className="section-padding bg-secondary">
       <div className="container mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <motion.div

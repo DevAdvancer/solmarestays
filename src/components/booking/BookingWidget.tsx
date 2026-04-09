@@ -378,7 +378,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
               {apiPricing && apiPricing.basePrice > 0 && (
                 <div className="mb-4 p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg text-center">
                   <p className="text-emerald-700 dark:text-emerald-400 font-semibold text-base">
-                    💰 You're saving ${Math.round(apiPricing.basePrice * 0.14)} by booking direct
+                    You're saving ${Math.round(apiPricing.basePrice * 0.14)} by booking direct
                   </p>
                   <p className="text-emerald-600 dark:text-emerald-500 text-xs mt-1">
                     Skip the 14% Airbnb service fee
@@ -423,7 +423,7 @@ export function BookingWidget({ property }: BookingWidgetProps) {
       {/* Best Rate Guarantee */}
       <div className="mt-4 p-3 bg-ocean/5 rounded-lg border border-ocean/20 text-center">
         <p className="text-xs text-muted-foreground leading-relaxed">
-          <span className="font-medium text-foreground">Book Direct & Save: </span>Our lowest rates are guaranteed here no third-party fees.
+          <span className="font-medium text-foreground">Book Direct & Save: </span>Our lowest rates are guaranteed here — no third-party fees.
         </p>
       </div>
 

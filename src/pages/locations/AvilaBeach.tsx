@@ -35,12 +35,12 @@ const faqs = [
     answer: 'Avila Beach offers an incredible range of activities. Enjoy the beach and calm waters ideal for swimming, kayaking, and paddleboarding. Walk or bike the Bob Jones Trail, visit Avila Valley Barn for fresh produce and animal encounters, explore the local wineries in the Avila Beach wine region, soak at Sycamore Mineral Springs, catch live music on the promenade, or take a short drive to Point San Luis Lighthouse. The Friday night farmers market is a local favorite.',
   },
   {
-    question: 'How do I check in to a Solmare Stays vacation rental?',
+    question: 'How do I check in to a Solmaré Stays vacation rental?',
     answer: 'We offer completely self-service check-in with smart locks. After booking, you will receive a unique access code and detailed check-in instructions, including a digital guidebook for your specific property. No need to coordinate key pickups or meet anyone. Our team is available 24/7 by phone or text if you need anything during your stay.',
   },
   {
     question: 'Why should I book direct instead of through Airbnb or Vrbo?',
-    answer: 'Booking direct with Solmare Stays guarantees the best available rate. Third-party platforms charge service fees that inflate the price by 10-15%. When you book direct on our website, you skip those fees entirely and get our best-rate guarantee, plus direct communication with our local team from the moment you book.',
+    answer: 'Booking direct with Solmaré Stays guarantees the best available rate. Third-party platforms charge service fees that inflate the price by 10-15%. When you book direct on our website, you skip those fees entirely and get our best-rate guarantee, plus direct communication with our local team from the moment you book.',
   },
 ];
 
@@ -60,7 +60,7 @@ const faqSchema = {
 const locationSchema = {
   '@context': 'https://schema.org',
   '@type': 'VacationRental',
-  name: 'Solmare Stays - Avila Beach Vacation Rentals',
+  name: 'Solmaré Stays - Avila Beach Vacation Rentals',
   description:
     'Premium vacation rentals in Avila Beach, California. Walk to the beach, downtown restaurants, and local wineries. Professionally managed homes with hotel-quality standards.',
   url: 'https://www.solmarestays.com/avila-beach',
@@ -469,7 +469,7 @@ const AvilaBeachPage = () => {
               className="text-center mb-16"
             >
               <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Why Book Your Avila Beach Rental with Solmare Stays
+                Why Book Your Avila Beach Rental with Solmaré Stays
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                 We are not a faceless booking platform. We are a local team that lives on the Central Coast and manages

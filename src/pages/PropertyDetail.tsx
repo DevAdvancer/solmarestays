@@ -81,9 +81,6 @@ const PropertyDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: property, isLoading, error } = usePropertyBySlug(slug || '');
   const { data: allProperties = [] } = useProperties();
-  const amenitiesRef = useRef(null);
-  const isAmenitiesInView = useInView(amenitiesRef, { once: true, margin: '-100px' });
-
   // Prioritize same-city properties for "You May Also Like"
   // Move this up before conditional returns to satisfy React Hook rules
   const otherProperties = useMemo(() => {
@@ -495,38 +492,6 @@ const PropertyDetailPage = () => {
                     </div>
                   </motion.div>
                 )}
-
-                {/* External Booking Links
-                {(property.airbnbListingUrl || property.vrboListingUrl) && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <h2 className="font-serif text-2xl font-semibold text-foreground mb-4">
-                      Book on Other Platforms
-                    </h2>
-                    <div className="flex flex-wrap gap-3">
-                      {property.airbnbListingUrl && (
-                        <Button variant="outline" asChild className="gap-2">
-                          <a href={property.airbnbListingUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4" />
-                            View on Airbnb
-                          </a>
-                        </Button>
-                      )}
-                      {property.vrboListingUrl && (
-                        <Button variant="outline" asChild className="gap-2">
-                          <a href={property.vrboListingUrl} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4" />
-                            View on Vrbo
-                          </a>
-                        </Button>
-                      )}
-                    </div>
-                  </motion.div>
-                )} */}
 
                 {/* Location */}
                 <motion.div

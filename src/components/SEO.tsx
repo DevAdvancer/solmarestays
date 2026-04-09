@@ -40,7 +40,7 @@ const organizationSchema = {
   ],
   sameAs: [
     'https://www.instagram.com/solmarestays',
-    'https://www.facebook.com/61578590873715',
+    'https://www.facebook.com/solmarestays',
     'https://www.tiktok.com/@solmarestays',
   ],
 };

@@ -322,8 +322,8 @@ const ForHomeownersPage = () => {
                   transition={{ duration: 0.8 }}
                   className="text-center max-w-3xl mx-auto mb-16"
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
-                    COMPREHENSIVE MANAGEMENT
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
+                    Comprehensive Management
                   </h2>
                   <p className="text-muted-foreground text-lg">
                     We handle every operational detail required to run a successful short-term rental.
@@ -338,7 +338,7 @@ const ForHomeownersPage = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={isServicesInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="bg-white p-6 rounded-xl shadow-soft"
+                      className="bg-card p-6 rounded-xl shadow-soft"
                     >
                       <h3 className="font-serif text-lg font-semibold text-foreground mb-4 pb-3 border-b border-border">
                         {category.title}

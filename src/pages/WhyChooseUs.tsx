@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { usePage } from '@/hooks/useSanityContent';
 import { SanitySectionRenderer } from '@/components/sanity/SanitySectionRenderer';
 import { useRef } from 'react';
@@ -69,26 +69,6 @@ const testimonials = [
     platform: 'Vrbo',
   },
 ];
-
-function ParallaxImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
-
-  return (
-    <div ref={ref} className={`overflow-hidden ${className}`}>
-      <motion.img
-        src={src}
-        alt={alt}
-        style={{ y }}
-        className="w-full h-[120%] object-cover"
-      />
-    </div>
-  );
-}
 
 const WhyChooseUsPage = () => {
   const { data: pageData, isLoading } = usePage('philosophy');
@@ -253,8 +233,8 @@ const WhyChooseUsPage = () => {
                   transition={{ duration: 0.8 }}
                   className="text-center mb-16"
                 >
-                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4">
-                    SEAMLESS FROM START TO FINISH
+                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
+                    Seamless From Start to Finish
                   </h2>
                   <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                     Modern conveniences designed to make your stay effortless.
@@ -311,7 +291,7 @@ const WhyChooseUsPage = () => {
                       animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.15 }}
                       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                      className="bg-primary-foreground/10 backdrop-blur-sm p-8 rounded-xl"
+                      className="bg-primary-foreground/20 backdrop-blur-sm p-8 rounded-xl"
                     >
                       <div className="flex gap-1 mb-4">
                         {[...Array(5)].map((_, i) => (

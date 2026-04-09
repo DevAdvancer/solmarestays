@@ -40,12 +40,14 @@ const Privacy = () => {
                 </h1>
 
                 <div className="prose prose-stone max-w-none text-muted-foreground">
+                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: April 2026</p>
+
                   <p className="mb-6">
                     At Solmaré Stays, one of our main priorities is the privacy of our visitors.
                   </p>
 
                   <p className="mb-6">
-                    This Privacy Policy document contains types of information that is collected and recorded by Solmaré Stays and how we use it.
+                    This Privacy Policy document contains types of information that are collected and recorded by Solmaré Stays and how we use it.
                   </p>
 
                   <p className="mb-6">

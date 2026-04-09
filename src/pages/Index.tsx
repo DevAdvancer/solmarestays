@@ -8,7 +8,6 @@ import { PropertiesSection } from '@/components/home/PropertiesSection';
 import { ManagementSection } from '@/components/home/ManagementSection';
 import { ReviewsSection } from '@/components/home/ReviewsSection';
 import { CTASection } from '@/components/home/CTASection';
-import { ExperienceSection } from '@/components/home/ExperienceSection';
 import { useState, useEffect } from 'react';
 import { sanityClient } from '@/lib/sanity.client';
 import { homePageQuery } from '@/lib/sanityQueries';
@@ -34,14 +33,13 @@ const Index = () => {
   const managementData = sections.find((s: any) => s._type === 'featureGrid' && s.heading?.includes('STANDARD'));
   const locationData = sections.find((s: any) => s._type === 'locationsSection');
   const reviewsData = sections.find((s: any) => s._type === 'reviewsSection');
-  const partnersData = sections.find((s: any) => s._type === 'partnersSection');
   const ctaData = sections.find((s: any) => s._type === 'ctaSection');
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
         title="Luxury Vacation Rentals in Avila Beach & Central Coast"
-        description="Discover Solmaré Stays — refined vacation rentals in Avila Beach, Pismo Beach, and San Luis Obispo. 13 curated coastal properties with 2,400+ five-star reviews. Book direct for the best rates."
+        description="Discover Solmaré Stays — refined vacation rentals in Avila Beach, Pismo Beach, and San Luis Obispo. curated coastal properties with 2,400+ five-star reviews. Book direct for the best rates."
       />
       <Header />
       <main>
@@ -51,7 +49,6 @@ const Index = () => {
         <LocationSection data={locationData} />
         <ManagementSection data={managementData} />
         <ReviewsSection data={reviewsData} />
-        {/* <ExperienceSection data={partnersData} /> */}
         <CTASection data={ctaData} />
       </main>
       <Footer />

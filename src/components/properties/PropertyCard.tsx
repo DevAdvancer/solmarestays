@@ -33,7 +33,7 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           {/* Price Tag */}
-          <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <div className="absolute top-3 right-3 transition-all duration-300">
             <span className="text-xs text-white font-medium bg-foreground/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
               {`$${property.startingPrice}`}/night
             </span>

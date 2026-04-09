@@ -200,7 +200,7 @@ const PetFriendlyPage = () => {
                     community that treats dogs like the VIPs they are.
                   </p>
                   <p>
-                    At Solmare Stays, we understand that pets are family. That's why we offer
+                    At Solmaré Stays, we understand that pets are family. That's why we offer
                     carefully selected pet-friendly vacation rentals that welcome your dog with the
                     same warmth and attention to detail we bring to every guest experience. Our
                     pet-friendly homes are located within walking distance of the beach, local
@@ -290,7 +290,7 @@ const PetFriendlyPage = () => {
                 <div className="prose prose-lg text-muted-foreground space-y-4">
                   <p>
                     We want your stay to be stress-free for both you and your pet. Here's what to
-                    know before booking a pet-friendly Avila Beach rental with Solmare Stays:
+                    know before booking a pet-friendly Avila Beach rental with Solmaré Stays:
                   </p>
                   <ul className="space-y-3">
                     <li>

@@ -90,7 +90,7 @@ const CollectionPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Browse Our Vacation Rental Collection"
-        description="Explore 13 handpicked vacation rentals on California's Central Coast. Studios to estates in Avila Beach, Pismo Beach, and SLO County. Pet-friendly options available. Book direct and save."
+        description="Explore handpicked vacation rentals on California's Central Coast. Studios to estates in Avila Beach, Pismo Beach, and SLO County. Pet-friendly options available. Book direct and save."
       />
       <Header />
       <main className="pt-24">

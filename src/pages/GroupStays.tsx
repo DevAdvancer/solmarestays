@@ -199,7 +199,7 @@ const GroupStaysPage = () => {
                   <p>
                     Planning a group vacation is one of the most rewarding — and challenging —
                     things you can do. Finding a destination that offers enough space, the right
-                    activities, and accommodations everyone will love? That's where Solmare Stays
+                    activities, and accommodations everyone will love? That's where Solmaré Stays
                     comes in.
                   </p>
                   <p>

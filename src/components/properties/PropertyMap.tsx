@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Property } from '@/data/properties';
-import { createRoot } from 'react-dom/client';
 
 // Fix for default marker icon
 // @ts-ignore
@@ -30,8 +29,6 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const markersRef = useRef<L.Marker[]>([]);
-  const navigate = useNavigate();
-
   // Initialize Map
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
@@ -73,15 +70,6 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
     properties.forEach((property) => {
       const marker = L.marker([property.lat, property.lng]).addTo(map);
       bounds.extend([property.lat, property.lng]);
-
-      // Create a popup DOM node
-      const popupDiv = document.createElement('div');
-      const root = createRoot(popupDiv);
-
-      // We use a small static HTML strcture for speed/simplicity inside popup,
-      // or we can render React portal. For simplicity, we'll use HTML string or simple React render.
-      // Since we need <Link> which relies on Router context, we can't easily render fully interactive React tree inside L.popup without Portal.
-      // BUT: L.popup accepts HTML string. We can just build a simple HTML string with a standard href.
 
       const popupHtml = `
         <div class="min-w-[200px]">

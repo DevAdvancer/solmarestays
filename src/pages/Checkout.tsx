@@ -146,7 +146,7 @@ export default function Checkout() {
               setValue('billingCity', place['place name']);
               // Could also set state if we had a field for it
               // setValue('billingState', place['state']); 
-              toast.success(`Found city: ${place['place name']}`);
+              // City auto-filled from zip code
             }
           }
         } catch (error) {
@@ -218,15 +218,11 @@ export default function Checkout() {
         newCheckOut,
         newGuests
       );
-      console.log('Price API Result:', apiResult);
-
       const round = (val: number) => Math.round(val);
 
       // 2. Map API result to our UI structure
       const nights = Math.max(1, Math.ceil((newCheckOut.getTime() - newCheckIn.getTime()) / (1000 * 60 * 60 * 24)));
       const parsed = parseHostawayResponse(apiResult, nights, 'USD');
-      console.log('Parsed Pricing:', parsed);
-
       const subtotal = parsed.basePrice;
       const total = parsed.grandTotal;
 
@@ -277,8 +273,6 @@ export default function Checkout() {
         finalTotal = total - appliedDiscount;
         breakdown.push({ label: `Coupon (${coupon.name})`, amount: -appliedDiscount });
       }
-
-      console.log('Calculated Breakdown:', breakdown);
 
       setPricing({
         nightlyPrices: [], // API doesn't always return daily breakdown in simple response, keep empty or mock
@@ -475,7 +469,6 @@ export default function Checkout() {
         true // Validate payment
       );
 
-      console.log('Reservation created:', result);
       setReservationId(result.reservationId);
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -641,8 +634,8 @@ export default function Checkout() {
                           placeholder="0000 0000 0000 0000"
                           maxLength={19}
                           onChange={(e) => {
-                            // Allow alphanumeric
-                            let v = e.target.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+                            // Allow digits only
+                            let v = e.target.value.replace(/[^0-9]/g, '');
                             // Limit to 16 characters
                             if (v.length > 16) v = v.slice(0, 16);
                             // Format groups of 4
