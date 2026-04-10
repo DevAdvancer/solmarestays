@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { format, differenceInDays, addDays, isSameDay } from 'date-fns';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCalendar } from '@/hooks/useCalendar';
@@ -24,10 +24,16 @@ export function BookingWidget({ property }: BookingWidgetProps) {
 
 
   // Fetch calendar availability data with pricing
-  const { unavailableDates, getPriceForDate, isLoading: isCalendarLoading } = useCalendar(
+  const { unavailableDates, getPriceForDate, getCalendarDay, isLoading: isCalendarLoading } = useCalendar(
     property.hostawayListingId,
     { monthsAhead: 12 }
   );
+
+  // Min stay lookup from calendar data
+  const getMinStayForDate = React.useCallback((date: Date): number | null => {
+    const day = getCalendarDay(date);
+    return day?.minimumStay ?? null;
+  }, [getCalendarDay]);
 
   // Helper to check if a date is unavailable
   const isDateUnavailable = useMemo(() => {
@@ -282,6 +288,9 @@ export function BookingWidget({ property }: BookingWidgetProps) {
               }
             }}
             disabledDates={unavailableDates}
+            getPriceForDate={getPriceForDate}
+            getMinStayForDate={getMinStayForDate}
+            weeklyDiscount={property.weeklyDiscount}
           />
         </PopoverContent>
       </Popover>

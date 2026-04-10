@@ -19,6 +19,9 @@ interface CalendarTwinProps {
   yearRange?: [number, number]
   disabledDates?: Date[] // Dates that cannot be selected
   minDate?: Date // Minimum selectable date
+  getPriceForDate?: (date: Date) => number | null // Nightly price lookup
+  getMinStayForDate?: (date: Date) => number | null // Minimum stay lookup
+  weeklyDiscount?: number | null // e.g. 0.9 = 10% off for 7+ nights
 }
 
 export function CalendarTwin({
@@ -29,6 +32,9 @@ export function CalendarTwin({
   yearRange = [2000, 2035],
   disabledDates = [],
   minDate = new Date(),
+  getPriceForDate,
+  getMinStayForDate,
+  weeklyDiscount,
 }: CalendarTwinProps) {
   const [view, setView] = React.useState<"month" | "year">("month")
   const [current, setCurrent] = React.useState<Date>(value?.from ?? new Date())
@@ -158,7 +164,7 @@ export function CalendarTwin({
         </div>
         <div className="grid grid-cols-7">
           {Array.from({ length: start.getDay() }).map((_, i) => (
-            <div key={`empty-${i}`} className="h-8 sm:h-9" />
+            <div key={`empty-${i}`} className={getPriceForDate ? "h-12 sm:h-14" : "h-8 sm:h-9"} />
           ))}
           {days.map((day) => {
             const isSelected =
@@ -173,19 +179,24 @@ export function CalendarTwin({
             const disabled = !selectable
 
             // Visual check for occupied days (even if selectable as checkout)
-            // This allows us to style selectable-checkout-days differently if needed
             const occupied = isDayOccupied(day)
+
+            // Price for this date
+            const price = getPriceForDate?.(day) ?? null
+            const minStay = getMinStayForDate?.(day) ?? null
+            const showPrice = price !== null && !disabled && !occupied
 
             return (
               <button
                 key={day.toISOString()}
                 onClick={() => handleSelect(day)}
                 disabled={disabled}
+                title={minStay && minStay > 1 ? `${minStay}-night minimum` : undefined}
                 className={cn(
-                  "h-8 w-8 sm:h-9 sm:w-9 m-0.5 flex items-center justify-center rounded-md text-xs sm:text-sm transition-colors touch-manipulation",
+                  "relative m-0.5 flex flex-col items-center justify-center rounded-md transition-colors touch-manipulation",
+                  getPriceForDate ? "h-12 w-9 sm:h-14 sm:w-10" : "h-8 w-8 sm:h-9 sm:w-9",
                   disabled && "text-muted-foreground/50 line-through cursor-not-allowed",
                   !disabled && !isSelected && !inRange && "hover:bg-accent hover:text-foreground active:bg-accent",
-                  // Special style for "checkout only" days (occupied but selectable)
                   !disabled && occupied && !isSelected && "bg-stripes-gray text-muted-foreground",
                   isSelected && "bg-primary text-primary-foreground",
                   inRange && !isSelected && "bg-primary/20 text-foreground",
@@ -194,7 +205,20 @@ export function CalendarTwin({
                   inRange && "rounded-none"
                 )}
               >
-                {day.getDate()}
+                <span className="text-xs sm:text-sm leading-none">{day.getDate()}</span>
+                {showPrice && (
+                  <span className={cn(
+                    "text-[9px] sm:text-[10px] leading-none mt-0.5 font-medium",
+                    isSelected ? "text-primary-foreground/80" : "text-emerald-600 dark:text-emerald-400"
+                  )}>
+                    ${price}
+                  </span>
+                )}
+                {disabled && occupied && price !== null && (
+                  <span className="text-[9px] sm:text-[10px] leading-none mt-0.5 text-muted-foreground/40">
+                    —
+                  </span>
+                )}
               </button>
             )
           })}
@@ -283,6 +307,23 @@ export function CalendarTwin({
         </div>
       ) : (
         renderYearGrid()
+      )}
+
+      {/* Legend & discount info */}
+      {getPriceForDate && view === "month" && (
+        <div className="mt-3 pt-3 border-t border-border flex flex-wrap items-center gap-3 text-[10px] sm:text-xs text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <span className="font-medium text-emerald-600 dark:text-emerald-400">$123</span> = nightly rate
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="line-through">15</span> = unavailable
+          </span>
+          {weeklyDiscount && weeklyDiscount < 1 && (
+            <span className="ml-auto bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-full font-medium">
+              {Math.round((1 - weeklyDiscount) * 100)}% off 7+ nights
+            </span>
+          )}
+        </div>
       )}
     </div>
   )
