@@ -37,6 +37,9 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
           <img
             src={images[0]?.src}
             alt={images[0]?.alt}
+            decoding="async"
+            width={800}
+            height={800}
             className="w-full h-full object-cover aspect-[4/3] md:aspect-square"
           />
         </motion.div>
@@ -53,6 +56,10 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
             <img
               src={image.src}
               alt={image.alt}
+              loading="lazy"
+              decoding="async"
+              width={400}
+              height={400}
               className="w-full h-full object-cover aspect-square"
             />
             {index === 3 && images.length > 5 && (
@@ -119,6 +126,7 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
                 <img
                   src={images[currentIndex]?.src}
                   alt={images[currentIndex]?.alt}
+                  decoding="async"
                   className="max-w-[90vw] max-h-[60vh] object-contain rounded-lg"
                 />
                 {/* Image Caption from Hostaway */}
@@ -150,6 +158,8 @@ export function ImageGallery({ images, className = '' }: ImageGalleryProps) {
                   <img
                     src={image.src}
                     alt={image.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </button>

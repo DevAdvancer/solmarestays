@@ -24,6 +24,10 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
           <motion.img
             src={property.image}
             alt={property.name}
+            loading="lazy"
+            decoding="async"
+            width={600}
+            height={450}
             className="w-full h-full object-cover property-card-image"
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
