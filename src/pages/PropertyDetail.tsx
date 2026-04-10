@@ -398,6 +398,18 @@ const PropertyDetailPage = () => {
                     <Users className="w-4 h-4 text-ocean" />
                     Sleeps {property.sleeps}
                   </motion.span>
+                  {property.virtualTourUrl && (
+                    <motion.a
+                      href={property.virtualTourUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.05 }}
+                      className="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full cursor-pointer hover:bg-secondary/80 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4 text-ocean" />
+                      Virtual Tour
+                    </motion.a>
+                  )}
                 </div>
               </div>
               <div className="text-right">
@@ -431,20 +443,6 @@ const PropertyDetailPage = () => {
                   </p>
                 </motion.div>
 
-                {/* Virtual Tour Button */}
-                {property.virtualTourUrl && (
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="gap-2"
-                    asChild
-                  >
-                    <a href={property.virtualTourUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4" />
-                      Take a Virtual Tour
-                    </a>
-                  </Button>
-                )}
 
                 {/* Reviews Section - After Description, Before Amenities */}
                 <ReviewsSection
