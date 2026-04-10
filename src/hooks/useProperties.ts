@@ -36,7 +36,7 @@ export function useProperties() {
 export function usePropertyBySlug(slug: string) {
   const { data: properties, ...rest } = useProperties();
 
-  const property = properties?.find((p) => p.slug === slug);
+  const property = properties?.find((p) => p.slug === slug || p.id === slug);
 
   return {
     ...rest,

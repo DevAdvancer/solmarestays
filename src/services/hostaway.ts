@@ -7,9 +7,11 @@ const API_TOKEN = import.meta.env.VITE_HOSTAWAY_API_TOKEN;
 
 /**
  * Generate a URL-friendly slug from a property name
+ * Uses only the part before the | pipe (the property name, not the tagline)
  */
 function generateSlug(name: string): string {
-  return name
+  const baseName = name.split('|')[0].trim();
+  return baseName
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
@@ -75,7 +77,7 @@ function transformListing(listing: HostawayListing): Property {
   const transformed = {
     // Basic info
     id: String(listing.id),
-    slug: String(listing.id),
+    slug: generateSlug(listing.name),
     name: listing.name,
     location: listing.city,
     unitType: listing.bookingcomPropertyRoomName || getUnitType(listing.bedroomsNumber),

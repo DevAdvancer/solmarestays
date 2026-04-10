@@ -113,7 +113,13 @@ async function fetchPropertyIds() {
     if (data.status === 'success' && Array.isArray(data.result)) {
       return data.result
         .filter((listing) => listing.isActive !== 0)
-        .map((listing) => listing.id);
+        .map((listing) => listing.name.split('|')[0].trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .trim()
+        );
     }
 
     console.warn('Warning: Unexpected Hostaway API response format.');
