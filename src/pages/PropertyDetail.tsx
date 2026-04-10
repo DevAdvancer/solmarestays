@@ -431,29 +431,19 @@ const PropertyDetailPage = () => {
                   </p>
                 </motion.div>
 
-                {/* Virtual Tour */}
+                {/* Virtual Tour Button */}
                 {property.virtualTourUrl && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="gap-2"
+                    asChild
                   >
-                    <h2 className="font-serif text-2xl font-semibold text-foreground mb-6">
-                      Virtual Tour
-                    </h2>
-                    <div className="rounded-xl overflow-hidden shadow-soft" style={{ aspectRatio: '16/9' }}>
-                      <iframe
-                        src={property.virtualTourUrl}
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0 }}
-                        allowFullScreen
-                        loading="lazy"
-                        title={`${property.name} Virtual Tour`}
-                      />
-                    </div>
-                  </motion.div>
+                    <a href={property.virtualTourUrl} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4" />
+                      Take a Virtual Tour
+                    </a>
+                  </Button>
                 )}
 
                 {/* Reviews Section - After Description, Before Amenities */}
