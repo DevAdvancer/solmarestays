@@ -60,4 +60,7 @@ export interface Property {
 
   // Guidebook (from custom fields)
   guidebookUrl: string | null;
+
+  // Virtual tour
+  virtualTourUrl: string | null;
 }

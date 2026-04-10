@@ -39,6 +39,11 @@ function squareMetersToFeet(meters: number): number {
   return Math.round(meters * 10.764);
 }
 
+/** Virtual tour URLs keyed by Hostaway listing ID */
+const VIRTUAL_TOUR_URLS: Record<string, string> = {
+  '504852': 'https://www.zillow.com/view-imx/ef87873b-b04d-4d04-a68d-7d945b3c53e9/',
+};
+
 /**
  * Extract guidebook URL from custom field values
  */
@@ -122,6 +127,9 @@ function transformListing(listing: HostawayListing): Property {
 
     // Guidebook
     guidebookUrl: extractGuidebookUrl(listing.customFieldValues),
+
+    // Virtual tour (per-listing)
+    virtualTourUrl: VIRTUAL_TOUR_URLS[String(listing.id)] || null,
 
     // Additional fees and taxes
     checkinFee: listing.checkinFee,
