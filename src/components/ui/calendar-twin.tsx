@@ -208,8 +208,8 @@ export function CalendarTwin({
                 <span className="text-xs sm:text-sm leading-none">{day.getDate()}</span>
                 {showPrice && (
                   <span className={cn(
-                    "text-[9px] sm:text-[10px] leading-none mt-0.5 font-medium",
-                    isSelected ? "text-primary-foreground/80" : "text-emerald-600 dark:text-emerald-400"
+                    "text-[8px] sm:text-[9px] leading-none mt-0.5 font-normal opacity-60",
+                    isSelected ? "text-primary-foreground/70" : "text-muted-foreground"
                   )}>
                     ${price}
                   </span>
@@ -303,7 +303,7 @@ export function CalendarTwin({
       {view === "month" ? (
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           {renderMonth(current)}
-          {renderMonth(addMonths(current, 1))}
+          {!getPriceForDate && renderMonth(addMonths(current, 1))}
         </div>
       ) : (
         renderYearGrid()
@@ -313,7 +313,7 @@ export function CalendarTwin({
       {getPriceForDate && view === "month" && (
         <div className="mt-3 pt-3 border-t border-border flex flex-wrap items-center gap-3 text-[10px] sm:text-xs text-muted-foreground">
           <span className="flex items-center gap-1">
-            <span className="font-medium text-emerald-600 dark:text-emerald-400">$123</span> = nightly rate
+            <span className="opacity-60">$123</span> = nightly rate
           </span>
           <span className="flex items-center gap-1">
             <span className="line-through">15</span> = unavailable
