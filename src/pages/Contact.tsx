@@ -98,6 +98,10 @@ const ContactPage = () => {
       <SEO
         title="Contact Solmaré Stays"
         description="Get in touch with Solmaré Stays. Book a vacation rental, list your property, or get guest support. Located in Avila Beach on California's Central Coast."
+        breadcrumbs={[
+          { name: 'Home', url: 'https://www.solmarestays.com/' },
+          { name: 'Contact', url: 'https://www.solmarestays.com/contact' },
+        ]}
       />
       <Header />
       <main>

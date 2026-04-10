@@ -16,6 +16,10 @@ const Terms = () => {
       <SEO
         title={pageData?.title || "Terms and Conditions"}
         description={pageData?.metaDescription || "Terms and conditions for using Solmaré Stays website."}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://www.solmarestays.com/' },
+          { name: 'Terms and Conditions', url: 'https://www.solmarestays.com/terms' },
+        ]}
       />
       <Header />
       <main className="pt-32 md:pt-36 pb-16">

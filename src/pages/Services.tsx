@@ -82,6 +82,10 @@ const ServicesPage = () => {
         title="Concierge Services & Local Partners"
         description="Enhance your stay with our premium concierge services and curated local partner experiences on California's Central Coast."
         schema={serviceSchema}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://www.solmarestays.com/' },
+          { name: 'Concierge Services', url: 'https://www.solmarestays.com/services' },
+        ]}
       />
       <Header />
       <main>

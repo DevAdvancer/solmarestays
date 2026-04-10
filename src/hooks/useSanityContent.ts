@@ -5,6 +5,8 @@ import {
     allPagesQuery,
     siteSettingsQuery,
     faqItemsQuery,
+    allBlogPostsQuery,
+    blogPostBySlugQuery,
 } from '@/lib/sanityQueries';
 
 /**
@@ -51,5 +53,29 @@ export function useFAQs() {
         queryKey: ['sanity', 'faqs'],
         queryFn: () => sanityClient.fetch(faqItemsQuery),
         staleTime: 1000 * 60 * 5, // 5 minutes
+    });
+}
+
+/**
+ * Fetch all published blog posts
+ */
+export function useBlogPosts() {
+    return useQuery({
+        queryKey: ['sanity', 'blogPosts'],
+        queryFn: () => sanityClient.fetch(allBlogPostsQuery),
+        staleTime: 1000 * 60 * 5, // 5 minutes
+    });
+}
+
+/**
+ * Fetch a single blog post by slug
+ * @param slug - Blog post slug
+ */
+export function useBlogPost(slug: string) {
+    return useQuery({
+        queryKey: ['sanity', 'blogPost', slug],
+        queryFn: () => sanityClient.fetch(blogPostBySlugQuery, { slug }),
+        staleTime: 1000 * 60 * 5, // 5 minutes
+        enabled: !!slug,
     });
 }

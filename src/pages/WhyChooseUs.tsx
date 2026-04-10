@@ -95,6 +95,10 @@ const WhyChooseUsPage = () => {
       <SEO
         title={pageData?.title || "The Solmaré Standard — Our Philosophy"}
         description={pageData?.metaDescription || "What sets Solmaré Stays apart. 50-point cleaning standard, 24/7 guest support, local concierge service, and the best rate guarantee. Elevated hospitality on California's Central Coast."}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://www.solmarestays.com/' },
+          { name: 'Our Philosophy', url: 'https://www.solmarestays.com/philosophy' },
+        ]}
       />
       <Header />
       <main>

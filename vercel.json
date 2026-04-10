@@ -33,6 +33,19 @@
     }
   ],
   "rewrites": [
+    { "source": "/collection", "destination": "/collection/index.html" },
+    { "source": "/philosophy", "destination": "/philosophy/index.html" },
+    { "source": "/management", "destination": "/management/index.html" },
+    { "source": "/experiences", "destination": "/experiences/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
+    { "source": "/pet-friendly", "destination": "/pet-friendly/index.html" },
+    { "source": "/group-stays", "destination": "/group-stays/index.html" },
+    { "source": "/avila-beach", "destination": "/avila-beach/index.html" },
+    { "source": "/pismo-beach", "destination": "/pismo-beach/index.html" },
+    { "source": "/san-luis-obispo", "destination": "/san-luis-obispo/index.html" },
+    { "source": "/central-coast", "destination": "/central-coast/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
     {
       "source": "/(.*)",
       "destination": "/index.html"

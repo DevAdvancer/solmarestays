@@ -15,6 +15,8 @@ import ForHomeowners from "./pages/ForHomeowners";
 import GuestExperience from "./pages/GuestExperience";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import PetFriendly from "./pages/PetFriendly";
@@ -48,6 +50,8 @@ const App = () => (
               <Route path="/for-homeowners" element={<ForHomeowners />} />
               <Route path="/guest-experience" element={<GuestExperience />} />
               <Route path="/services" element={<GuestExperience />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />

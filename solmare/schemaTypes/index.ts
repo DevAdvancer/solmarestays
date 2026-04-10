@@ -1,5 +1,6 @@
 import { pageSchema } from './page';
 import { siteSettingsSchema } from './siteSettings';
+import { blogPostSchema } from './blogPost';
 import {
     heroSection,
     statsSection,
@@ -16,6 +17,7 @@ import {
 export const schemaTypes = [
     pageSchema,
     siteSettingsSchema,
+    blogPostSchema,
     heroSection,
     statsSection,
     textSection,

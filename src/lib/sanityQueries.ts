@@ -77,3 +77,61 @@ export const faqItemsQuery = `
     category
   }
 `;
+
+/**
+ * Fetch all published blog posts
+ * Ordered by publish date, newest first
+ */
+export const allBlogPostsQuery = `
+  *[_type == "blogPost"] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    mainImage {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    author,
+    categories
+  }
+`;
+
+/**
+ * Fetch a single blog post by slug
+ * Returns full content including portable text body
+ */
+export const blogPostBySlugQuery = `
+  *[_type == "blogPost" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug,
+    publishedAt,
+    excerpt,
+    body[] {
+      ...,
+      _type == "image" => {
+        ...,
+        asset-> {
+          _id,
+          url
+        }
+      }
+    },
+    mainImage {
+      asset-> {
+        _id,
+        url
+      },
+      alt
+    },
+    author,
+    categories,
+    seoTitle,
+    seoDescription
+  }
+`;

@@ -118,6 +118,8 @@ export function SEO({ title, description, image, type = 'website', schema, bread
       <meta property="og:description" content={description || defaultDescription} />
       <meta property="og:url" content={canonicalUrl} />
       {image && <meta property="og:image" content={image} />}
+      {image && <meta property="og:image:width" content="1200" />}
+      {image && <meta property="og:image:height" content="630" />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

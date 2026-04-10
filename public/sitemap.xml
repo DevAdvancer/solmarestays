@@ -30,64 +30,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <!-- Properties -->
   <url>
-    <loc>https://www.solmarestays.com/property/335975</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/335976</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/335977</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/335978</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/335979</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/335980</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/391355</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/400378</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/429263</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/429264</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/434918</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.solmarestays.com/property/504852</loc>
+    <loc>https://www.solmarestays.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

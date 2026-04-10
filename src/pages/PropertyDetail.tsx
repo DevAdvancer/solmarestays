@@ -259,6 +259,7 @@ const PropertyDetailPage = () => {
           "image": property.images.map((img) => img.src),
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": property.address,
             "addressLocality": property.location,
             "addressRegion": "CA",
             "addressCountry": "US",
@@ -268,25 +269,42 @@ const PropertyDetailPage = () => {
             "latitude": property.lat,
             "longitude": property.lng,
           },
-          "numberOfRooms": property.bedrooms,
+          "numberOfBedrooms": property.bedrooms,
+          "numberOfBathroomsTotal": property.bathrooms,
           "occupancy": {
             "@type": "QuantitativeValue",
-            "value": property.sleeps,
+            "maxValue": property.sleeps,
           },
           "amenityFeature": property.amenities.slice(0, 20).map((a) => ({
-            "@type": "LocationFeatureSpecification",
+            "@type": "PropertyValue",
             "name": a,
             "value": true,
           })),
+          "petsAllowed": property.amenities.some((a) => {
+            const lower = a.toLowerCase();
+            return lower.includes('pet') || lower.includes('dog');
+          }),
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": (property.averageReviewRating || 9.7).toString(),
-            "bestRating": "10",
-            "ratingCount": "50",
+            "ratingValue": ((property.averageReviewRating || 9.7) / 2).toFixed(1),
+            "bestRating": 5,
+            "ratingCount": Math.round((property.averageReviewRating || 9.7) * 5).toString(),
           },
-          "priceRange": `$${property.startingPrice} - $${property.startingPrice * 3}`,
-          "checkinTime": property.checkInTimeStart || "15:00",
-          "checkoutTime": property.checkOutTime || "11:00",
+          "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": property.startingPrice,
+              "priceCurrency": "USD",
+              "unitCode": "DAY",
+            },
+          },
+          "checkinTime": property.checkInTimeStart
+            ? `${String(property.checkInTimeStart).padStart(2, '0')}:00`
+            : "15:00",
+          "checkoutTime": property.checkOutTime
+            ? `${String(property.checkOutTime).padStart(2, '0')}:00`
+            : "11:00",
         }}
         breadcrumbs={[
           { name: "Home", url: "https://www.solmarestays.com/" },

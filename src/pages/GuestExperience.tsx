@@ -97,6 +97,10 @@ const GuestExperiencePage = () => {
       <SEO
         title={pageData?.title || "Central Coast Experiences & Local Partners"}
         description={pageData?.metaDescription || "Curated local experiences for Solmaré Stays guests. Wine tasting, dining, outdoor adventures, and more on California's Central Coast. Exclusive partner perks included with every stay."}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://www.solmarestays.com/' },
+          { name: 'Experiences', url: 'https://www.solmarestays.com/experiences' },
+        ]}
       />
       <Header />
       <main>

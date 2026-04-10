@@ -16,6 +16,10 @@ const Privacy = () => {
       <SEO
         title={pageData?.title || "Privacy Policy"}
         description={pageData?.metaDescription || "Privacy Policy for Solmaré Stays."}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://www.solmarestays.com/' },
+          { name: 'Privacy Policy', url: 'https://www.solmarestays.com/privacy' },
+        ]}
       />
       <Header />
       <main className="pt-32 md:pt-36 pb-16">
