@@ -60,9 +60,13 @@ export function useAvailability({
             const daysToCheck = daysInRange.slice(0, -1); // Exclude last day (check-out)
 
             const allDaysAvailable = daysToCheck.every((day) => {
-              const calendarDay = calendarDays.find((cd) => isSameDay(new Date(cd.date), day));
-              // If no data for this day, assume available
-              if (!calendarDay) return true;
+              const calendarDay = calendarDays.find((cd) => {
+                // Parse YYYY-MM-DD as local date to prevent timezone shifts
+                const [year, month, date] = cd.date.split('-').map(Number);
+                return isSameDay(new Date(year, month - 1, date), day);
+              });
+              // If no data for this day, assume unavailable to be safe
+              if (!calendarDay) return false;
               return calendarDay.isAvailable === 1 && calendarDay.status === 'available';
             });
 
