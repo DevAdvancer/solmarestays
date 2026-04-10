@@ -10,15 +10,17 @@ import { cn } from '@/lib/utils';
 import { Property } from '@/data/properties';
 import { getListingPriceDetails } from '@/services/hostaway';
 import { parseHostawayResponse, StructuredPricingBreakdown } from '@/utils/hostawayPricing';
+import { useBooking } from '@/context/BookingContext';
 
 interface BookingWidgetProps {
   property: Property;
 }
 
 export function BookingWidget({ property }: BookingWidgetProps) {
-  const [checkIn, setCheckIn] = useState<Date>();
-  const [checkOut, setCheckOut] = useState<Date>();
-  const [guests, setGuests] = useState(2);
+  const { checkIn: contextCheckIn, checkOut: contextCheckOut, guests: contextGuests } = useBooking();
+  const [checkIn, setCheckIn] = useState<Date | undefined>(contextCheckIn);
+  const [checkOut, setCheckOut] = useState<Date | undefined>(contextCheckOut);
+  const [guests, setGuests] = useState(contextGuests || 2);
 
 
   // Fetch calendar availability data with pricing
