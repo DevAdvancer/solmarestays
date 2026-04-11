@@ -86,13 +86,16 @@ export function HeroSection({ data }: { data?: any }) {
                 {subheading}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="bg-white text-foreground hover:bg-white/90 rounded-lg px-8 h-12 text-base font-medium transition-all"
-                  asChild
-                >
-                  <Link to="/collection">Explore Properties</Link>
-                </Button>
+                <Link to="/collection" className="group relative h-12 px-8 rounded-lg overflow-hidden inline-flex items-center [perspective:600px]">
+                  <span className="absolute inset-0 bg-white rounded-lg transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateX(90deg)]" />
+                  <span className="absolute inset-0 bg-ocean rounded-lg transition-transform duration-500 [transform-style:preserve-3d] [transform:rotateX(-90deg)] group-hover:[transform:rotateX(0deg)]" />
+                  <span className="relative z-10 text-base font-medium text-foreground transition-all duration-500 group-hover:text-white group-hover:[transform:translateY(-100%)] group-hover:opacity-0">
+                    Explore Properties
+                  </span>
+                  <span className="absolute inset-0 z-10 flex items-center justify-center text-base font-medium text-white transition-all duration-500 [transform:translateY(100%)] opacity-0 group-hover:[transform:translateY(0)] group-hover:opacity-100">
+                    Book Direct & Save 15%
+                  </span>
+                </Link>
                 <Button
                   variant="ghost"
                   size="lg"
@@ -102,6 +105,9 @@ export function HeroSection({ data }: { data?: any }) {
                   <Link to="/why-choose-us">Learn More</Link>
                 </Button>
               </div>
+              <p className="mt-4 text-sm text-white/60 tracking-wide">
+                Book direct & save up to 15% — best rate guaranteed
+              </p>
             </motion.div>
 
             {/* Right: Floating Booking Widget (Desktop Only) - Always Visible */}

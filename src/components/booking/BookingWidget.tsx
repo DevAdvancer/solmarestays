@@ -432,9 +432,9 @@ export function BookingWidget({ property }: BookingWidgetProps) {
       )}
 
       {/* Best Rate Guarantee */}
-      <div className="mt-4 p-3 bg-ocean/5 rounded-lg border border-ocean/20 text-center">
-        <p className="text-xs text-muted-foreground leading-relaxed">
-          <span className="font-medium text-foreground">Book Direct & Save: </span>Our lowest rates are guaranteed here — no third-party fees.
+      <div className="mt-4 p-3 bg-ocean/10 rounded-full text-center">
+        <p className="text-xs font-medium text-ocean leading-relaxed">
+          Book Direct & Save 15% — Best Rate Guaranteed
         </p>
       </div>
 
