@@ -168,7 +168,7 @@ const WhyChooseUsPage = () => {
                   className="max-w-xl"
                 >
                   <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-6">
-                    The Solmaré Standard.
+                    The Solmaré Standard
                   </h1>
                   <p className="text-lg text-white/80 leading-relaxed mb-8">
                     Not just a vacation rental. A curated coastal experience defined by immaculate standards and effortless stays.

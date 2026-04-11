@@ -165,15 +165,15 @@ const ForHomeownersPage = () => {
                 />
               </div>
 
-              <div className="absolute bottom-6 left-6 md:bottom-32 md:left-16 w-[calc(100%-3rem)] md:w-auto bg-white/10 backdrop-blur-md p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
+              <div className="absolute bottom-6 left-6 md:bottom-[40%] md:-translate-y-[-50%] md:left-16 w-[calc(100%-3rem)] md:w-auto bg-white/10 backdrop-blur-md p-6 md:p-10 rounded-[2rem] shadow-2xl border border-white/15">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.8 }}
                 >
                   <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-4">
-                    Elevate Your Property.<br />
-                    Maximize Your Returns.
+                    Elevate Your Property<br />
+                    Maximize Your Returns
                   </h1>
                   <p className="text-base md:text-lg text-white/80 leading-relaxed mb-6 max-w-lg">
                     Boutique management designed for high yields and asset protection on the Central Coast.
