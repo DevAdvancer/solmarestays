@@ -24,7 +24,7 @@ export function Header() {
   return (
     <>
       {/* Book Direct Banner */}
-      <div className="bg-primary text-primary-foreground text-center text-xs sm:text-sm font-medium" style={{ height: '36px', lineHeight: '36px' }}>
+      <div className="bg-secondary text-muted-foreground text-center text-xs sm:text-sm font-medium" style={{ height: '36px', lineHeight: '36px' }}>
         <span className="hidden sm:inline">Book Direct &amp; Save up to 15% — Best Rate Guarantee</span>
         <span className="sm:hidden">Book Direct &amp; Save 15%</span>
       </div>
