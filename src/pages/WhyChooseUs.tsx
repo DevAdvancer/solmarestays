@@ -160,7 +160,7 @@ const WhyChooseUsPage = () => {
               </div>
 
               {/* Content Box */}
-              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/15 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/20">
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/15">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
