@@ -90,7 +90,7 @@ const CollectionPage = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Browse Our Vacation Rental Collection"
-        description="Explore handpicked vacation rentals on California's Central Coast. Studios to estates in Avila Beach, Pismo Beach, and SLO County. Pet-friendly options available. Book direct and save."
+        description="Browse 12 vacation rentals in Avila Beach, Arroyo Grande, and San Luis Obispo. Studios to private estates sleeping 14. Pet-friendly options available. Book direct and save 15% vs. Airbnb — best rate guaranteed."
         breadcrumbs={[
           { name: 'Home', url: 'https://www.solmarestays.com/' },
           { name: 'Properties', url: 'https://www.solmarestays.com/collection' },

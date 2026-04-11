@@ -65,6 +65,7 @@ const LOCATION_ROUTES = [
   { path: '/pismo-beach', changefreq: 'weekly', priority: '0.9' },
   { path: '/san-luis-obispo', changefreq: 'weekly', priority: '0.9' },
   { path: '/central-coast', changefreq: 'weekly', priority: '0.9' },
+  { path: '/arroyo-grande', changefreq: 'weekly', priority: '0.9' },
 ];
 
 // Filter pages

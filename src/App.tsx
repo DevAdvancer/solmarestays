@@ -25,6 +25,7 @@ import AvilaBeach from "./pages/locations/AvilaBeach";
 import PismoBeach from "./pages/locations/PismoBeach";
 import SanLuisObispo from "./pages/locations/SanLuisObispo";
 import CentralCoast from "./pages/locations/CentralCoast";
+import ArroyoGrande from "./pages/locations/ArroyoGrande";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,7 @@ const App = () => (
               <Route path="/pismo-beach" element={<PismoBeach />} />
               <Route path="/san-luis-obispo" element={<SanLuisObispo />} />
               <Route path="/central-coast" element={<CentralCoast />} />
+              <Route path="/arroyo-grande" element={<ArroyoGrande />} />
               <Route path="/book" element={<Collection />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -98,6 +98,24 @@ const PAGES = [
     }
   },
   {
+    route: '/arroyo-grande',
+    title: 'Arroyo Grande & Wine Country Vacation Rentals | Solmaré Stays',
+    description: 'Luxury wine country estate rental in Arroyo Grande, California. Private 7-acre estate sleeping 14 with pool, hot tub, and vineyard views. 15 minutes to Pismo Beach. Book direct and save.',
+    h1: 'Arroyo Grande & Wine Country Vacation Rentals',
+    body: `<p>Stay in the heart of Central Coast wine country. Our Casitas Estate in Arroyo Grande offers seven private acres with a 3,700 sq ft Main House, five private casitas, pool, hot tub, bocce court, and walking trails — all exclusively yours.</p>
+<h2>Wine Country at Your Doorstep</h2>
+<p>Andreini Winery is literally next door. Talley Vineyards, Laetitia, and dozens more are minutes away. The Edna Valley and Arroyo Grande Valley AVAs produce world-class pinot noir and chardonnay.</p>
+<h2>Minutes from the Beach</h2>
+<p>Pismo Beach is 15 minutes away. Avila Beach is 20 minutes. Downtown San Luis Obispo is 10 minutes. Wine country mornings, beach afternoons.</p>`,
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Solmaré Stays — Arroyo Grande & Wine Country Vacation Rentals",
+      "url": `${BASE_URL}/arroyo-grande`,
+      "address": { "@type": "PostalAddress", "addressLocality": "Arroyo Grande", "addressRegion": "CA", "postalCode": "93420", "addressCountry": "US" }
+    }
+  },
+  {
     route: '/central-coast',
     title: 'Central Coast California Vacation Rentals | Solmaré Stays',
     description: 'Luxury vacation rentals on California\'s Central Coast. Avila Beach, Pismo Beach, San Luis Obispo, and Arroyo Grande. Book direct for the best rates.',
@@ -108,7 +126,7 @@ const PAGES = [
 <li><a href="/avila-beach">Avila Beach</a> — 10 properties, steps to the sand</li>
 <li><a href="/san-luis-obispo">San Luis Obispo</a> — Walk to Cal Poly</li>
 <li><a href="/pismo-beach">Pismo Beach</a> — Minutes from the pier</li>
-<li>Arroyo Grande — Wine Country Estate with pool, hot tub, 5 casitas</li>
+<li><a href="/arroyo-grande">Arroyo Grande</a> — Wine Country Estate with pool, hot tub, 5 casitas</li>
 </ul>`,
     schema: {
       "@context": "https://schema.org",
