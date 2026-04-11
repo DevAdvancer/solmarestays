@@ -5,7 +5,7 @@ export function StatsSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const introText = data?.introText || "Solmaré Stays is a curated collection of high-end vacation rentals along California's Central Coast, where refined design meets effortless coastal living. Each home is thoughtfully prepared to deliver a seamless, elevated stay from arrival to departure.";
+  const introText = data?.introText || "12 homes across three Central Coast destinations. 50-point inspections before every stay. 2,400+ five-star reviews. One local team that answers in under an hour. This is Solmaré.";
 
   return (
     <section ref={ref} className="py-24 bg-secondary relative overflow-hidden">

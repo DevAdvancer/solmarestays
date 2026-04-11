@@ -44,91 +44,110 @@ const Privacy = () => {
                 </h1>
 
                 <div className="prose prose-stone max-w-none text-muted-foreground">
-                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: April 2026</p>
+                  <p className="text-sm text-muted-foreground/70 mb-6 italic">Last Updated: April 10, 2026</p>
 
                   <p className="mb-6">
-                    At Solmaré Stays, one of our main priorities is the privacy of our visitors.
+                    At Solmaré Stays ("we," "us," or "our"), we are committed to protecting the privacy of our guests, website visitors, and property owners. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at solmarestays.com and when you book or stay at one of our vacation rental properties on California's Central Coast.
                   </p>
 
                   <p className="mb-6">
-                    This Privacy Policy document contains types of information that are collected and recorded by Solmaré Stays and how we use it.
+                    By using our website or booking a stay, you consent to the practices described in this policy. If you have questions, contact us at info@solmarestays.com or (805) 242-6411.
                   </p>
 
-                  <p className="mb-6">
-                    If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through email at info@solmarestays.com.
-                  </p>
-
-                  <p className="mb-6">
-                    This privacy policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collected in Solmaré Stays.
-                  </p>
-
-                  <p className="mb-6">
-                    This policy is not applicable to any information collected offline or via channels other than this website.
-                  </p>
-
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Consent</h2>
-                  <p className="mb-6">
-                    By using our website, you hereby consent to our Privacy Policy and agree to its terms.
-                  </p>
-
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Information we collect</h2>
-                  <p className="mb-6">
-                    The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information. If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.
-                  </p>
-
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">How we use your information</h2>
-                  <p className="mb-4">We use the information we collect in various ways, including to:</p>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Information We Collect</h2>
+                  <p className="mb-4">We collect information in the following ways:</p>
+                  <p className="mb-2"><strong className="text-foreground">Information you provide directly:</strong></p>
+                  <ul className="list-disc pl-6 mb-4">
+                    <li>Name, email address, phone number, and mailing address when you make a reservation or contact us</li>
+                    <li>Payment information when you book through our direct booking platform (processed securely by our payment processor — we do not store full credit card numbers)</li>
+                    <li>Guest details required for check-in, including the number of guests and any special requests</li>
+                    <li>Messages and communications you send us via the website, email, or text</li>
+                  </ul>
+                  <p className="mb-2"><strong className="text-foreground">Information collected automatically:</strong></p>
                   <ul className="list-disc pl-6 mb-6">
-                    <li>Provide, operate, and maintain our website</li>
-                    <li>Improve, personalize, and expand our website</li>
-                    <li>Understand and analyze how you use our website</li>
-                    <li>Develop new products, services, features, and functionality</li>
-                    <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
-                    <li>Send you emails</li>
-                    <li>Find and prevent fraud</li>
+                    <li>IP address, browser type, operating system, and device information</li>
+                    <li>Pages visited, time spent on pages, and referring URLs</li>
+                    <li>Cookies and similar tracking technologies (see Cookies section below)</li>
                   </ul>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Log Files</h2>
-                  <p className="mb-6">
-                    Solmaré Stays follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this as part of hosting services' analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users' movement on the website, and gathering demographic information.
-                  </p>
-
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Cookies and Web Beacons</h2>
-                  <p className="mb-6">
-                    Like any other website, Solmaré Stays uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
-                  </p>
-
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">CCPA Privacy Policy (Do Not Sell My Personal Information)</h2>
-                  <p className="mb-4">Under the CCPA, among other rights, California consumers have the right to:</p>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">How We Use Your Information</h2>
+                  <p className="mb-4">We use the information we collect to:</p>
                   <ul className="list-disc pl-6 mb-6">
-                    <li>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
-                    <li>Request that a business delete any personal data about the consumer that a business has collected.</li>
-                    <li>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</li>
+                    <li>Process and manage your vacation rental reservations</li>
+                    <li>Communicate with you about your booking, including confirmations, check-in instructions, and post-stay follow-ups</li>
+                    <li>Provide guest support before, during, and after your stay</li>
+                    <li>Send you promotional offers and updates about our properties (you may opt out at any time)</li>
+                    <li>Improve our website, properties, and guest experience</li>
+                    <li>Comply with legal obligations, including tax reporting and local short-term rental regulations</li>
+                    <li>Prevent fraud and protect the security of our properties and guests</li>
+                  </ul>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Information Sharing</h2>
+                  <p className="mb-4">We do not sell your personal information. We may share your information with:</p>
+                  <ul className="list-disc pl-6 mb-6">
+                    <li><strong className="text-foreground">Service providers</strong> who assist with property management, cleaning, maintenance, and payment processing</li>
+                    <li><strong className="text-foreground">Booking platforms</strong> (Airbnb, Vrbo) when your reservation originates from those channels</li>
+                    <li><strong className="text-foreground">Property owners</strong> whose homes you are staying in, limited to information necessary for your stay</li>
+                    <li><strong className="text-foreground">Legal authorities</strong> when required by law, subpoena, or to protect our rights and safety</li>
+                  </ul>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Cookies and Tracking</h2>
+                  <p className="mb-6">
+                    Our website uses cookies to enhance your browsing experience, remember your preferences, and analyze site traffic. We use essential cookies for website functionality and analytics cookies (such as Google Analytics) to understand how visitors interact with our site. You can control cookie preferences through your browser settings. Disabling cookies may limit some website functionality, such as saved search preferences.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Data Security</h2>
+                  <p className="mb-6">
+                    We implement industry-standard security measures to protect your personal information, including encrypted data transmission (SSL/TLS), secure payment processing, and restricted access to personal data. However, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Data Retention</h2>
+                  <p className="mb-6">
+                    We retain your personal information for as long as necessary to fulfill the purposes described in this policy, comply with legal obligations (including tax and regulatory requirements), and resolve disputes. Reservation records are retained for a minimum of seven years for tax and accounting purposes. You may request deletion of your data at any time, subject to our legal retention obligations.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Your Privacy Rights</h2>
+                  <p className="mb-4"><strong className="text-foreground">California Residents (CCPA/CPRA):</strong> You have the right to:</p>
+                  <ul className="list-disc pl-6 mb-4">
+                    <li>Know what personal information we collect, use, and disclose about you</li>
+                    <li>Request deletion of your personal information</li>
+                    <li>Opt out of the sale or sharing of your personal information (we do not sell personal information)</li>
+                    <li>Not be discriminated against for exercising your privacy rights</li>
+                  </ul>
+                  <p className="mb-4"><strong className="text-foreground">All Users:</strong> Regardless of location, you have the right to:</p>
+                  <ul className="list-disc pl-6 mb-6">
+                    <li>Access the personal information we hold about you</li>
+                    <li>Request correction of inaccurate information</li>
+                    <li>Request deletion of your data (subject to legal retention requirements)</li>
+                    <li>Opt out of marketing communications at any time</li>
+                    <li>Lodge a complaint with a supervisory authority</li>
                   </ul>
                   <p className="mb-6">
-                    If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
+                    To exercise any of these rights, contact us at info@solmarestays.com. We will respond within 30 days.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">GDPR Privacy Policy (Data Protection Rights)</h2>
-                  <p className="mb-4">We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</p>
-                  <ul className="list-disc pl-6 mb-6">
-                    <li>The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</li>
-                    <li>The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</li>
-                    <li>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</li>
-                    <li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
-                    <li>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</li>
-                    <li>The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</li>
-                  </ul>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Third-Party Links</h2>
                   <p className="mb-6">
-                    If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.
+                    Our website may contain links to third-party websites, including booking platforms, partner businesses, and social media. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies before providing personal information.
                   </p>
 
-                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Children's Information</h2>
-                  <p className="mb-4">
-                    Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
-                  </p>
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Children's Privacy</h2>
                   <p className="mb-6">
-                    Solmaré Stays does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+                    Our website and services are not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us at info@solmarestays.com and we will promptly delete it.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Changes to This Policy</h2>
+                  <p className="mb-6">
+                    We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. We encourage you to review this policy periodically.
+                  </p>
+
+                  <h2 className="text-2xl font-serif font-medium text-foreground mt-8 mb-4">Contact Us</h2>
+                  <p className="mb-6">
+                    If you have questions about this Privacy Policy or wish to exercise your privacy rights, contact us at:<br /><br />
+                    Solmaré Stays<br />
+                    Email: info@solmarestays.com<br />
+                    Phone: (805) 242-6411<br />
+                    Website: solmarestays.com
                   </p>
                 </div>
               </>

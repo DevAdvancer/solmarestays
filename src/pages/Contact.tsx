@@ -18,19 +18,43 @@ import contactHeroImage from '/contact/contact.jpg';
 const faqItems = [
   {
     question: 'What is your cancellation policy?',
-    answer: 'Cancellation policies vary by property and season. Full details are shown during booking and in your confirmation email. We offer flexible, limited, and firm policies depending on the time of year. For questions about a specific reservation, contact us directly.',
+    answer: 'Cancellation policies vary by property and season. We use Limited, Moderate, and Firm policies depending on the time of year and demand. Full cancellation terms are displayed during booking and included in your confirmation email. If you have questions about a specific reservation, contact us directly.',
   },
   {
-    question: 'Do you offer early check-in?',
-    answer: 'We try our best to accommodate early arrivals whenever possible. Please message us on the morning of your arrival, and we will let you know if the property is ready for you early.',
+    question: 'What is included in the price?',
+    answer: 'Every stay includes professionally laundered linens, towels, toiletries, a fully equipped kitchen, WiFi, smart TV with streaming, and a digital guidebook with local recommendations. A one-time cleaning fee covers professional cleaning between stays. There are no hidden charges — the total you see at checkout is the total you pay.',
+  },
+  {
+    question: 'What are check-in and check-out times?',
+    answer: 'Check-in is at 3:00 PM and check-out is at 11:00 AM for most properties. We offer self check-in via smart lock — your unique access code is sent the day before arrival. Early check-in may be available depending on the schedule. Just message us on the morning of your arrival and we will let you know.',
+  },
+  {
+    question: 'Is there parking?',
+    answer: 'Yes, every property has dedicated parking. Most Avila Beach properties include one or two off-street spots. Our Casitas Estate in Arroyo Grande has a circular driveway that fits four vehicles with overflow available. Specific parking instructions are included in your arrival guide.',
+  },
+  {
+    question: 'How far are your properties from the beach?',
+    answer: 'Our Avila Beach properties are one to two blocks from the sand — a one to three minute walk. Our Arroyo Grande estate is about 15 minutes from Pismo Beach and 20 minutes from Avila Beach by car. Our San Luis Obispo property is 10 to 15 minutes from the nearest beach.',
+  },
+  {
+    question: 'How do I save 15% by booking direct?',
+    answer: 'When you book through our website instead of Airbnb or Vrbo, you avoid their service fees — which typically add 12 to 15% to the booking total. Our direct prices reflect this savings. We guarantee our direct rate is the best available rate for any of our properties.',
+  },
+  {
+    question: 'Do you offer discounts for longer stays?',
+    answer: 'Yes. We offer a 10% discount on stays of 7 nights or more and a 20% discount on stays of 28 nights or more. These discounts apply automatically during booking on all channels including our website.',
+  },
+  {
+    question: 'Can I book multiple properties for a group?',
+    answer: 'Absolutely. Many of our Avila Beach properties are located near each other, making them perfect for larger groups. For groups of 10 or more, our Casitas Estate in Arroyo Grande sleeps up to 14 on a private 7-acre estate. Contact us to coordinate multi-property bookings and group pricing.',
   },
   {
     question: 'Are your homes pet-friendly?',
-    answer: "Many of our properties welcome pets! Look for the 'Pet Friendly' badge on our Collection page or filter your search to see available options.",
+    answer: "We welcome dogs at select properties, including The Palm House and The Pine House. A modest pet fee applies to cover additional cleaning. Look for the Pet Friendly badge on our Collection page or filter your search to find available options.",
   },
   {
     question: 'I\'m a property owner. How do I list with you?',
-    answer: "We'd love to chat! Select 'List My Property' in the contact form above, or visit our For Homeowners page to schedule a revenue consultation.",
+    answer: "We'd love to chat. Select 'List My Property' in the contact form above, or visit our For Homeowners page to learn about our management services and schedule a revenue consultation.",
   },
 ];
 
