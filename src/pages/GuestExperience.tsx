@@ -153,13 +153,13 @@ const GuestExperiencePage = () => {
                   className="max-w-4xl mx-auto text-center"
                 >
                   <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
-                    What This Means for Our Guests
+                    The Central Coast, Unlocked
                   </h2>
                   <p className="text-muted-foreground text-lg leading-relaxed mb-4">
-                    At Solmaré, we believe the best trips feel seamless. That's why we partner with trusted local businesses to offer our guests thoughtful perks, preferred experiences, and insider recommendations—so you can spend less time planning and more time enjoying your stay.
+                    The best trips feel seamless. Solmaré guests get access to a network of trusted local businesses offering exclusive perks, preferred experiences, and insider recommendations so you can spend less time planning and more time enjoying your stay.
                   </p>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    Our partnerships are intentionally selective. We focus on quality, consistency, and businesses we trust to deliver an experience that reflects the Solmaré standard.
+                    Every partner is handpicked by our team — we focus on quality, consistency, and businesses we trust to deliver. From wine tastings to private chef dinners to electric bike rentals along the coast, this is the Central Coast the way locals experience it.
                   </p>
                 </motion.div>
               </div>

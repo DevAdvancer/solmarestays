@@ -308,10 +308,10 @@ const WhyChooseUsPage = () => {
                     <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic mb-6">
                       "Solmaré was built on the idea that the Central Coast deserves a better kind of rental company. One that actually knows the homes, knows the area, and knows the people who make this place worth visiting. Every property in our collection is different by design, and every stay comes with access to the local experiences most visitors never find."
                     </p>
-                    <p className="text-foreground font-semibold text-base">
+                    <p className="text-foreground font-semibold text-base text-right">
                       Kyle Van Til
                     </p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-sm text-right">
                       Founder, Solmaré Stays
                     </p>
                   </motion.div>
