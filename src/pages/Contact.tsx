@@ -206,8 +206,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <a href="tel:+18058016429" className="text-muted-foreground hover:text-ocean transition-colors">
-                        (805) 801-6429
+                      <a href="tel:+18052426411" className="text-muted-foreground hover:text-ocean transition-colors">
+                        (805) 242-6411
                       </a>
                     </div>
                   </motion.div>
