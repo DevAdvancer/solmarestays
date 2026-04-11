@@ -32,14 +32,14 @@ export function ManagementSection({ data }: { data?: any }) {
   const heading = data?.heading || "THE SOLMARÉ STANDARD";
 
   return (
-    <section ref={ref} className="section-padding bg-secondary relative">
+    <section ref={ref} className="py-16 md:py-20 bg-secondary relative">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight">
             {heading}
