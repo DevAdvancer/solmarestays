@@ -14,9 +14,9 @@ const partners = [
     category: "Spirits",
   },
   {
-    name: "Avila Wine & Roasting Co.",
+    name: "Inspired Dining Events",
     image: img2,
-    category: "Wine & Coffee",
+    category: "Private Chef",
   },
   {
     name: "Central Coast Bike Rental",
@@ -36,7 +36,7 @@ export function ExperienceSection({ data }: { data?: any }) {
     // Simple matching logic for images
     let image = img1;
     const lowerName = p.name.toLowerCase();
-    if (lowerName.includes('wine') || lowerName.includes('roasting')) image = img2;
+    if (lowerName.includes('wine') || lowerName.includes('roasting') || lowerName.includes('dining') || lowerName.includes('chef')) image = img2;
     else if (lowerName.includes('bike') || lowerName.includes('adventure')) image = img3;
     else if (lowerName.includes('whiskey') || lowerName.includes('spirits')) image = img1;
 

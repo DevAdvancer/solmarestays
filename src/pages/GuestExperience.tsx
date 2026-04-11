@@ -11,7 +11,7 @@ import { Wine, UtensilsCrossed, Bike, MapPin } from 'lucide-react';
 import servicesHeroImage from '/experience/hero.jpg';
 import heroImage1 from '/experience/bolt.avif';
 import heroImage2 from '/experience/rod.avif';
-import heroImage3 from '/experience/AvilaWine.avif';
+import heroImage3 from '/experience/inspired-dining.webp';
 
 // Featured Partners - 3 Cards
 const featuredPartners = [
@@ -26,9 +26,9 @@ const featuredPartners = [
     description: "Hand-crafted spirits and California whiskey served in a vintage-inspired lounge that embodies the bold spirit of the Central Coast.",
   },
   {
-    name: 'Avila Wine & Roasting Co.',
+    name: 'Inspired Dining Events',
     image: heroImage3,
-    description: "A boutique tasting room in the heart of Avila Beach showcasing a curated selection of the region's finest small-lot wines.",
+    description: "The premier private chef experience on the Central Coast — multi-course, locally sourced dinners crafted and served in the comfort of your vacation rental.",
   },
 ];
 
@@ -38,7 +38,7 @@ const partnerDirectory = [
     icon: Wine,
     title: 'Wine, Spirits & Tasting Rooms',
     venues: [
-      { name: 'Avila Wine & Roasting Co.', location: 'Avila Beach', experience: 'Beachfront wine tasting & coffee.' },
+      { name: 'Inspired Dining Events', location: 'Central Coast', experience: 'Private chef dining at your rental.' },
       { name: "Rod & Hammer's SLO Stills", location: 'San Luis Obispo', experience: 'Handcrafted California whiskey.' },
       { name: 'Tolosa Winery', location: 'Edna Valley', experience: 'Estate Pinot Noir & Chardonnay.' },
       { name: 'Austin Hope Winery', location: 'Paso Robles', experience: 'Iconic luxury Cabernet Sauvignon.' },
