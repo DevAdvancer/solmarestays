@@ -108,10 +108,10 @@ const CollectionPage = () => {
               className="max-w-3xl"
             >
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4">
-                Discover Coastal Elegance
+                The Solmaré Collection
               </h1>
               <p className="text-xl text-muted-foreground">
-                A handpicked selection of boutique stays along California's Central Coast.
+                A purposefully small portfolio of hand-selected estates, farmhouses, and beach bungalows. From the Avila shoreline to the valley vines, every stay is locally managed and meticulously prepared.
               </p>
             </motion.div>
           </div>
