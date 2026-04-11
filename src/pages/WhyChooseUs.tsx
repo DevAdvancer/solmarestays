@@ -144,50 +144,7 @@ const WhyChooseUsPage = () => {
               </div>
             </section>
 
-            {/* SECTION 2: More Than a Place to Stay */}
-            <section className="section-padding bg-secondary">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
-                  {/* Left: Image */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="w-full md:w-1/2"
-                  >
-                    <div className="overflow-hidden rounded-2xl shadow-elevated">
-                      <img
-                        src={placeHeroImage}
-                        alt="California palm trees at sunset"
-                        className="w-full h-full object-cover aspect-[4/3]"
-                      />
-                    </div>
-                  </motion.div>
-
-                  {/* Right: Text */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="w-full md:w-1/2"
-                  >
-                    <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6">
-                      More Than a Place to Stay.
-                    </h2>
-                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
-                      "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
-                    </p>
-                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic text-right">
-                      — Kyle Van Til, Founder
-                    </p>
-                  </motion.div>
-                </div>
-              </div>
-            </section>
-
-            {/* SECTION 3: Core Values - 3 White Cards */}
+            {/* SECTION 2: Core Values - 3 White Cards */}
             <section id="standards" ref={valuesRef} className="section-padding bg-background scroll-mt-24">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
@@ -228,48 +185,7 @@ const WhyChooseUsPage = () => {
               </div>
             </section>
 
-            {/* SECTION 4: Seamless Service (NEW) */}
-            <section ref={seamlessRef} className="section-padding bg-muted">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8 }}
-                  className="text-center mb-16"
-                >
-                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
-                    Seamless From Start to Finish
-                  </h2>
-                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                    Modern conveniences designed to make your stay effortless.
-                  </p>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-                  {seamlessFeatures.map((feature, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                      className="text-center"
-                    >
-                      <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
-                        <feature.icon className="w-8 h-8 text-ocean" />
-                      </div>
-                      <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4">
-                        {feature.title}
-                      </h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* SECTION 5: Testimonials */}
+            {/* SECTION 4: Testimonials - Moments at Solmaré */}
             <section ref={testimonialsRef} className="section-padding bg-primary text-primary-foreground">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
@@ -318,7 +234,92 @@ const WhyChooseUsPage = () => {
               </div>
             </section>
 
-            {/* SECTION 6: Final CTA */}
+            {/* SECTION 5: Owner Quote */}
+            <section className="section-padding bg-secondary">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
+                  {/* Left: Image */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="w-full md:w-1/2"
+                  >
+                    <div className="overflow-hidden rounded-2xl shadow-elevated">
+                      <img
+                        src={placeHeroImage}
+                        alt="California palm trees at sunset"
+                        className="w-full h-full object-cover aspect-[4/3]"
+                        loading="lazy"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Right: Text */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="w-full md:w-1/2"
+                  >
+                    <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6">
+                      More Than a Place to Stay.
+                    </h2>
+                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
+                      "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
+                    </p>
+                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic text-right">
+                      — Kyle Van Til, Founder
+                    </p>
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 6: Seamless Service */}
+            <section ref={seamlessRef} className="section-padding bg-muted">
+              <div className="container mx-auto px-4 md:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8 }}
+                  className="text-center mb-16"
+                >
+                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
+                    Seamless From Start to Finish
+                  </h2>
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    Modern conveniences designed to make your stay effortless.
+                  </p>
+                </motion.div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+                  {seamlessFeatures.map((feature, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={isSeamlessInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                      className="text-center"
+                    >
+                      <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
+                        <feature.icon className="w-8 h-8 text-ocean" />
+                      </div>
+                      <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 7: Final CTA */}
             <section className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
                 <motion.div
