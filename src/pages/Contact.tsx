@@ -18,7 +18,7 @@ import contactHeroImage from '/contact/contact.jpg';
 const faqItems = [
   {
     question: 'What is your cancellation policy?',
-    answer: 'You will receive a full refund if you cancel your reservation at least 14 days prior to your scheduled check-in date.',
+    answer: 'Cancellation policies vary by property and season. Full details are shown during booking and in your confirmation email. We offer flexible, limited, and firm policies depending on the time of year. For questions about a specific reservation, contact us directly.',
   },
   {
     question: 'Do you offer early check-in?',
