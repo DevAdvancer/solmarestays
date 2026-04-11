@@ -124,20 +124,20 @@ const GuestExperiencePage = () => {
                 <div className="absolute inset-0 bg-black/20" />
               </div>
 
-              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/15 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/20">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.8 }}
                   className="max-w-xl"
                 >
-                  <span className="inline-block text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">
+                  <span className="inline-block text-sm font-semibold tracking-widest text-white/70 uppercase mb-4">
                     Guest Experience
                   </span>
-                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
+                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-white mb-6">
                     More Than a Place to Stay
                   </h1>
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  <p className="text-lg text-white/80 leading-relaxed mb-8">
                     Staying with Solmaré means more than a beautiful coastal home. We curate local partnerships and experiences that make every stay feel effortless, personal, and distinctly Central Coast.
                   </p>
                   <Button variant="default" size="xl" asChild>

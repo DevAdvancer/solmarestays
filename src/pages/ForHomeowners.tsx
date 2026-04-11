@@ -165,19 +165,19 @@ const ForHomeownersPage = () => {
                 />
               </div>
 
-              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl">
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/15 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/20">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.8 }}
                   className="max-w-xl"
                 >
-                  <span className="inline-block text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-4">For Property Owners</span>
-                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-foreground mb-6">
+                  <span className="inline-block text-sm font-semibold tracking-widest text-white/70 uppercase mb-4">For Property Owners</span>
+                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-white mb-6">
                     Elevate Your Property.<br />
                     Maximize Your Returns.
                   </h1>
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  <p className="text-lg text-white/80 leading-relaxed mb-8">
                     Boutique management designed for high yields and asset protection. Experience the difference of owner-first stewardship on the Central Coast.
                   </p>
                   <div className="flex flex-wrap gap-4">
