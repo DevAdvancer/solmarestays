@@ -47,7 +47,7 @@ export function ManagementSection({ data }: { data?: any }) {
         </motion.div>
 
         {/* 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {pillars.map((pillar, index) => (
             <motion.div
               key={index}
@@ -56,13 +56,10 @@ export function ManagementSection({ data }: { data?: any }) {
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               className="text-center"
             >
-              <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
-                <pillar.icon className="w-7 h-7 text-ocean" />
-              </div>
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-3 leading-tight">
+              <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
                 {pillar.title}
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light">
                 {pillar.description}
               </p>
             </motion.div>
