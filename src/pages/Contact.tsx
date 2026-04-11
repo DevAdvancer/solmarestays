@@ -417,28 +417,29 @@ const ContactPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isFaqInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="max-w-3xl mx-auto"
+              className="max-w-5xl mx-auto"
             >
               <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground text-center mb-10">
                 Frequently Asked Questions
               </h2>
 
-              <Accordion type="single" collapsible className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {faqItems.map((item, index) => (
-                  <AccordionItem
-                    key={index}
-                    value={`item-${index}`}
-                    className="bg-card rounded-xl px-6 border-none shadow-soft"
-                  >
-                    <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline py-5">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground pb-5">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
+                  <Accordion key={index} type="single" collapsible>
+                    <AccordionItem
+                      value={`item-${index}`}
+                      className="bg-card rounded-xl px-6 border-none shadow-soft"
+                    >
+                      <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline py-5">
+                        {item.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground pb-5">
+                        {item.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 ))}
-              </Accordion>
+              </div>
             </motion.div>
           </div>
         </section>
