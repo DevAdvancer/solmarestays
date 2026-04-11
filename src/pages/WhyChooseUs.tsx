@@ -49,63 +49,62 @@ const seamlessFeatures = [
   },
 ];
 
-// Channel icon: 'airbnb' | 'vrbo' | 'solmare'
 const testimonials = [
   {
     name: 'Stacey W.',
     property: 'La Casita',
     date: 'July 2025',
-    channel: 'solmare' as const,
-    text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach. We never had to drive again the whole weekend.",
+    channel: 'Airbnb',
+    text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach. We parked our car and never had to drive again the whole weekend.",
   },
   {
     name: 'Verified Guest',
     property: 'Casa Azul',
-    date: 'October 2024',
-    channel: 'vrbo' as const,
+    date: 'December 2024',
+    channel: 'Vrbo',
     text: "Great location, SO close to the beach. Beautifully appointed! Beach cruisers, towels, and chairs available. Great quality bed and linens.",
   },
   {
     name: 'Verified Guest',
     property: 'Shoreline Suite',
-    date: 'November 2024',
-    channel: 'airbnb' as const,
-    text: "We could not have asked for more. Steps from the beach, coffee, and wine shops. Everything felt spotless and polished.",
+    date: 'December 2024',
+    channel: 'Vrbo',
+    text: "We could not have asked for more. Steps from the beach, coffee, and wine shops. I really appreciated the incredible cleanliness — everything felt spotless and polished.",
   },
   {
     name: 'Verified Guest',
     property: 'Emberlight',
-    date: 'September 2024',
-    channel: 'airbnb' as const,
+    date: 'December 2024',
+    channel: 'Vrbo',
     text: "Everything was clean, beautiful, quiet — just as described. The bed is AMAZINGLY comfortable, so it might get in the way of any pre-set plans!",
   },
   {
     name: 'Todd S.',
     property: 'Hummingbird House',
     date: 'March 2026',
-    channel: 'solmare' as const,
+    channel: 'Google',
     text: "My kids loved the proximity to the beach and all the toys in the storage. The house was very clean and well stocked. We hope to return again soon.",
   },
   {
-    name: 'Verified Guest',
+    name: 'Stanley L.',
     property: 'The Nest',
-    date: 'November 2024',
-    channel: 'vrbo' as const,
-    text: "We loved this rental by the beach! Completely updated, great modern look, fluffy towels, filtered water, and the most comfortable bed.",
+    date: 'September 2025',
+    channel: 'Airbnb',
+    text: "Extremely comfortable and would definitely stay again. The host responded to all communications immediately and resolved requests right away. Very professional.",
   },
   {
     name: 'Verified Guest',
     property: 'The Deckhouse',
-    date: 'November 2024',
-    channel: 'airbnb' as const,
-    text: "Extremely clean and well maintained. Incredible location — two minutes from the Pacific. The decor is beautiful and the bed was so comfortable.",
+    date: 'December 2024',
+    channel: 'Vrbo',
+    text: "Extremely clean and well maintained. Incredible location — two minutes from the Pacific. The decor is beautiful.",
   },
   {
     name: 'Jennifer A.',
     property: 'The Pine House',
     date: 'January 2026',
-    channel: 'solmare' as const,
-    text: "The host was very responsive. Great location, close to everything. Comfortable beds and very clean home. Will definitely be coming back.",
+    channel: 'Airbnb',
+    text: "The host was very responsive. We enjoyed our stay and will definitely be coming back. Great location, close to everything. Comfortable beds and very clean home.",
   },
 ];
 
@@ -258,17 +257,7 @@ const WhyChooseUsPage = () => {
                             <Star key={i} className="w-3 h-3 fill-gold text-gold" />
                           ))}
                         </div>
-                        {testimonial.channel === 'airbnb' && (
-                          <svg className="h-4 w-auto opacity-40" viewBox="0 0 2500 2500" fill="currentColor">
-                            <path d="M1250 100C1043 100 879 200 756 350C633 500 551 700 551 900C551 1100 620 1280 720 1450C820 1620 950 1770 1060 1900C1115 1965 1165 2025 1205 2075C1225 2100 1240 2118 1250 2130C1260 2118 1275 2100 1295 2075C1335 2025 1385 1965 1440 1900C1550 1770 1680 1620 1780 1450C1880 1280 1949 1100 1949 900C1949 700 1867 500 1744 350C1621 200 1457 100 1250 100ZM1250 1150C1112 1150 1000 1038 1000 900C1000 762 1112 650 1250 650C1388 650 1500 762 1500 900C1500 1038 1388 1150 1250 1150Z"/>
-                          </svg>
-                        )}
-                        {testimonial.channel === 'vrbo' && (
-                          <span className="text-[10px] font-bold opacity-40 tracking-wide">VRBO</span>
-                        )}
-                        {testimonial.channel === 'solmare' && (
-                          <img src="/logo.svg" alt="Solmaré" className="h-4 w-auto opacity-40 brightness-0 invert" />
-                        )}
+                        <span className="text-primary-foreground/40 text-[10px] uppercase tracking-wider">{testimonial.channel}</span>
                       </div>
                       <p className="text-primary-foreground/90 text-xs mb-3 leading-relaxed">
                         "{testimonial.text}"
