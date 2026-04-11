@@ -111,7 +111,7 @@ const GuestExperiencePage = () => {
         ) : (
           <>
             {/* SECTION 1: Hero */}
-            <section ref={heroRef} className="relative h-[72vh] min-h-[500px] flex items-center overflow-hidden">
+            <section ref={heroRef} className="relative h-[85vh] min-h-[550px] flex items-center overflow-hidden">
               <div className="absolute inset-0">
                 <motion.img
                   src={servicesHeroImage}
