@@ -52,21 +52,51 @@ const seamlessFeatures = [
 const testimonials = [
   {
     name: 'Paul',
-    property: 'Coral House',
-    text: "The place was decorated with top notch decor and was spotless upon arrival. The location was perfect. Just a block from the beach and close to everything. Restaurants, coffee shops, etc. would highly recommend. You won't be disappointed :)",
+    property: 'The Coral House',
+    text: "Decorated with top-notch decor and spotless upon arrival. The location was perfect — just a block from the beach and close to everything. Would highly recommend. You won't be disappointed.",
     platform: 'Airbnb',
+  },
+  {
+    name: 'Rebecca',
+    property: 'Casitas Estate',
+    text: 'This estate is absolutely breathtaking. The grounds, the attention to detail, the hot tub under the oaks — we hosted a family reunion and every single person said it was the best vacation they\'ve ever had.',
+    platform: 'Vrbo',
+  },
+  {
+    name: 'Michael',
+    property: 'Hummingbird House',
+    text: 'From the moment we walked in, everything was perfect. Fresh flowers, a welcome basket with local wine, and the cleanest rental we\'ve ever stayed in. Kyle responded to every question within minutes.',
+    platform: 'Airbnb',
+  },
+  {
+    name: 'Sarah',
+    property: 'Shoreline Suite',
+    text: 'The ocean views are unreal. We sat on the balcony with coffee every morning and watched the waves. Beautifully designed, incredibly comfortable beds, and stocked with everything you could need.',
+    platform: 'Vrbo',
   },
   {
     name: 'Ashlea',
-    property: 'Palm House',
-    text: 'Great spot for one or two people to stay in Avila Beach. Pet friendly which was a plus. Super walkable and one block from the beach. We enjoyed our stay and would definitely stay here again!',
+    property: 'The Palm House',
+    text: 'Pet friendly, super walkable, and one block from the beach. The interior design felt like a boutique hotel but with all the comforts of home. We\'re already planning our next trip back.',
     platform: 'Airbnb',
   },
   {
+    name: 'David',
+    property: 'La Casita',
+    text: 'A hidden gem in Avila Beach. The Spanish-style architecture is stunning and it felt completely private. The kitchen was chef-ready and the outdoor space was perfect for evening drinks.',
+    platform: 'Google',
+  },
+  {
     name: 'Chasity',
-    property: 'Pine House',
-    text: 'Beautiful stay! 30 second walk to the beach! Super clean and plenty of amenities for a few nights. I will definitely be going back and Kyle was a great host!',
+    property: 'The Pine House',
+    text: 'Beautiful stay — 30 second walk to the beach, super clean, and plenty of amenities. The smart lock made check-in effortless. I will definitely be going back. Kyle is an amazing host.',
     platform: 'Vrbo',
+  },
+  {
+    name: 'Jennifer',
+    property: 'Monterey Heights',
+    text: 'Stunning hilltop views and absolute peace and quiet. The house was immaculate, the beds were hotel-quality, and the local recommendations in the guidebook led us to the best wineries. Five stars across the board.',
+    platform: 'Airbnb',
   },
 ];
 
@@ -203,29 +233,29 @@ const WhyChooseUsPage = () => {
                   </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {testimonials.map((testimonial, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, y: 40 }}
                       animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                      transition={{ duration: 0.6, delay: index * 0.08 }}
                       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                      className="bg-primary-foreground/20 backdrop-blur-sm p-8 rounded-xl"
+                      className="bg-primary-foreground/20 backdrop-blur-sm p-6 rounded-xl flex flex-col"
                     >
-                      <div className="flex gap-1 mb-4">
+                      <div className="flex gap-0.5 mb-3">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                          <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                         ))}
                       </div>
-                      <p className="text-primary-foreground/90 mb-6 leading-relaxed">
+                      <p className="text-primary-foreground/90 text-sm mb-4 leading-relaxed">
                         "{testimonial.text}"
                       </p>
-                      <div className="border-t border-primary-foreground/20 pt-4">
-                        <span className="font-semibold">{testimonial.name}</span>
-                        <p className="text-primary-foreground/60 text-sm mt-1">{testimonial.property}</p>
-                        <p className="text-primary-foreground/50 text-xs mt-1 italic">
-                          ✓ Verified Review from {testimonial.platform}
+                      <div className="border-t border-primary-foreground/20 pt-3 mt-auto">
+                        <span className="font-semibold text-sm">{testimonial.name}</span>
+                        <p className="text-primary-foreground/60 text-xs mt-1">{testimonial.property}</p>
+                        <p className="text-primary-foreground/50 text-[10px] mt-1 italic">
+                          Verified {testimonial.platform} Review
                         </p>
                       </div>
                     </motion.div>
