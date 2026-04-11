@@ -153,7 +153,7 @@ const ForHomeownersPage = () => {
         ) : (
           <>
             {/* SECTION 1: Hero */}
-            <section ref={heroRef} className="relative h-[65vh] min-h-[450px] flex items-center overflow-hidden">
+            <section ref={heroRef} className="relative h-[72vh] min-h-[500px] flex items-center overflow-hidden">
               <div className="absolute inset-0">
                 <motion.img
                   src={homeownersHeroImage}

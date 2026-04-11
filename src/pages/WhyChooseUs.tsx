@@ -51,52 +51,52 @@ const seamlessFeatures = [
 
 const testimonials = [
   {
-    name: 'Paul',
-    property: 'The Coral House',
-    text: "Decorated with top-notch decor and spotless upon arrival. The location was perfect — just a block from the beach and close to everything. Would highly recommend. You won't be disappointed.",
-    platform: 'Airbnb',
-  },
-  {
-    name: 'Rebecca',
-    property: 'Casitas Estate',
-    text: 'This estate is absolutely breathtaking. The grounds, the attention to detail, the hot tub under the oaks — we hosted a family reunion and every single person said it was the best vacation they\'ve ever had.',
-    platform: 'Vrbo',
-  },
-  {
-    name: 'Michael',
-    property: 'Hummingbird House',
-    text: 'From the moment we walked in, everything was perfect. Fresh flowers, a welcome basket with local wine, and the cleanest rental we\'ve ever stayed in. Kyle responded to every question within minutes.',
-    platform: 'Airbnb',
-  },
-  {
-    name: 'Sarah',
-    property: 'Shoreline Suite',
-    text: 'The ocean views are unreal. We sat on the balcony with coffee every morning and watched the waves. Beautifully designed, incredibly comfortable beds, and stocked with everything you could need.',
-    platform: 'Vrbo',
-  },
-  {
-    name: 'Ashlea',
-    property: 'The Palm House',
-    text: 'Pet friendly, super walkable, and one block from the beach. The interior design felt like a boutique hotel but with all the comforts of home. We\'re already planning our next trip back.',
-    platform: 'Airbnb',
-  },
-  {
-    name: 'David',
+    name: 'Stacey',
     property: 'La Casita',
-    text: 'A hidden gem in Avila Beach. The Spanish-style architecture is stunning and it felt completely private. The kitchen was chef-ready and the outdoor space was perfect for evening drinks.',
-    platform: 'Google',
+    date: 'July 2025',
+    text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach and many restaurants within walking distance. We parked our car and never had to drive again the whole weekend.",
   },
   {
-    name: 'Chasity',
-    property: 'The Pine House',
-    text: 'Beautiful stay — 30 second walk to the beach, super clean, and plenty of amenities. The smart lock made check-in effortless. I will definitely be going back. Kyle is an amazing host.',
-    platform: 'Vrbo',
+    name: 'Guest',
+    property: 'Casa Azul',
+    date: 'October 2024',
+    text: "The most beautiful rental in a magical town! I felt completely safe with the location and the privacy. The cottage is exactly like the images — immaculately presented with everything you need.",
+  },
+  {
+    name: 'Guest',
+    property: 'Shoreline Suite',
+    date: 'November 2024',
+    text: "We could not have asked for more. Located steps from the beach, coffee, and wine shops. I really appreciated the incredible cleanliness — everything felt spotless and polished.",
+  },
+  {
+    name: 'Guest',
+    property: 'Emberlight',
+    date: 'September 2024',
+    text: "Everything was clean, beautiful, quiet — just as described. Be careful lying on the bed though. It is AMAZINGLY comfortable, so it might get in the way of any pre-set plans!",
+  },
+  {
+    name: 'Todd',
+    property: 'Hummingbird House',
+    date: 'March 2026',
+    text: "We had a great stay. My kids loved the proximity to the beach and all the toys in the storage. The house was very clean and well stocked. We hope to return again soon.",
   },
   {
     name: 'Jennifer',
+    property: 'The Pine House',
+    date: 'January 2026',
+    text: "The host was very responsive. We enjoyed our stay and will definitely be coming back. Great location, close to everything. Comfortable beds and very clean home.",
+  },
+  {
+    name: 'Andrea',
     property: 'Monterey Heights',
-    text: 'Stunning hilltop views and absolute peace and quiet. The house was immaculate, the beds were hotel-quality, and the local recommendations in the guidebook led us to the best wineries. Five stars across the board.',
-    platform: 'Airbnb',
+    date: 'September 2025',
+    text: "I really loved this quiet little bungalow. Super clean and simple with everything I needed. Extremely quiet street and comfortable mattress.",
+  },
+  {
+    name: 'Stanley',
+    property: 'The Nest',
+    date: 'September 2025',
+    text: "Extremely comfortable and would definitely stay again. The host responded to all communications immediately and resolved requests right away. Very professional.",
   },
 ];
 
@@ -139,7 +139,7 @@ const WhyChooseUsPage = () => {
         ) : (
           <>
             {/* SECTION 1: Hero Section */}
-            <section ref={heroRef} className="relative h-[65vh] min-h-[450px] flex items-center overflow-hidden">
+            <section ref={heroRef} className="relative h-[72vh] min-h-[500px] flex items-center overflow-hidden">
               <div className="absolute inset-0">
                 <motion.img
                   src={aboutHeroImage}
@@ -253,10 +253,7 @@ const WhyChooseUsPage = () => {
                       </p>
                       <div className="border-t border-primary-foreground/20 pt-3 mt-auto">
                         <span className="font-semibold text-sm">{testimonial.name}</span>
-                        <p className="text-primary-foreground/60 text-xs mt-1">{testimonial.property}</p>
-                        <p className="text-primary-foreground/50 text-[10px] mt-1 italic">
-                          Verified {testimonial.platform} Review
-                        </p>
+                        <p className="text-primary-foreground/60 text-xs mt-1">{testimonial.property} · {testimonial.date}</p>
                       </div>
                     </motion.div>
                   ))}
