@@ -105,9 +105,6 @@ export function HeroSection({ data }: { data?: any }) {
                   <Link to="/why-choose-us">Learn More</Link>
                 </Button>
               </div>
-              <p className="mt-4 text-sm text-white/60 tracking-wide">
-                Book direct & save up to 15% — best rate guaranteed
-              </p>
             </motion.div>
 
             {/* Right: Floating Booking Widget (Desktop Only) - Always Visible */}
@@ -210,6 +207,9 @@ export function HeroSection({ data }: { data?: any }) {
                       <Search className="w-4 h-4 mr-2" />
                       Book Now
                     </Button>
+                    <p className="text-[11px] text-muted-foreground/70 text-center mt-2">
+                      Save up to 15%
+                    </p>
                   </div>
                 </div>
               </motion.div>
