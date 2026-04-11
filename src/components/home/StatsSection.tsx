@@ -5,7 +5,7 @@ export function StatsSection({ data }: { data?: any }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const introText = data?.introText || "12 homes across three Central Coast destinations. 50-point inspections before every stay. 2,400+ five-star reviews. One local team that answers in under an hour. This is Solmaré.";
+  const introText = data?.introText || "We manage a small collection of Central Coast homes intentionally. Because doing it right means knowing every property, every guest, and every detail.";
 
   return (
     <section ref={ref} className="py-24 bg-secondary relative overflow-hidden">

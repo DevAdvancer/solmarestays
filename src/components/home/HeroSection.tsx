@@ -33,7 +33,7 @@ export function HeroSection({ data }: { data?: any }) {
   // Use data from Sanity if available, otherwise fallback to defaults
   const slides = defaultSlides; // Keeping slides static for now as Sanity image handling requires a builder
   const heading = data?.title || "Where the Sun Meets<br />the Sea in Style";
-  const subheading = data?.subtitle || "Elevated Coastal Stays — Avila Beach, Wine Country, and Beyond.";
+  const subheading = data?.subtitle || "Elevated Stays on California's Central Coast.";
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
