@@ -51,52 +51,60 @@ const seamlessFeatures = [
 
 const testimonials = [
   {
-    name: 'Stacey',
+    name: 'Stacey W.',
     property: 'La Casita',
     date: 'July 2025',
-    text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach and many restaurants within walking distance. We parked our car and never had to drive again the whole weekend.",
+    channel: 'Vrbo',
+    text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach. We parked our car and never had to drive again the whole weekend.",
   },
   {
-    name: 'Guest',
+    name: 'Verified Guest',
     property: 'Casa Azul',
     date: 'October 2024',
-    text: "The most beautiful rental in a magical town! I felt completely safe with the location and the privacy. The cottage is exactly like the images — immaculately presented with everything you need.",
+    channel: 'Airbnb',
+    text: "The most beautiful rental in a magical town! I felt completely safe with the location and the privacy. Immaculately presented with everything you need.",
   },
   {
-    name: 'Guest',
+    name: 'Verified Guest',
     property: 'Shoreline Suite',
     date: 'November 2024',
-    text: "We could not have asked for more. Located steps from the beach, coffee, and wine shops. I really appreciated the incredible cleanliness — everything felt spotless and polished.",
+    channel: 'Airbnb',
+    text: "We could not have asked for more. Steps from the beach, coffee, and wine shops. Everything felt spotless and polished.",
   },
   {
-    name: 'Guest',
+    name: 'Verified Guest',
     property: 'Emberlight',
     date: 'September 2024',
-    text: "Everything was clean, beautiful, quiet — just as described. Be careful lying on the bed though. It is AMAZINGLY comfortable, so it might get in the way of any pre-set plans!",
+    channel: 'Airbnb',
+    text: "Everything was clean, beautiful, quiet — just as described. The bed is AMAZINGLY comfortable, so it might get in the way of any pre-set plans!",
   },
   {
-    name: 'Todd',
+    name: 'Todd S.',
     property: 'Hummingbird House',
     date: 'March 2026',
-    text: "We had a great stay. My kids loved the proximity to the beach and all the toys in the storage. The house was very clean and well stocked. We hope to return again soon.",
+    channel: 'Vrbo',
+    text: "My kids loved the proximity to the beach and all the toys in the storage. The house was very clean and well stocked. We hope to return again soon.",
   },
   {
-    name: 'Jennifer',
+    name: 'Jennifer A.',
     property: 'The Pine House',
     date: 'January 2026',
-    text: "The host was very responsive. We enjoyed our stay and will definitely be coming back. Great location, close to everything. Comfortable beds and very clean home.",
+    channel: 'Vrbo',
+    text: "The host was very responsive. Great location, close to everything. Comfortable beds and very clean home. Will definitely be coming back.",
   },
   {
-    name: 'Andrea',
+    name: 'Andrea H.',
     property: 'Monterey Heights',
     date: 'September 2025',
-    text: "I really loved this quiet little bungalow. Super clean and simple with everything I needed. Extremely quiet street and comfortable mattress.",
+    channel: 'Vrbo',
+    text: "Super clean and simple with everything I needed. Extremely quiet street and comfortable mattress. Perfect for a couple.",
   },
   {
-    name: 'Stanley',
+    name: 'Stanley L.',
     property: 'The Nest',
     date: 'September 2025',
-    text: "Extremely comfortable and would definitely stay again. The host responded to all communications immediately and resolved requests right away. Very professional.",
+    channel: 'Vrbo',
+    text: "Extremely comfortable and would definitely stay again. The host responded immediately and resolved requests right away. Very professional.",
   },
 ];
 
@@ -233,7 +241,7 @@ const WhyChooseUsPage = () => {
                   </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   {testimonials.map((testimonial, index) => (
                     <motion.div
                       key={index}
@@ -241,19 +249,22 @@ const WhyChooseUsPage = () => {
                       animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.08 }}
                       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
-                      className="bg-primary-foreground/20 backdrop-blur-sm p-6 rounded-xl flex flex-col"
+                      className="bg-primary-foreground/20 backdrop-blur-sm px-5 py-4 rounded-xl flex flex-col"
                     >
-                      <div className="flex gap-0.5 mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                        ))}
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-gold text-gold" />
+                          ))}
+                        </div>
+                        <span className="text-primary-foreground/40 text-[10px] uppercase tracking-wider">{testimonial.channel}</span>
                       </div>
-                      <p className="text-primary-foreground/90 text-sm mb-4 leading-relaxed">
+                      <p className="text-primary-foreground/90 text-xs mb-3 leading-relaxed">
                         "{testimonial.text}"
                       </p>
-                      <div className="border-t border-primary-foreground/20 pt-3 mt-auto">
-                        <span className="font-semibold text-sm">{testimonial.name}</span>
-                        <p className="text-primary-foreground/60 text-xs mt-1">{testimonial.property} · {testimonial.date}</p>
+                      <div className="border-t border-primary-foreground/20 pt-2 mt-auto">
+                        <span className="font-semibold text-xs">{testimonial.name}</span>
+                        <p className="text-primary-foreground/50 text-[10px] mt-0.5">{testimonial.property} · {testimonial.date}</p>
                       </div>
                     </motion.div>
                   ))}
