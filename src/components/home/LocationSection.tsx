@@ -90,19 +90,19 @@ export function LocationSection({ data }: { data?: any }) {
         <div className="absolute inset-0 bg-black/20 transition-colors duration-500" />
 
         {/* Glass Content Box */}
-        <div className="absolute bottom-0 right-0 w-full md:w-[600px] lg:w-[650px] bg-white/85 backdrop-blur-md border-t border-l border-white/40 p-8 md:p-12 lg:p-16 rounded-tl-[4rem] shadow-elevated z-10 transition-all duration-500">
+        <div className="absolute bottom-0 right-0 w-full md:w-[700px] lg:w-[800px] bg-white/85 backdrop-blur-md border-t border-l border-white/40 p-6 md:p-8 lg:p-10 rounded-tl-[3rem] shadow-elevated z-10 transition-all duration-500">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
             <h2
-              className="font-serif text-4xl md:text-5xl font-light text-foreground mb-8 text-right"
+              className="font-serif text-3xl md:text-4xl font-light text-foreground mb-6 text-right"
               dangerouslySetInnerHTML={{ __html: data?.heading || "Where you can<br />find us" }}
             />
 
             {/* Buttons Row */}
-            <div className="flex flex-wrap justify-end gap-2 md:gap-3 mb-8">
+            <div className="flex flex-wrap justify-end gap-2 md:gap-3 mb-6">
               {mergedLocations.map((loc: any, index: number) => (
                 <button
                   key={loc.id + index}
@@ -121,7 +121,7 @@ export function LocationSection({ data }: { data?: any }) {
             </div>
 
             {/* Dynamic Content */}
-            <div className="text-right mb-8">
+            <div className="text-right mb-6">
               <motion.div
                 key={activeLocation.name}
                 initial={{ opacity: 0, y: 10 }}
@@ -135,7 +135,7 @@ export function LocationSection({ data }: { data?: any }) {
             </div>
 
             {/* Map Container - Floating 3D Look */}
-            <div className="relative w-full h-[240px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500 isolate">
+            <div className="relative w-full h-[200px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500 isolate">
               <motion.div
                 key={activeLocation.id} // Re-mount map when location changes to force re-center
                 initial={{ opacity: 0 }}
@@ -158,7 +158,7 @@ export function LocationSection({ data }: { data?: any }) {
               </a>
             </div>
 
-            <div className="mt-8 text-right">
+            <div className="mt-6 text-right">
               <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-end gap-2 font-medium">
                 <MapPin className="w-3 h-3" /> California Central Coast
               </p>
