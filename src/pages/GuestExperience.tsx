@@ -178,7 +178,7 @@ const GuestExperiencePage = () => {
                     Featured Partners
                   </h2>
                   <p className="text-muted-foreground text-lg">
-                    Hand-picked local favorites that our guests love.
+                    Exclusive perks for every Solmaré guest.
                   </p>
                 </motion.div>
 
