@@ -330,29 +330,25 @@ const ForHomeownersPage = () => {
                     </motion.div>
                   </div>
 
-                  {/* Right Benefits - Stacking Cards */}
-                  <div className="relative flex flex-col gap-8 pb-12">
+                  {/* Right Benefits - 2x3 Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     {benefits.map((benefit, index) => (
                       <motion.div
                         key={index}
-                        initial={{ opacity: 0, y: 50 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={isBenefitsInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                        className="bg-card p-8 md:p-12 rounded-3xl shadow-lg border border-border/50 sticky top-24 lg:top-32 min-h-[280px] flex flex-col justify-center"
+                        transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
+                        className="bg-card p-6 rounded-2xl shadow-soft border border-border/50"
                       >
-                        <div className="flex flex-col gap-6">
-                          <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center shrink-0">
-                            <benefit.icon className="w-7 h-7 text-ocean" />
-                          </div>
-                          <div>
-                            <h3 className="font-serif text-2xl md:text-3xl font-semibold text-foreground mb-4">
-                              {benefit.title}
-                            </h3>
-                            <p className="text-muted-foreground text-lg leading-relaxed">
-                              {benefit.description}
-                            </p>
-                          </div>
+                        <div className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center mb-4">
+                          <benefit.icon className="w-5 h-5 text-ocean" />
                         </div>
+                        <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                          {benefit.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                          {benefit.description}
+                        </p>
                       </motion.div>
                     ))}
                   </div>
