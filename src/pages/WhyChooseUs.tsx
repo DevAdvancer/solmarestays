@@ -11,22 +11,27 @@ import { Sparkles, ShieldCheck, MapPin, Clock, BadgeCheck, Smartphone, Star, Mes
 import aboutHeroImage from '/about-us/living-room-beams.jpg';
 import placeHeroImage from '/about-us/fire-pit.jpg';
 
-// Core Values - Addressing top 3 guest fears
+// Core Values - The Solmaré Standard
 const values = [
   {
+    icon: MapPin,
+    title: 'Rooted in the Central Coast',
+    description: 'We live here, operate here, and know every property personally. No remote management. No middlemen.',
+  },
+  {
     icon: Sparkles,
-    title: 'Curated Comfort',
-    description: 'From Parachute linens to locally sourced welcome baskets, every detail is hand-selected to make you feel spoiled the moment you walk through the door.',
+    title: 'Designed for Real Comfort',
+    description: 'Every home is curated for the way guests actually use a space — not staged for photos and forgotten.',
   },
   {
     icon: ShieldCheck,
-    title: 'The 50-Point Clean',
-    description: "We don't just 'clean.' We inspect. Every home undergoes a rigorous 50-point video inspection before your arrival to guarantee it is spotless and staged to perfection.",
+    title: 'Accountable at Every Step',
+    description: 'From booking to checkout, every detail is owned by someone on our team.',
   },
   {
-    icon: MapPin,
-    title: 'Your Local Concierge',
-    description: "We live here. Whether you need a reservation at the best winery or a secret beach recommendation, our team is your boots-on-the-ground guide to the Central Coast.",
+    icon: Star,
+    title: 'Built for Guests Who Come Back',
+    description: "Our standard isn't a checklist. It's the reason our guests book again.",
   },
 ];
 
@@ -199,7 +204,7 @@ const WhyChooseUsPage = () => {
                   </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                   {values.map((value, index) => (
                     <motion.div
                       key={index}
