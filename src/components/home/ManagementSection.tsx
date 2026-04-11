@@ -1,18 +1,27 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { MapPin, Sparkles, ShieldCheck, Star } from 'lucide-react';
 
-const standards = [
+const pillars = [
   {
-    title: 'Professionally Managed Homes',
-    description: 'Every Solmaré property is locally managed with consistent standards and hands-on oversight.',
+    icon: MapPin,
+    title: 'Rooted in the Central Coast',
+    description: 'We live here, operate here, and know every property personally. No remote management. No middlemen.',
   },
   {
-    title: 'Designed for Real Stays',
-    description: 'Our homes are curated for comfort, flow, and repeat visits—not high-volume turnover.',
+    icon: Sparkles,
+    title: 'Designed for Real Comfort',
+    description: 'Every home is curated for the way guests actually use a space — not staged for photos and forgotten.',
   },
   {
-    title: 'Care Without Compromise',
-    description: 'From guest communication to property care, every stay is handled with accountability and attention.',
+    icon: ShieldCheck,
+    title: 'Accountable at Every Step',
+    description: 'From booking to checkout, every detail is owned by someone on our team.',
+  },
+  {
+    icon: Star,
+    title: 'Built for Guests Who Come Back',
+    description: "Our standard isn't a checklist. It's the reason our guests book again.",
   },
 ];
 
@@ -21,10 +30,6 @@ export function ManagementSection({ data }: { data?: any }) {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const heading = data?.heading || "THE SOLMARÉ STANDARD";
-  const displayStandards = data?.features?.map((f: any) => ({
-    title: f.title,
-    description: f.description
-  })) || standards;
 
   return (
     <section ref={ref} className="section-padding bg-secondary relative">
@@ -41,9 +46,9 @@ export function ManagementSection({ data }: { data?: any }) {
           </h2>
         </motion.div>
 
-        {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {displayStandards.map((standard: any, index: number) => (
+        {/* 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {pillars.map((pillar, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -51,11 +56,14 @@ export function ManagementSection({ data }: { data?: any }) {
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               className="text-center"
             >
-              <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
-                {standard.title}
+              <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
+                <pillar.icon className="w-7 h-7 text-ocean" />
+              </div>
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-3 leading-tight">
+                {pillar.title}
               </h3>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light">
-                {standard.description}
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {pillar.description}
               </p>
             </motion.div>
           ))}
