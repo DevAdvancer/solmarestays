@@ -113,30 +113,30 @@ export function HeroSection({ data }: { data?: any }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white shadow-elevated relative z-50 rounded-xl w-[300px]"
+                className="bg-white/10 backdrop-blur-md border border-white/15 shadow-2xl relative z-50 rounded-2xl w-[300px]"
               >
                 {/* Expanded Content */}
                 <div className="p-4 min-w-[300px]">
-                  <h3 className="font-serif text-base font-medium text-foreground mb-3">
+                  <h3 className="font-serif text-base font-medium text-white mb-3">
                     Find Your Stay
                   </h3>
 
                   <div className="space-y-4">
                     {/* Date Range Picker */}
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wider">
+                      <label className="block text-xs font-medium text-white/70 mb-1.5 uppercase tracking-wider">
                         Dates
                       </label>
                       <Popover open={datePopoverOpen} onOpenChange={setDatePopoverOpen}>
                         <PopoverTrigger asChild>
                           <button
                             className={cn(
-                              'w-full flex items-center gap-2 p-3 border border-border rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors text-left',
-                              (checkIn || checkOut) && 'text-foreground'
+                              'w-full flex items-center gap-2 p-3 border border-white/20 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-left',
+                              (checkIn || checkOut) && 'text-white'
                             )}
                           >
-                            <Calendar className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                            <span className={cn('text-sm', !(checkIn || checkOut) && 'text-muted-foreground')}>
+                            <Calendar className="w-4 h-4 text-white/60 flex-shrink-0" />
+                            <span className={cn('text-sm', !(checkIn || checkOut) && 'text-white/60')}>
                               {checkIn && checkOut
                                 ? `${format(checkIn, 'MMM d')} → ${format(checkOut, 'MMM d')}`
                                 : checkIn
@@ -161,17 +161,17 @@ export function HeroSection({ data }: { data?: any }) {
 
                     {/* Guests Dropdown */}
                     <div>
-                      <label className="block text-xs font-medium text-muted-foreground mb-1.5 uppercase tracking-wider">
+                      <label className="block text-xs font-medium text-white/70 mb-1.5 uppercase tracking-wider">
                         Guests
                       </label>
                       <Popover open={guestPopoverOpen} onOpenChange={setGuestPopoverOpen}>
                         <PopoverTrigger asChild>
-                          <button className="w-full flex items-center justify-between gap-2 p-3 border border-border rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors">
+                          <button className="w-full flex items-center justify-between gap-2 p-3 border border-white/20 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
                             <div className="flex items-center gap-2">
-                              <Users className="w-4 h-4 text-muted-foreground" />
-                              <span className="text-sm text-foreground">{guests} Guest{guests > 1 ? 's' : ''}</span>
+                              <Users className="w-4 h-4 text-white/60" />
+                              <span className="text-sm text-white">{guests} Guest{guests > 1 ? 's' : ''}</span>
                             </div>
-                            <ChevronDown className="w-4 h-4 text-muted-foreground" />
+                            <ChevronDown className="w-4 h-4 text-white/60" />
                           </button>
                         </PopoverTrigger>
                         <PopoverContent className="w-[200px] p-2 z-[60]" align="start">
@@ -201,13 +201,13 @@ export function HeroSection({ data }: { data?: any }) {
                     {/* Search Button (Standard) */}
                     <Button
                       size="lg"
-                      className="w-full bg-foreground text-white hover:bg-foreground/90 rounded-lg h-12 text-base font-medium mt-2"
+                      className="w-full bg-white text-foreground hover:bg-white/90 rounded-lg h-12 text-base font-medium mt-2"
                       onClick={handleSearch}
                     >
                       <Search className="w-4 h-4 mr-2" />
                       Book Now
                     </Button>
-                    <p className="text-[11px] text-muted-foreground/70 text-center mt-2 leading-relaxed">
+                    <p className="text-[11px] text-white/50 text-center mt-2 leading-relaxed">
                       Book Direct & Save up to 15%<br />Best Rate Guaranteed
                     </p>
                   </div>
