@@ -134,7 +134,7 @@ const GuestExperiencePage = () => {
                   <span className="inline-block text-sm font-semibold tracking-widest text-white/70 uppercase mb-4">
                     Guest Experience
                   </span>
-                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-white mb-6">
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-6">
                     More Than a Place to Stay
                   </h1>
                   <p className="text-lg text-white/80 leading-relaxed mb-8">

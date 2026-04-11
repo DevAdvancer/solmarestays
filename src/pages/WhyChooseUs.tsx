@@ -129,7 +129,7 @@ const WhyChooseUsPage = () => {
                   transition={{ duration: 0.8 }}
                   className="max-w-xl"
                 >
-                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-white mb-6">
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-6">
                     The Solmaré Standard.
                   </h1>
                   <p className="text-lg text-white/80 leading-relaxed mb-8">

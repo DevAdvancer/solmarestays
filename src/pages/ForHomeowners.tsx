@@ -52,7 +52,7 @@ const ownerReviews = [
     property: 'La Casita | Avila Beach',
     stats: ['+22% ADR Lift', '4.9★ Rating'],
     rating: 5,
-    text: 'Our experience with Solmare has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. They are incredibly responsive and detail-oriented, consistently going above and beyond to ensure everything runs smoothly. After previously using another local company, the difference is clear—this has been a far superior, easier, and more professional experience in every way.',
+    text: 'Our experience with Solmaré Stays has been exceptional. Their attentive service, transparency, and deep market insight make vacation rental ownership truly hands-off for us. They are incredibly responsive and detail-oriented, consistently going above and beyond to ensure everything runs smoothly. After previously using another local company, the difference is clear—this has been a far superior, easier, and more professional experience in every way.',
   },
   {
     name: 'Jane M., Owner',
@@ -173,7 +173,7 @@ const ForHomeownersPage = () => {
                   className="max-w-xl"
                 >
                   <span className="inline-block text-sm font-semibold tracking-widest text-white/70 uppercase mb-4">For Property Owners</span>
-                  <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-white mb-6">
+                  <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-white mb-6">
                     Elevate Your Property.<br />
                     Maximize Your Returns.
                   </h1>
