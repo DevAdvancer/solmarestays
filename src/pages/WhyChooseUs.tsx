@@ -305,11 +305,14 @@ const WhyChooseUsPage = () => {
                     <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6">
                       More Than a Place to Stay.
                     </h2>
-                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic">
-                      "We believe a vacation home should feel better than your own home. That means chef-ready kitchens, professional interior design, and a level of cleanliness that rivals 5-star hotels. No clutter, no guesswork—just the coast."
+                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic mb-6">
+                      "Solmaré was built on the idea that the Central Coast deserves a better kind of rental company. One that actually knows the homes, knows the area, and knows the people who make this place worth visiting. Every property in our collection is different by design, and every stay comes with access to the local experiences most visitors never find."
                     </p>
-                    <p className="text-muted-foreground text-lg md:text-xl leading-relaxed italic text-right">
-                      — Kyle Van Til, Founder
+                    <p className="text-foreground font-semibold text-base">
+                      Kyle Van Til
+                    </p>
+                    <p className="text-muted-foreground text-sm">
+                      Founder, Solmaré Stays
                     </p>
                   </motion.div>
                 </div>
