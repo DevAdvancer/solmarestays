@@ -51,11 +51,11 @@ const seamlessFeatures = [
 
 const testimonials = [
   {
-    name: 'Stacey W.',
+    name: 'Carolyn M.',
     property: 'La Casita',
-    date: 'July 2025',
+    date: 'April 2025',
     channel: 'Airbnb',
-    text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach. We parked our car and never had to drive again the whole weekend.",
+    text: "This is such a great house, plenty of space, super clean and very conveniently located to access the beach, shops and restaurants! We will definitely want to stay here again!",
   },
   {
     name: 'Verified Guest',
@@ -72,11 +72,11 @@ const testimonials = [
     text: "We could not have asked for more. Steps from the beach, coffee, and wine shops. I really appreciated the incredible cleanliness — everything felt spotless and polished.",
   },
   {
-    name: 'Verified Guest',
+    name: 'Shamaka N.',
     property: 'Emberlight',
-    date: 'December 2024',
-    channel: 'Vrbo',
-    text: "Everything was clean, beautiful, quiet — just as described. The bed is AMAZINGLY comfortable, so it might get in the way of any pre-set plans!",
+    date: 'December 2025',
+    channel: 'Airbnb',
+    text: "The property looked like the pictures, clean and conveniently located steps from the beach. Check-in and communication was easy. I'll definitely stay here again.",
   },
   {
     name: 'Todd S.',
@@ -86,18 +86,18 @@ const testimonials = [
     text: "My kids loved the proximity to the beach and all the toys in the storage. The house was very clean and well stocked. We hope to return again soon.",
   },
   {
-    name: 'Stanley L.',
-    property: 'The Nest',
-    date: 'September 2025',
-    channel: 'Airbnb',
-    text: "Extremely comfortable and would definitely stay again. The host responded to all communications immediately and resolved requests right away. Very professional.",
-  },
-  {
     name: 'Verified Guest',
     property: 'The Deckhouse',
     date: 'December 2024',
     channel: 'Vrbo',
     text: "Extremely clean and well maintained. Incredible location — two minutes from the Pacific. The decor is beautiful.",
+  },
+  {
+    name: 'Andrea H.',
+    property: 'Monterey Heights',
+    date: 'September 2025',
+    channel: 'Airbnb',
+    text: "I really loved this quiet little bungalow. Super clean and simple and had everything I needed. Very close to Cal Poly campus. Extremely quiet street and comfortable mattress.",
   },
   {
     name: 'Jennifer A.',
