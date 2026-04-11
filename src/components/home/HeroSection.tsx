@@ -208,7 +208,7 @@ export function HeroSection({ data }: { data?: any }) {
                       Book Now
                     </Button>
                     <p className="text-[11px] text-muted-foreground/70 text-center mt-2">
-                      Save up to 15%
+                      Book Direct & Save up to 15% — Best Rate Guaranteed
                     </p>
                   </div>
                 </div>
