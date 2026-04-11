@@ -15,7 +15,7 @@ const locations = [
     name: 'Avila Beach',
     image: avilaImg,
     imagePosition: 'center 30%',
-    description: 'A coastal sanctuary known for its calm waters, sunny micro-climate, and walkable promenade. Experience the best of beachside living.',
+    description: 'A coastal sanctuary known for its calm waters, sunny micro-climate, and walkable beachfront promenade. The sunniest spot on the Central Coast.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Avila+Beach,+CA',
   },
   {
@@ -23,7 +23,7 @@ const locations = [
     name: 'Arroyo Grande',
     image: pismoImg,
     imagePosition: 'center 40%',
-    description: 'A charming village nestled between the coast and rolling hills. Surrounded by award-winning wineries, scenic trails, and the historic Village of Arroyo Grande.',
+    description: 'A charming village nestled between the coast and rolling hills. Award-winning wineries, scenic trails, and a historic downtown.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Arroyo+Grande,+CA',
   },
   {
@@ -31,7 +31,7 @@ const locations = [
     name: 'San Luis Obispo',
     image: sloImg,
     imagePosition: 'center bottom',
-    description: 'Where historic charm meets modern sophistication. Explore world-class vineyards and a vibrant downtown nestled in the foothills.',
+    description: 'Where historic charm meets modern sophistication. World-class vineyards and a vibrant downtown nestled in the coastal foothills.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=San+Luis+Obispo,+CA',
   },
 ];
