@@ -72,7 +72,7 @@ export function LocationSection({ data }: { data?: any }) {
   return (
     <section ref={ref} className="relative bg-background overflow-hidden">
       {/* Full Screen Image Background with Transition */}
-      <div className="relative h-[70vh] min-h-[500px] max-h-[650px]">
+      <div className="relative h-[75vh] min-h-[550px] max-h-[750px]">
         <AnimatePresence mode="wait">
           <motion.img
             key={activeLocation.image}
