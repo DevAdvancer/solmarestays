@@ -124,7 +124,7 @@ const GuestExperiencePage = () => {
                 <div className="absolute inset-0 bg-black/20" />
               </div>
 
-              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/15 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-white/20">
+              <div className="absolute bottom-6 left-6 md:bottom-20 md:left-20 w-[calc(100%-3rem)] md:w-[600px] lg:w-[700px] bg-white/10 backdrop-blur-sm p-8 md:p-12 rounded-[2.5rem] border border-white/10">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
                   animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
