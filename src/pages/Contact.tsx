@@ -149,7 +149,7 @@ const ContactPage = () => {
             <motion.img
               src={contactHeroImage}
               alt="California Central Coast landscape"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-[center_25%]"
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
