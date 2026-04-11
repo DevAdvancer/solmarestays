@@ -54,7 +54,7 @@ const testimonials = [
     name: 'Stacey W.',
     property: 'La Casita',
     date: 'July 2025',
-    channel: 'Vrbo',
+    channel: 'Direct',
     text: "Beds were super comfortable. House is big and well furnished — it's even better than the pictures. One block to the beach. We parked our car and never had to drive again the whole weekend.",
   },
   {
@@ -82,28 +82,28 @@ const testimonials = [
     name: 'Todd S.',
     property: 'Hummingbird House',
     date: 'March 2026',
-    channel: 'Vrbo',
+    channel: 'Direct',
     text: "My kids loved the proximity to the beach and all the toys in the storage. The house was very clean and well stocked. We hope to return again soon.",
   },
   {
     name: 'Jennifer A.',
     property: 'The Pine House',
     date: 'January 2026',
-    channel: 'Vrbo',
+    channel: 'Direct',
     text: "The host was very responsive. Great location, close to everything. Comfortable beds and very clean home. Will definitely be coming back.",
   },
   {
     name: 'Andrea H.',
     property: 'Monterey Heights',
     date: 'September 2025',
-    channel: 'Vrbo',
+    channel: 'Direct',
     text: "Super clean and simple with everything I needed. Extremely quiet street and comfortable mattress. Perfect for a couple.",
   },
   {
     name: 'Stanley L.',
     property: 'The Nest',
     date: 'September 2025',
-    channel: 'Vrbo',
+    channel: 'Direct',
     text: "Extremely comfortable and would definitely stay again. The host responded immediately and resolved requests right away. Very professional.",
   },
 ];
@@ -152,7 +152,7 @@ const WhyChooseUsPage = () => {
                 <motion.img
                   src={aboutHeroImage}
                   alt="California Central Coast"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-[center_70%]"
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
@@ -241,7 +241,7 @@ const WhyChooseUsPage = () => {
                   </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-fr">
                   {testimonials.map((testimonial, index) => (
                     <motion.div
                       key={index}
