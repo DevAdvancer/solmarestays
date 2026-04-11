@@ -226,7 +226,7 @@ const CollectionPage = () => {
         </section>
 
         {/* Properties Grid */}
-        <section className="section-padding">
+        <section className="py-10 md:py-14">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             {/* Results count */}
             {!isLoading && !error && (
