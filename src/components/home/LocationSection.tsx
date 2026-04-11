@@ -90,15 +90,15 @@ export function LocationSection({ data }: { data?: any }) {
         <div className="absolute inset-0 bg-black/20 transition-colors duration-500" />
 
         {/* Glass Content Box */}
-        <div className="absolute bottom-0 right-0 w-full md:w-[700px] lg:w-[800px] bg-white/85 backdrop-blur-md border-t border-l border-white/40 p-6 md:p-8 lg:p-10 rounded-tl-[3rem] shadow-elevated z-10 transition-all duration-500">
+        <div className="absolute bottom-0 right-0 w-full md:w-[700px] lg:w-[800px] bg-black/30 backdrop-blur-sm border-t border-l border-white/10 p-6 md:p-8 lg:p-10 rounded-tl-[3rem] shadow-2xl z-10 transition-all duration-500">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
             <h2
-              className="font-serif text-3xl md:text-4xl font-light text-foreground mb-6 text-right"
-              dangerouslySetInnerHTML={{ __html: data?.heading || "Where you can<br />find us" }}
+              className="font-serif text-3xl md:text-4xl font-light text-white mb-6 text-right whitespace-nowrap"
+              dangerouslySetInnerHTML={{ __html: data?.heading || "Where you can find us" }}
             />
 
             {/* Buttons Row */}
@@ -111,8 +111,8 @@ export function LocationSection({ data }: { data?: any }) {
                   className={cn(
                     "rounded-full px-6 py-2.5 text-sm font-medium transition-all duration-300 hover-3d",
                     index === activeLocationIndex
-                      ? "bg-primary text-white shadow-medium"
-                      : "bg-white/50 text-foreground hover:bg-white/80"
+                      ? "bg-white text-foreground shadow-medium"
+                      : "bg-white/20 text-white hover:bg-white/30"
                   )}
                 >
                   {loc.name}
@@ -128,7 +128,7 @@ export function LocationSection({ data }: { data?: any }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
+                <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light">
                   {activeLocation.description}
                 </p>
               </motion.div>
@@ -159,7 +159,7 @@ export function LocationSection({ data }: { data?: any }) {
             </div>
 
             <div className="mt-6 text-right">
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-end gap-2 font-medium">
+              <p className="text-xs uppercase tracking-[0.2em] text-white/60 flex items-center justify-end gap-2 font-medium">
                 <MapPin className="w-3 h-3" /> California Central Coast
               </p>
             </div>
