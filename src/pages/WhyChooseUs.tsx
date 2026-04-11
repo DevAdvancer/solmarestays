@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Sparkles, ShieldCheck, MapPin, Clock, BadgeCheck, Smartphone, Star, MessageCircle } from 'lucide-react';
-import aboutHeroImage from '/about-us/outside-chair.jpg';
+import aboutHeroImage from '/about-us/living-room-beams.jpg';
 import placeHeroImage from '/about-us/fire-pit.jpg';
 
 // Core Values - Addressing top 3 guest fears
