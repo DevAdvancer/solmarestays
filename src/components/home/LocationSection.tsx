@@ -3,7 +3,7 @@ import { useRef, useState, useMemo } from 'react';
 import avilaImg from '/home/avila.webp';
 import sloImg from '/home/san-luis.webp';
 import pismoImg from '/home/pismo-beach.webp';
-import { MapPin, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useProperties } from '@/hooks/useProperties';
@@ -140,7 +140,7 @@ export function LocationSection({ data }: { data?: any }) {
             </div>
 
             {/* Map Container - Floating 3D Look */}
-            <div className="relative w-full h-[200px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500 isolate">
+            <div className="relative w-full h-[250px] rounded-2xl overflow-hidden shadow-elevated bg-secondary/30 group hover:scale-[1.01] transition-transform duration-500 isolate">
               <motion.div
                 key={activeLocation.id} // Re-mount map when location changes to force re-center
                 initial={{ opacity: 0 }}
@@ -163,11 +163,6 @@ export function LocationSection({ data }: { data?: any }) {
               </a>
             </div>
 
-            <div className="mt-6 text-right">
-              <p className="text-xs uppercase tracking-[0.2em] text-white/60 flex items-center justify-end gap-2 font-medium">
-                <MapPin className="w-3 h-3" /> California Central Coast
-              </p>
-            </div>
           </motion.div>
         </div>
       </div>
