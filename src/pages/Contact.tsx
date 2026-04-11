@@ -144,7 +144,7 @@ const ContactPage = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section ref={heroRef} className="relative min-h-[60vh] lg:min-h-[70vh] flex items-center">
+        <section ref={heroRef} className="relative min-h-[35vh] lg:min-h-[40vh] flex items-center">
           <div className="absolute inset-0">
             <motion.img
               src={contactHeroImage}
