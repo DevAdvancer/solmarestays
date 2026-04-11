@@ -116,7 +116,7 @@ const GuestExperiencePage = () => {
                 <motion.img
                   src={servicesHeroImage}
                   alt="Central Coast Experience"
-                  className="w-full h-full object-cover object-[center_30%]"
+                  className="w-full h-full object-cover object-bottom"
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
