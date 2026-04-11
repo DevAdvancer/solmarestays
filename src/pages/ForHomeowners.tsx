@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { SEO } from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, Shield, Users, BarChart3, Calendar, Headphones, Check, Star, Quote } from 'lucide-react';
-import homeownersHeroImage from '/homeowners/drone.jpg';
+import homeownersHeroImage from '/homeowners/management-hero.jpg';
 
 
 // 6 Pillars - Sharpened Copy
