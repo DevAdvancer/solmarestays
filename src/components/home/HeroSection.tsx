@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
@@ -10,12 +10,12 @@ import { useBooking } from '@/context/BookingContext';
 import { cn } from '@/lib/utils';
 
 import heroImage1 from '/home/home-12.webp'
-import heroImage2 from '/home/home-29.webp'
+import heroImage2 from '/home/home-casitas-dusk.jpg'
 import heroImage3 from '/home/home-09.webp'
 
 const defaultSlides = [
   { image: heroImage1, alt: 'Luxury coastal living room' },
-  { image: heroImage2, alt: 'California Central Coast pier' },
+  { image: heroImage2, alt: 'Casitas Estate at dusk' },
   { image: heroImage3, alt: 'Coastal bedroom with ocean view' },
 ];
 
@@ -34,13 +34,6 @@ export function HeroSection({ data }: { data?: any }) {
   const slides = defaultSlides; // Keeping slides static for now as Sanity image handling requires a builder
   const heading = data?.title || "Where the Sun Meets<br />the Sea in Style";
   const subheading = data?.subtitle || "Curated Boutique Management & Elevated Stays on the Central Coast.";
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
