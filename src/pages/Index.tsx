@@ -44,12 +44,11 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection data={heroData} />
-        <StatsSection data={statsData} />
-        <PropertiesSection />
         <ManagementSection data={managementData} />
+        <PropertiesSection />
+        <StatsSection data={statsData} />
         <LocationSection data={locationData} />
         <ReviewsSection data={reviewsData} />
-        <CTASection data={ctaData} />
       </main>
       <Footer />
     </div>
