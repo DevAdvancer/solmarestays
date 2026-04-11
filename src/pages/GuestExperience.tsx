@@ -227,7 +227,7 @@ const GuestExperiencePage = () => {
                     Best of the Coast
                   </h2>
                   <p className="text-muted-foreground text-lg">
-                    Our curated guide to the Central Coast's finest experiences.
+                    Our team's honest guide to the Central Coast. The spots worth your time.
                   </p>
                 </motion.div>
 
@@ -313,40 +313,6 @@ const GuestExperiencePage = () => {
               </div>
             </section>
 
-            {/* SECTION 6: Final CTA */}
-            <section className="section-padding bg-primary text-primary-foreground">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="max-w-3xl mx-auto"
-                >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-6">
-                    Ready to Experience the Central Coast, Thoughtfully Curated?
-                  </h2>
-                  <p className="text-primary-foreground/80 text-lg mb-8">
-                    Discover coastal homes paired with local experiences designed to make your stay unforgettable.
-                  </p>
-                  <Button variant="secondary" size="xl" asChild>
-                    <Link to="/collection">Explore Our Stays</Link>
-                  </Button>
-                </motion.div>
-              </div>
-            </section>
-
-            {/* Partner Micro-Copy */}
-            <section className="py-8 bg-primary">
-              <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-                <p className="text-sm text-white">
-                  Interested in partnering with Solmaré? We're always open to collaborating with local businesses that share our commitment to quality and guest experience.{' '}
-                  <Link to="/contact" className="underline hover:opacity-100 transition-opacity font-medium">
-                    Contact Us
-                  </Link>
-                </p>
-              </div>
-            </section>
           </>
         )}
       </main>
