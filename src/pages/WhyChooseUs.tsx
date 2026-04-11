@@ -14,24 +14,19 @@ import placeHeroImage from '/about-us/fire-pit.jpg';
 // Core Values - The Solmaré Standard
 const values = [
   {
-    icon: MapPin,
-    title: 'Rooted in the Central Coast',
-    description: 'We live here, operate here, and know every property personally. No remote management. No middlemen.',
-  },
-  {
     icon: Sparkles,
-    title: 'Designed for Real Comfort',
-    description: 'Every home is curated for the way guests actually use a space — not staged for photos and forgotten.',
+    title: 'Curated Comfort',
+    description: "From Parachute linens to locally sourced welcome baskets, every detail in a Solmaré home is chosen with intention. We think about the way guests actually use a space — the morning coffee routine, the late night wind-down, the midday beach return. Every home is stocked, staged, and styled so that comfort is never something you have to look for.",
   },
   {
     icon: ShieldCheck,
-    title: 'Accountable at Every Step',
-    description: 'From booking to checkout, every detail is owned by someone on our team.',
+    title: 'Inspected, Not Just Cleaned',
+    description: "Cleaning is the baseline. Our 50-point video inspection goes further — every surface, every amenity, every corner is checked and documented before you arrive. We don't send a guest into a home we haven't personally verified. That standard applies to every property, every stay, no exceptions.",
   },
   {
-    icon: Star,
-    title: 'Built for Guests Who Come Back',
-    description: "Our standard isn't a checklist. It's the reason our guests book again.",
+    icon: MapPin,
+    title: 'We Live Here',
+    description: "Our team lives and works on the Central Coast. That means when you need a winery reservation, a hidden beach recommendation, or just someone to pick up the phone, we're already here. We know the spots that don't show up on social media, the locals worth talking to, and the things that make this place worth coming back to. That knowledge is part of every stay.",
   },
 ];
 
@@ -204,7 +199,7 @@ const WhyChooseUsPage = () => {
                   </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {values.map((value, index) => (
                     <motion.div
                       key={index}
