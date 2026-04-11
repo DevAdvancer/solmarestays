@@ -99,7 +99,7 @@ const CollectionPage = () => {
       <Header />
       <main className="pt-0">
         {/* Hero */}
-        <section className="pt-28 md:pt-32 pb-10 md:pb-14 bg-secondary">
+        <section className="pt-24 md:pt-28 pb-8 md:pb-10 bg-secondary">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
