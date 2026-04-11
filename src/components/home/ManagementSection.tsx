@@ -47,19 +47,19 @@ export function ManagementSection({ data }: { data?: any }) {
         </motion.div>
 
         {/* 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 auto-rows-fr">
           {pillars.map((pillar, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="text-center"
+              className="text-center flex flex-col"
             >
               <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
                 {pillar.title}
               </h3>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light">
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light flex-1">
                 {pillar.description}
               </p>
             </motion.div>
