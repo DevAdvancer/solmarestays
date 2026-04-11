@@ -56,10 +56,10 @@ export function ManagementSection({ data }: { data?: any }) {
               transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
               className="text-center flex flex-col"
             >
-              <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4 leading-tight">
+              <h3 className="font-serif text-lg md:text-xl font-semibold text-foreground mb-4 leading-tight min-h-[3.5rem] flex items-end justify-center">
                 {pillar.title}
               </h3>
-              <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light flex-1">
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed font-light flex-1">
                 {pillar.description}
               </p>
             </motion.div>
