@@ -152,7 +152,7 @@ const WhyChooseUsPage = () => {
                 <motion.img
                   src={aboutHeroImage}
                   alt="California Central Coast"
-                  className="w-full h-full object-cover object-[center_70%]"
+                  className="w-full h-full object-cover object-[center_85%]"
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
