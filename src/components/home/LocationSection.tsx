@@ -14,6 +14,7 @@ const locations = [
     id: 'avila',
     name: 'Avila Beach',
     image: avilaImg,
+    imagePosition: 'center 30%',
     description: 'A coastal sanctuary known for its calm waters, sunny micro-climate, and walkable promenade. Experience the best of beachside living.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Avila+Beach,+CA',
   },
@@ -21,6 +22,7 @@ const locations = [
     id: 'ag',
     name: 'Arroyo Grande',
     image: pismoImg,
+    imagePosition: 'center 40%',
     description: 'A charming village nestled between the coast and rolling hills. Surrounded by award-winning wineries, scenic trails, and the historic Village of Arroyo Grande.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=Arroyo+Grande,+CA',
   },
@@ -28,6 +30,7 @@ const locations = [
     id: 'slo',
     name: 'San Luis Obispo',
     image: sloImg,
+    imagePosition: 'center bottom',
     description: 'Where historic charm meets modern sophistication. Explore world-class vineyards and a vibrant downtown nestled in the foothills.',
     mapLink: 'https://www.google.com/maps/search/?api=1&query=San+Luis+Obispo,+CA',
   },
@@ -54,8 +57,9 @@ export function LocationSection({ data }: { data?: any }) {
         id: match?.id || 'unknown',
         name: loc.name, // Use name from Sanity
         description: loc.description, // Use description from Sanity
-        image: match?.image || avilaImg, // Detailed fallback logic or default
-        mapLink: loc.mapLink || match?.mapLink // Sanity link or hardcoded
+        image: match?.image || avilaImg,
+        imagePosition: match?.imagePosition || 'center bottom',
+        mapLink: loc.mapLink || match?.mapLink
       };
     });
   }, [data]);
@@ -82,7 +86,8 @@ export function LocationSection({ data }: { data?: any }) {
             transition={{ duration: 1.2, ease: 'easeOut' }}
             src={activeLocation.image}
             alt={activeLocation.name}
-            className="absolute inset-0 w-full h-full object-cover object-bottom"
+            style={{ objectPosition: activeLocation.imagePosition || 'center bottom' }}
+            className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
 
