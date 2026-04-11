@@ -90,7 +90,7 @@ export function LocationSection({ data }: { data?: any }) {
         <div className="absolute inset-0 bg-black/20 transition-colors duration-500" />
 
         {/* Glass Content Box */}
-        <div className="absolute bottom-0 right-0 w-full md:w-[700px] lg:w-[800px] bg-black/30 backdrop-blur-sm border-t border-l border-white/10 p-6 md:p-8 lg:p-10 rounded-tl-[3rem] shadow-2xl z-10 transition-all duration-500">
+        <div className="absolute bottom-0 right-0 w-full md:w-[700px] lg:w-[800px] bg-white/10 backdrop-blur-md border-t border-l border-white/15 p-6 md:p-8 lg:p-10 rounded-tl-[3rem] shadow-2xl z-10 transition-all duration-500">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
