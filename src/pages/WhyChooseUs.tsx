@@ -139,7 +139,7 @@ const WhyChooseUsPage = () => {
         ) : (
           <>
             {/* SECTION 1: Hero Section */}
-            <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+            <section ref={heroRef} className="relative h-[65vh] min-h-[450px] flex items-center overflow-hidden">
               <div className="absolute inset-0">
                 <motion.img
                   src={aboutHeroImage}
