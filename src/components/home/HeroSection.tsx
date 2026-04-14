@@ -9,12 +9,12 @@ import { CalendarTwin } from '@/components/ui/calendar-twin';
 import { useBooking } from '@/context/BookingContext';
 import { cn } from '@/lib/utils';
 
-import heroImage1 from '/home/home-12.webp'
+import heroImage1 from '/home/pismo-beach.webp'
 import heroImage2 from '/home/home-casitas-dusk.jpg'
 import heroImage3 from '/home/home-09.webp'
 
 const defaultSlides = [
-  { image: heroImage1, alt: 'Luxury coastal living room' },
+  { image: heroImage1, alt: 'Central Coast hills and vineyards aerial view' },
   { image: heroImage2, alt: 'Casitas Estate at dusk' },
   { image: heroImage3, alt: 'Coastal bedroom with ocean view' },
 ];
@@ -33,7 +33,7 @@ export function HeroSection({ data }: { data?: any }) {
   // Use data from Sanity if available, otherwise fallback to defaults
   const slides = defaultSlides; // Keeping slides static for now as Sanity image handling requires a builder
   const heading = data?.title || "Where the Sun Meets<br />the Sea in Style";
-  const subheading = data?.subtitle || "Elevated Stays on California's Central Coast.";
+  const subheading = data?.subtitle || "Luxury Vacation Rentals on California's Central Coast";
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -60,6 +60,8 @@ export function HeroSection({ data }: { data?: any }) {
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].alt}
                 className="w-full h-full object-cover"
+                fetchPriority="high"
+                decoding="async"
               />
               {/* Gradient overlay for text contrast */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
@@ -78,8 +80,10 @@ export function HeroSection({ data }: { data?: any }) {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-white"
             >
-              <h1
+              <h1 className="sr-only">Solmaré Stays — Luxury Vacation Rentals on California's Central Coast</h1>
+              <p
                 className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-4 tracking-tight"
+                aria-hidden="true"
                 dangerouslySetInnerHTML={{ __html: heading }}
               />
               <p className="text-white/90 text-lg md:text-xl font-light tracking-wide mb-8 max-w-lg">
