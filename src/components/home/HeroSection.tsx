@@ -14,7 +14,7 @@ import heroImage2 from '/home/home-casitas-dusk.jpg'
 import heroImage3 from '/home/home-09.webp'
 
 const defaultSlides = [
-  { image: heroImage1, alt: 'Central Coast hills and vineyards aerial view' },
+  { image: heroImage1, alt: 'Luxury living room opening to ocean view patio in Avila Beach' },
   { image: heroImage2, alt: 'Casitas Estate at dusk' },
   { image: heroImage3, alt: 'Coastal bedroom with ocean view' },
 ];
