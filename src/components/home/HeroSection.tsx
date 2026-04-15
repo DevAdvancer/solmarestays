@@ -117,7 +117,7 @@ export function HeroSection({ data }: { data?: any }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="bg-white/20 backdrop-blur-lg border border-white/25 shadow-2xl relative z-50 rounded-2xl w-[300px]"
+                className="bg-black/50 backdrop-blur-xl border border-white/30 shadow-2xl relative z-50 rounded-2xl w-[300px]"
               >
                 {/* Expanded Content */}
                 <div className="p-4 min-w-[300px]">
