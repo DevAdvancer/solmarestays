@@ -99,7 +99,7 @@ const CollectionPage = () => {
       <Header />
       <main className="pt-0">
         {/* Hero */}
-        <section className="pt-24 md:pt-28 pb-8 md:pb-10 bg-secondary">
+        <section className="pt-24 md:pt-28 pb-8 md:pb-10 bg-background">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -107,10 +107,10 @@ const CollectionPage = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-4">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-semibold text-primary mb-4">
                 The Solmaré Collection
               </h1>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-ocean/70">
                 A purposefully small portfolio of hand-selected estates, farmhouses, and beach bungalows. From the Avila shoreline to the valley vines, every stay is locally managed and meticulously prepared.
               </p>
             </motion.div>

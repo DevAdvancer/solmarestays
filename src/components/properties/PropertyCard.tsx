@@ -75,11 +75,11 @@ export function PropertyCard({ property, index = 0, maskPrice = false }: Propert
           )}
           <div className="flex items-center gap-4 text-muted-foreground text-sm">
             <span className="flex items-center gap-1.5 group-hover:text-ocean transition-colors">
-              <MapPin className="w-4 h-4" />
+              <MapPin className="w-4 h-4 text-ocean" />
               {property.location}
             </span>
             <span className="flex items-center gap-1.5">
-              <Users className="w-4 h-4" />
+              <Users className="w-4 h-4 text-ocean" />
               Sleeps {property.sleeps}
             </span>
           </div>

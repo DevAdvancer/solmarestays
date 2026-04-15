@@ -35,7 +35,7 @@ const Blog = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-stone-50 to-white">
+      <section className="relative pt-32 pb-20 bg-gradient-to-b from-secondary to-white">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const Blog = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-stone-900 tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-light text-foreground tracking-tight mb-6"
           >
             The Solmar&eacute; Journal
           </motion.h1>
@@ -57,7 +57,7 @@ const Blog = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-stone-500 max-w-2xl mx-auto"
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
             Insider tips, local favorites, and everything you need to make the most of your Central Coast getaway.
           </motion.p>
@@ -69,20 +69,20 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-6">
           {isLoading && (
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-8 h-8 animate-spin text-stone-400" />
+              <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
             </div>
           )}
 
           {error && (
             <div className="text-center py-20">
-              <p className="text-stone-500 text-lg">Unable to load blog posts. Please try again later.</p>
+              <p className="text-muted-foreground text-lg">Unable to load blog posts. Please try again later.</p>
             </div>
           )}
 
           {!isLoading && !error && (!posts || posts.length === 0) && (
             <div className="text-center py-20">
-              <p className="text-stone-400 text-lg mb-2">No posts yet.</p>
-              <p className="text-stone-400">Check back soon for travel tips and local guides.</p>
+              <p className="text-muted-foreground text-lg mb-2">No posts yet.</p>
+              <p className="text-muted-foreground">Check back soon for travel tips and local guides.</p>
             </div>
           )}
 
@@ -101,7 +101,7 @@ const Blog = () => {
                     className="group block"
                   >
                     {/* Image */}
-                    <div className="aspect-[16/10] overflow-hidden rounded-lg mb-5 bg-stone-100">
+                    <div className="aspect-[16/10] overflow-hidden rounded-lg mb-5 bg-secondary">
                       {post.mainImage?.asset ? (
                         <img
                           src={urlFor(post.mainImage).width(800).height(500).url()}
@@ -110,7 +110,7 @@ const Blog = () => {
                           loading="lazy"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-stone-300">
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground/60">
                           <Calendar className="w-12 h-12" />
                         </div>
                       )}
@@ -126,9 +126,9 @@ const Blog = () => {
                       {post.publishedAt && (
                         <>
                           {post.categories?.length > 0 && (
-                            <span className="text-stone-300">|</span>
+                            <span className="text-muted-foreground/60">|</span>
                           )}
-                          <span className="text-xs text-stone-400">
+                          <span className="text-xs text-muted-foreground">
                             {formatDate(post.publishedAt)}
                           </span>
                         </>
@@ -136,13 +136,13 @@ const Blog = () => {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl font-medium text-stone-900 mb-2 group-hover:text-amber-800 transition-colors">
+                    <h2 className="text-xl font-medium text-foreground mb-2 group-hover:text-amber-800 transition-colors">
                       {post.title}
                     </h2>
 
                     {/* Excerpt */}
                     {post.excerpt && (
-                      <p className="text-stone-500 text-sm leading-relaxed mb-4 line-clamp-3">
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
                         {post.excerpt}
                       </p>
                     )}

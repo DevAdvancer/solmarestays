@@ -247,8 +247,8 @@ const SanLuisObispoPage = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white p-8 rounded-2xl shadow-soft border border-border/30"
                 >
-                  <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mb-6">
-                    <highlight.icon className="w-7 h-7 text-ocean" />
+                  <div className="w-14 h-14 rounded-full bg-ocean flex items-center justify-center mb-6">
+                    <highlight.icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{highlight.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{highlight.description}</p>
@@ -491,8 +491,8 @@ const SanLuisObispoPage = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
-                    <item.icon className="w-8 h-8 text-ocean" />
+                  <div className="w-16 h-16 rounded-full bg-ocean flex items-center justify-center mx-auto mb-6">
+                    <item.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-3">{item.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{item.description}</p>

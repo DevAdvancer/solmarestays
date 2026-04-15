@@ -88,6 +88,8 @@ export function LocationSection({ data }: { data?: any }) {
             alt={activeLocation.name}
             style={{ objectPosition: activeLocation.imagePosition || 'center bottom' }}
             className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         </AnimatePresence>
 

@@ -46,8 +46,8 @@ function AmenitiesSection({ amenities, getAmenityIcon }: AmenitiesSectionProps) 
               key={amenity}
               className="flex items-center gap-3 text-foreground bg-secondary p-4 rounded-xl hover:bg-secondary/80 transition-colors cursor-default"
             >
-              <div className="w-10 h-10 rounded-lg bg-ocean/10 flex items-center justify-center">
-                <Icon className="w-5 h-5 text-ocean" />
+              <div className="w-10 h-10 rounded-lg bg-ocean flex items-center justify-center">
+                <Icon className="w-5 h-5 text-white" />
               </div>
               <span className="font-medium">{amenity}</span>
             </div>
@@ -506,8 +506,8 @@ const PropertyDetailPage = () => {
                                   >
                                     <div className="flex items-start gap-3">
                                       {!isHeader && (
-                                        <div className="w-6 h-6 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                          <Check className="w-3 h-3 text-ocean" />
+                                        <div className="w-6 h-6 rounded-full bg-ocean flex items-center justify-center flex-shrink-0 mt-0.5">
+                                          <Check className="w-3 h-3 text-white" />
                                         </div>
                                       )}
                                       <span className={isHeader ? 'text-primary' : 'text-foreground'}>

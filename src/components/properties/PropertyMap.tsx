@@ -81,11 +81,11 @@ export function PropertyMap({ properties, height = '500px' }: PropertyMapProps) 
                 class="w-full h-full object-cover"
               />
             </div>
-            <h3 class="font-semibold text-gray-900 text-sm mb-1 line-clamp-1">
+            <h3 class="font-semibold text-sm mb-1 line-clamp-1 text-foreground">
               ${property.name}
             </h3>
             <div class="flex justify-between items-center mt-2">
-                <p class="text-xs text-gray-500">${property.location}</p>
+                <p class="text-xs text-muted-foreground">${property.location}</p>
                 <p class="font-medium text-primary text-sm">$${property.startingPrice}/night</p>
             </div>
           </a>

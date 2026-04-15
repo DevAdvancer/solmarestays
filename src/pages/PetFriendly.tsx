@@ -149,8 +149,8 @@ const PetFriendlyPage = () => {
               className="max-w-3xl"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center">
-                  <Dog className="w-6 h-6 text-ocean" />
+                <div className="w-12 h-12 rounded-full bg-ocean flex items-center justify-center">
+                  <Dog className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-ocean font-medium text-sm tracking-wide uppercase">
                   Pet-Friendly Stays
@@ -356,8 +356,8 @@ const PetFriendlyPage = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white p-8 rounded-2xl shadow-soft border border-border/30"
                 >
-                  <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mb-6">
-                    <activity.icon className="w-7 h-7 text-ocean" />
+                  <div className="w-14 h-14 rounded-full bg-ocean flex items-center justify-center mb-6">
+                    <activity.icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
                     {activity.title}

@@ -162,6 +162,8 @@ const ForHomeownersPage = () => {
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
+                  fetchPriority="high"
+                  decoding="async"
                 />
               </div>
 
@@ -179,7 +181,7 @@ const ForHomeownersPage = () => {
                     Boutique management designed for high yields and asset protection on the Central Coast.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Button variant="default" size="xl" asChild>
+                    <Button size="xl" asChild className="bg-ocean text-white hover:bg-ocean/90">
                       <Link to="/contact">Schedule a Consultation</Link>
                     </Button>
                   </div>
@@ -188,7 +190,7 @@ const ForHomeownersPage = () => {
             </section>
 
             {/* SECTION 2: Comprehensive Management */}
-            <section ref={servicesRef} className="section-padding bg-secondary">
+            <section ref={servicesRef} className="section-padding" style={{ backgroundColor: '#3f6987' }}>
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -196,10 +198,10 @@ const ForHomeownersPage = () => {
                   transition={{ duration: 0.8 }}
                   className="text-center max-w-3xl mx-auto mb-16"
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4 uppercase" style={{ color: 'hsl(38 30% 92%)' }}>
                     Comprehensive Management
                   </h2>
-                  <p className="text-muted-foreground text-lg">
+                  <p className="text-lg" style={{ color: 'hsl(38 30% 85%)' }}>
                     We handle every operational detail required to run a successful short-term rental.
                   </p>
                 </motion.div>
@@ -212,14 +214,14 @@ const ForHomeownersPage = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={isServicesInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="bg-card p-6 rounded-xl shadow-soft"
+                      className="p-6 rounded-xl" style={{ backgroundColor: 'hsl(38 30% 92%)' }}
                     >
-                      <h3 className="font-serif text-lg font-semibold text-foreground mb-4 pb-3 border-b border-border">
+                      <h3 className="font-serif text-lg font-semibold text-primary mb-4 pb-3 border-b border-primary/20">
                         {category.title}
                       </h3>
                       <ul className="space-y-3">
                         {category.items.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <li key={i} className="flex items-start gap-2 text-sm text-primary/70">
                             <Check className="w-4 h-4 text-ocean flex-shrink-0 mt-0.5" />
                             <span>{item}</span>
                           </li>
@@ -232,7 +234,7 @@ const ForHomeownersPage = () => {
             </section>
 
             {/* SECTION 3: Owner Reviews */}
-            <section ref={testimonialsRef} className="section-padding bg-background">
+            <section ref={testimonialsRef} className="section-padding" style={{ backgroundColor: '#fdfbf9' }}>
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -240,10 +242,10 @@ const ForHomeownersPage = () => {
                   transition={{ duration: 0.8 }}
                   className="text-center max-w-2xl mx-auto mb-16"
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-primary mb-4">
                     Real Results
                   </h2>
-                  <p className="text-muted-foreground text-lg">
+                  <p className="text-primary/70 text-lg">
                     Hear from property owners who have partnered with Solmaré Stays.
                   </p>
                 </motion.div>
@@ -256,35 +258,25 @@ const ForHomeownersPage = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={isTestimonialsInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-elevated transition-shadow duration-300 flex flex-col"
+                      className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-elevated transition-shadow duration-300 flex flex-col"
                     >
                       {/* Header */}
                       <div className="mb-4">
-                        <h3 className="font-serif text-lg font-semibold text-foreground mb-3">{review.property}</h3>
+                        <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{review.property}</h3>
                         {/* Blue Data Badges */}
                         <div className="flex flex-wrap gap-2">
                           {review.stats.map((stat, i) => (
-                            <span key={i} className="text-xs font-medium text-ocean bg-ocean/10 px-3 py-1 rounded-full">
+                            <span key={i} className="text-xs font-medium text-white bg-ocean px-3 py-1 rounded-full">
                               {stat}
                             </span>
                           ))}
                         </div>
                       </div>
 
-                      {/* Stars */}
-                      <div className="flex items-center gap-1 mb-4">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-4 h-4 ${i < review.rating ? 'fill-gold text-gold' : 'text-muted-foreground/30'
-                              }`}
-                          />
-                        ))}
-                      </div>
 
                       {/* Review Text */}
                       <div className="flex-grow">
-                        <p className="text-foreground text-sm leading-relaxed mb-6 font-light">
+                        <p className="text-primary text-sm leading-relaxed mb-6 font-light">
                           "{review.text}"
                         </p>
                       </div>
@@ -292,10 +284,10 @@ const ForHomeownersPage = () => {
                       {/* Reviewer Info */}
                       <div className="border-t border-border pt-4 mt-auto">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
-                            <Quote className="w-5 h-5 text-ocean" />
+                          <div className="w-10 h-10 rounded-full bg-ocean flex items-center justify-center flex-shrink-0">
+                            <Quote className="w-5 h-5 text-white" />
                           </div>
-                          <p className="font-semibold text-foreground text-sm">{review.name}</p>
+                          <p className="font-semibold text-primary text-sm">{review.name}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -305,7 +297,7 @@ const ForHomeownersPage = () => {
             </section>
 
             {/* SECTION 5: Why Partner With Solmaré */}
-            <section ref={benefitsRef} className="section-padding bg-secondary relative">
+            <section ref={benefitsRef} className="section-padding relative" style={{ backgroundColor: 'hsl(38 30% 92%)' }}>
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
@@ -316,13 +308,13 @@ const ForHomeownersPage = () => {
                       animate={isBenefitsInView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.8 }}
                     >
-                      <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-6 leading-tight">
+                      <h2 className="font-serif text-3xl md:text-5xl font-semibold text-primary mb-6 leading-tight">
                         Why Partner With Solmaré?
                       </h2>
-                      <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                      <p className="text-primary/70 text-lg leading-relaxed mb-8">
                         We treat your home as a high-performing asset, not just inventory. By combining local stewardship with sophisticated revenue strategies, we deliver higher net income and better property care than large, impersonal management firms.
                       </p>
-                      <Button variant="default" size="lg" asChild className="rounded-full">
+                      <Button size="lg" asChild className="rounded-full bg-ocean text-white hover:bg-ocean/90">
                         <Link to="/contact">Schedule a Consultation</Link>
                       </Button>
                     </motion.div>
@@ -336,15 +328,15 @@ const ForHomeownersPage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={isBenefitsInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-                        className="bg-card p-6 rounded-2xl shadow-soft border border-border/50"
+                        className="p-6 rounded-2xl shadow-soft border-none bg-primary"
                       >
-                        <div className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center mb-4">
-                          <benefit.icon className="w-5 h-5 text-ocean" />
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 bg-ocean">
+                          <benefit.icon className="w-5 h-5 text-white" />
                         </div>
-                        <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+                        <h3 className="font-serif text-lg font-semibold mb-2" style={{ color: 'hsl(38 30% 92%)' }}>
                           {benefit.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-sm leading-relaxed" style={{ color: 'hsl(38 30% 82%)' }}>
                           {benefit.description}
                         </p>
                       </motion.div>
@@ -356,7 +348,7 @@ const ForHomeownersPage = () => {
             </section>
 
             {/* SECTION 6: Final CTA */}
-            <section className="section-padding bg-background">
+            <section className="pt-12 md:pt-16 lg:pt-20 pb-0 bg-primary">
               <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -365,13 +357,13 @@ const ForHomeownersPage = () => {
                   transition={{ duration: 0.8 }}
                   className="max-w-3xl mx-auto"
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-white mb-6">
                     Ready to Get Started?
                   </h2>
-                  <p className="text-muted-foreground text-lg mb-8">
+                  <p className="text-white/70 text-lg mb-8">
                     See how much your home could be earning with Solmaré.
                   </p>
-                  <Button variant="hero" size="xl" asChild>
+                  <Button size="xl" asChild className="bg-white text-primary hover:bg-white/90 font-medium tracking-wide shadow-medium">
                     <Link to="/contact">Get My Revenue Projection</Link>
                   </Button>
                 </motion.div>
