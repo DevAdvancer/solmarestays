@@ -135,7 +135,7 @@ export function ReviewsSection({ data }: { data?: any }) {
   };
 
   return (
-    <section ref={ref} className="section-padding bg-primary">
+    <section ref={ref} className="section-padding bg-secondary">
       <div className="container mx-auto px-6 md:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -144,13 +144,13 @@ export function ReviewsSection({ data }: { data?: any }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="font-serif text-3xl md:text-4xl font-medium text-white mb-3">
+          <h2 className="font-serif text-3xl md:text-4xl font-medium text-foreground mb-3">
             {heading}
           </h2>
-          <p className="text-white/90 font-serif text-lg md:text-xl font-medium mb-2">
+          <p className="text-primary font-serif text-lg md:text-xl font-medium mb-2">
             ★ 9.7/10 average from 2,400+ verified reviews
           </p>
-          <p className="text-white/70 text-base max-w-xl mx-auto font-light">
+          <p className="text-muted-foreground text-base max-w-xl mx-auto font-light">
             {subtitle}
           </p>
         </motion.div>
@@ -174,7 +174,7 @@ export function ReviewsSection({ data }: { data?: any }) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.1 + index * 0.08 }}
-                  className="bg-white rounded-xl p-6 shadow-soft border border-white/10 hover:shadow-medium transition-shadow duration-300 flex flex-col"
+                  className="bg-card rounded-xl p-6 shadow-soft border border-border/30 hover:shadow-medium transition-shadow duration-300 flex flex-col"
                 >
                   {/* Stars */}
                   <div className="flex items-center gap-0.5 mb-4">
@@ -196,7 +196,7 @@ export function ReviewsSection({ data }: { data?: any }) {
                     <p className="font-medium text-foreground text-sm">{review.name}</p>
                     <Link
                       to={getPropertySlug(review.property)}
-                      className="text-xs text-ocean hover:text-ocean/80 transition-colors hover:underline"
+                      className="text-xs text-primary hover:text-primary/80 transition-colors hover:underline"
                     >
                       {review.property} • {review.date}
                     </Link>
@@ -210,7 +210,7 @@ export function ReviewsSection({ data }: { data?: any }) {
           <div className="flex items-center justify-center gap-4 mt-10">
             <button
               onClick={prev}
-              className="p-2 rounded-full bg-white/20 hover:bg-white/30 shadow-soft hover:shadow-medium transition-all text-white"
+              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-soft hover:shadow-medium transition-all text-foreground"
               aria-label="Previous reviews"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -227,8 +227,8 @@ export function ReviewsSection({ data }: { data?: any }) {
                   }}
                   className={`rounded-full transition-all duration-300 ${
                     i === currentIndex
-                      ? 'w-8 h-2 bg-white'
-                      : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+                      ? 'w-8 h-2 bg-primary'
+                      : 'w-2 h-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
                   }`}
                   aria-label={`Go to page ${i + 1}`}
                 />
@@ -237,7 +237,7 @@ export function ReviewsSection({ data }: { data?: any }) {
 
             <button
               onClick={next}
-              className="p-2 rounded-full bg-white/20 hover:bg-white/30 shadow-soft hover:shadow-medium transition-all text-white"
+              className="p-2 rounded-full bg-white/80 hover:bg-white shadow-soft hover:shadow-medium transition-all text-foreground"
               aria-label="Next reviews"
             >
               <ChevronRight className="w-5 h-5" />

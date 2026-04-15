@@ -12,7 +12,7 @@ export function PropertiesSection() {
   const { data: featuredProperties, isLoading, error } = useFeaturedProperties();
 
   return (
-    <section ref={ref} className="section-padding bg-white">
+    <section ref={ref} className="section-padding bg-background">
       <div className="container mx-auto px-6 md:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

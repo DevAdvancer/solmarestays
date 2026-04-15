@@ -32,7 +32,7 @@ const portableTextComponents = {
             loading="lazy"
           />
           {value.caption && (
-            <figcaption className="text-sm text-muted-foreground mt-2 text-center">
+            <figcaption className="text-sm text-stone-400 mt-2 text-center">
               {value.caption}
             </figcaption>
           )}
@@ -56,21 +56,21 @@ const portableTextComponents = {
   },
   block: {
     h2: ({ children }: { children: React.ReactNode }) => (
-      <h2 className="text-2xl md:text-3xl font-light text-foreground mt-12 mb-4">{children}</h2>
+      <h2 className="text-2xl md:text-3xl font-light text-stone-900 mt-12 mb-4">{children}</h2>
     ),
     h3: ({ children }: { children: React.ReactNode }) => (
-      <h3 className="text-xl md:text-2xl font-light text-foreground mt-10 mb-3">{children}</h3>
+      <h3 className="text-xl md:text-2xl font-light text-stone-900 mt-10 mb-3">{children}</h3>
     ),
     h4: ({ children }: { children: React.ReactNode }) => (
-      <h4 className="text-lg font-medium text-foreground mt-8 mb-2">{children}</h4>
+      <h4 className="text-lg font-medium text-stone-900 mt-8 mb-2">{children}</h4>
     ),
     blockquote: ({ children }: { children: React.ReactNode }) => (
-      <blockquote className="border-l-2 border-amber-700 pl-6 my-8 text-foreground/80 italic text-lg">
+      <blockquote className="border-l-2 border-amber-700 pl-6 my-8 text-stone-600 italic text-lg">
         {children}
       </blockquote>
     ),
     normal: ({ children }: { children: React.ReactNode }) => (
-      <p className="text-foreground/80 leading-relaxed mb-5">{children}</p>
+      <p className="text-stone-600 leading-relaxed mb-5">{children}</p>
     ),
   },
 };
@@ -127,7 +127,7 @@ const BlogPost = () => {
       <div className="min-h-screen bg-white">
         <Header />
         <div className="flex items-center justify-center py-40">
-          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+          <Loader2 className="w-8 h-8 animate-spin text-stone-400" />
         </div>
         <Footer />
       </div>
@@ -140,8 +140,8 @@ const BlogPost = () => {
         <SEO title="Post Not Found" description="The blog post you're looking for could not be found." />
         <Header />
         <div className="flex flex-col items-center justify-center py-40 px-6">
-          <h1 className="text-3xl font-light text-foreground mb-4">Post Not Found</h1>
-          <p className="text-muted-foreground mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
+          <h1 className="text-3xl font-light text-stone-900 mb-4">Post Not Found</h1>
+          <p className="text-stone-500 mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 text-amber-800 hover:text-amber-900 font-medium transition-colors"
@@ -180,7 +180,7 @@ const BlogPost = () => {
             >
               <Link
                 to="/blog"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground/80 transition-colors"
+                className="inline-flex items-center gap-2 text-sm text-stone-400 hover:text-stone-600 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 All Posts
@@ -211,7 +211,7 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-light text-foreground tracking-tight mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-light text-stone-900 tracking-tight mb-6"
             >
               {post.title}
             </motion.h1>
@@ -221,7 +221,7 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center gap-4 text-sm text-muted-foreground"
+              className="flex items-center gap-4 text-sm text-stone-400"
             >
               {post.author && (
                 <span className="flex items-center gap-1.5">
@@ -265,13 +265,13 @@ const BlogPost = () => {
           className="max-w-3xl mx-auto px-6 pb-20"
         >
           {post.body && (
-            <div>
+            <div className="prose-stone">
               <PortableText value={post.body} components={portableTextComponents} />
             </div>
           )}
 
           {/* Divider + back link */}
-          <div className="border-t border-border mt-16 pt-8">
+          <div className="border-t border-stone-200 mt-16 pt-8">
             <Link
               to="/blog"
               className="inline-flex items-center gap-2 text-amber-800 hover:text-amber-900 font-medium transition-colors"

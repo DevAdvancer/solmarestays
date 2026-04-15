@@ -27,8 +27,7 @@ export function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`relative z-40 transition-all duration-300 backdrop-blur-md shadow-sm py-2`}
-        style={{ backgroundColor: 'hsla(30, 50%, 98%, 0.95)' }}
+        className={`relative z-40 transition-all duration-300 bg-background/95 backdrop-blur-md shadow-sm py-2`}
       >
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between">
@@ -50,13 +49,13 @@ export function Header() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`relative group text-sm font-normal tracking-wide transition-colors duration-200 hover:text-ocean ${location.pathname === link.href
-                    ? 'text-ocean'
-                    : 'text-primary'
+                  className={`relative group text-sm font-normal tracking-wide transition-colors duration-200 hover:text-primary ${location.pathname === link.href
+                    ? 'text-primary'
+                    : 'text-foreground/70'
                     }`}
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px bg-ocean transition-all duration-300 w-0 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 h-px bg-primary transition-all duration-300 w-0 group-hover:w-full" />
                 </Link>
               ))}
             </nav>
@@ -66,7 +65,7 @@ export function Header() {
               <Button
                 variant="outline"
                 size="default"
-                className="hidden md:flex bg-primary text-[hsl(30,50%,98%)] hover:bg-primary/90 border-none rounded-lg px-6"
+                className="hidden md:flex border-foreground/30 text-foreground hover:bg-foreground hover:text-white rounded-lg px-6"
                 asChild
               >
                 <Link to="/collection">Book Now</Link>

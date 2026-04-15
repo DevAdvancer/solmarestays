@@ -120,8 +120,6 @@ const GuestExperiencePage = () => {
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  fetchPriority="high"
-                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-black/20" />
               </div>
@@ -146,7 +144,7 @@ const GuestExperiencePage = () => {
             </section>
 
             {/* SECTION 2: Philosophy */}
-            <section ref={philosophyRef} className="section-padding" style={{ backgroundColor: 'hsl(38 30% 92%)' }}>
+            <section ref={philosophyRef} className="section-padding bg-secondary">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -154,13 +152,13 @@ const GuestExperiencePage = () => {
                   transition={{ duration: 0.8 }}
                   className="max-w-4xl mx-auto text-center"
                 >
-                  <h2 className="font-serif text-3xl md:text-4xl font-semibold text-ocean mb-6">
+                  <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
                     The Central Coast, Unlocked
                   </h2>
-                  <p className="text-ocean/70 text-lg leading-relaxed mb-4">
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-4">
                     The best trips feel seamless. Solmaré guests get access to a network of trusted local businesses offering exclusive perks, preferred experiences, and insider recommendations so you can spend less time planning and more time enjoying your stay.
                   </p>
-                  <p className="text-ocean/70 text-lg leading-relaxed">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     Every partner is handpicked by our team — we focus on quality, consistency, and businesses we trust to deliver. From wine tastings to private chef dinners to electric bike rentals along the coast, this is the Central Coast the way locals experience it.
                   </p>
                 </motion.div>
@@ -168,7 +166,7 @@ const GuestExperiencePage = () => {
             </section>
 
             {/* SECTION 3: Featured Partners */}
-            <section ref={featuredRef} className="section-padding bg-white">
+            <section ref={featuredRef} className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -199,8 +197,6 @@ const GuestExperiencePage = () => {
                           src={partner.image}
                           alt={partner.name}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          loading="lazy"
-                          decoding="async"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                       </div>
@@ -219,7 +215,7 @@ const GuestExperiencePage = () => {
             </section>
 
             {/* SECTION 4: Partner Directory - Best of the Coast */}
-            <section ref={directoryRef} className="section-padding bg-primary">
+            <section ref={directoryRef} className="section-padding bg-secondary">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -227,10 +223,10 @@ const GuestExperiencePage = () => {
                   transition={{ duration: 0.8 }}
                   className="text-center max-w-2xl mx-auto mb-16"
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold mb-4" style={{ color: '#95acbd' }}>
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-4">
                     Best of the Coast
                   </h2>
-                  <p className="text-lg" style={{ color: '#95acbd' }}>
+                  <p className="text-muted-foreground text-lg">
                     Our team's honest guide to the Central Coast. The spots worth your time.
                   </p>
                 </motion.div>
@@ -242,14 +238,14 @@ const GuestExperiencePage = () => {
                       initial={{ opacity: 0, y: 40 }}
                       animate={isDirectoryInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className="p-6 rounded-xl shadow-soft" style={{ backgroundColor: '#95acbd' }}
+                      className="bg-card p-6 rounded-xl shadow-soft"
                     >
                       {/* Category Header */}
-                      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/20">
-                        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                      <div className="flex items-center gap-3 mb-6 pb-4 border-b border-border">
+                        <div className="w-10 h-10 rounded-full bg-ocean/10 flex items-center justify-center">
                           <category.icon className="w-5 h-5 text-ocean" />
                         </div>
-                        <h3 className="font-serif text-lg font-semibold text-primary">
+                        <h3 className="font-serif text-lg font-semibold text-foreground">
                           {category.title}
                         </h3>
                       </div>
@@ -266,14 +262,14 @@ const GuestExperiencePage = () => {
                           >
                             <div className="flex justify-between items-start">
                               <div>
-                                <p className="font-medium text-primary text-sm group-hover:text-primary/80 transition-colors">
+                                <p className="font-medium text-foreground text-sm group-hover:text-ocean transition-colors">
                                   {venue.name}
                                 </p>
-                                <p className="text-xs text-primary/50">
+                                <p className="text-xs text-muted-foreground/70">
                                   {venue.location}
                                 </p>
                               </div>
-                              <p className="text-xs text-primary/60 text-right max-w-[45%]">
+                              <p className="text-xs text-muted-foreground text-right max-w-[45%]">
                                 {venue.experience}
                               </p>
                             </div>
@@ -287,7 +283,7 @@ const GuestExperiencePage = () => {
             </section>
 
             {/* SECTION 5: How It Works */}
-            <section className="section-padding bg-white">
+            <section className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -296,8 +292,8 @@ const GuestExperiencePage = () => {
                   transition={{ duration: 0.8 }}
                   className="max-w-4xl mx-auto text-center"
                 >
-                  <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-ocean flex items-center justify-center">
-                    <MapPin className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-ocean/10 flex items-center justify-center">
+                    <MapPin className="w-8 h-8 text-ocean" />
                   </div>
                   <h2 className="font-serif text-3xl md:text-4xl font-semibold text-foreground mb-6">
                     How Guests Access These Experiences

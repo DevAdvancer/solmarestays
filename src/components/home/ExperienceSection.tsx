@@ -48,7 +48,7 @@ export function ExperienceSection({ data }: { data?: any }) {
   }) || partners;
 
   return (
-    <section ref={ref} className="section-padding bg-white">
+    <section ref={ref} className="section-padding bg-background">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
 
         {/* Header */}
@@ -82,8 +82,6 @@ export function ExperienceSection({ data }: { data?: any }) {
                 src={partner.image}
                 alt={partner.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-                decoding="async"
               />
 
               {/* Overlay Gradient (optional, for text visibility) */}

@@ -156,8 +156,6 @@ const WhyChooseUsPage = () => {
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 1.5, ease: "easeOut" }}
-                  fetchPriority="high"
-                  decoding="async"
                 />
               </div>
 
@@ -185,7 +183,7 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 2: Core Values - 3 White Cards */}
-            <section id="standards" ref={valuesRef} className="section-padding bg-white scroll-mt-24">
+            <section id="standards" ref={valuesRef} className="section-padding bg-background scroll-mt-24">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -210,10 +208,10 @@ const WhyChooseUsPage = () => {
                       transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                       className="bg-white p-8 md:p-10 rounded-2xl shadow-elevated border border-border/30"
                     >
-                      <div className="w-14 h-14 rounded-full bg-ocean flex items-center justify-center mb-6">
-                        <value.icon className="w-7 h-7 text-white" />
+                      <div className="w-14 h-14 rounded-full bg-ocean/10 flex items-center justify-center mb-6">
+                        <value.icon className="w-7 h-7 text-ocean" />
                       </div>
-                      <h3 className="font-serif text-2xl font-semibold text-ocean mb-4">
+                      <h3 className="font-serif text-2xl font-semibold text-foreground mb-4">
                         {value.title}
                       </h3>
                       <p className="text-muted-foreground leading-relaxed">
@@ -275,7 +273,7 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 5: Owner Quote */}
-            <section className="section-padding" style={{ backgroundColor: 'hsl(38 30% 92%)' }}>
+            <section className="section-padding bg-secondary">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
                   {/* Left: Image */}
@@ -322,7 +320,7 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 6: Seamless Service */}
-            <section ref={seamlessRef} className="section-padding bg-ocean">
+            <section ref={seamlessRef} className="section-padding bg-muted">
               <div className="container mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -330,10 +328,10 @@ const WhyChooseUsPage = () => {
                   transition={{ duration: 0.8 }}
                   className="text-center mb-16"
                 >
-                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-white mb-4 uppercase">
+                  <h2 className="font-serif text-3xl md:text-5xl font-semibold text-foreground mb-4 uppercase">
                     Seamless From Start to Finish
                   </h2>
-                  <p className="text-lg max-w-2xl mx-auto text-white/70">
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                     Modern conveniences designed to make your stay effortless.
                   </p>
                 </motion.div>
@@ -347,13 +345,13 @@ const WhyChooseUsPage = () => {
                       transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
                       className="text-center"
                     >
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-ocean">
-                        <feature.icon className="w-8 h-8 text-white" />
+                      <div className="w-16 h-16 rounded-full bg-ocean/10 flex items-center justify-center mx-auto mb-6">
+                        <feature.icon className="w-8 h-8 text-ocean" />
                       </div>
-                      <h3 className="font-serif text-xl md:text-2xl font-semibold text-white mb-4">
+                      <h3 className="font-serif text-xl md:text-2xl font-semibold text-foreground mb-4">
                         {feature.title}
                       </h3>
-                      <p className="leading-relaxed text-white/80">
+                      <p className="text-muted-foreground leading-relaxed">
                         {feature.description}
                       </p>
                     </motion.div>
@@ -363,7 +361,7 @@ const WhyChooseUsPage = () => {
             </section>
 
             {/* SECTION 7: Final CTA */}
-            <section className="pt-12 md:pt-16 lg:pt-20 pb-0 bg-primary">
+            <section className="section-padding bg-background">
               <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -371,10 +369,10 @@ const WhyChooseUsPage = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-white mb-6">
+                  <h2 className="font-serif text-4xl md:text-5xl font-semibold text-foreground mb-6">
                     Ready to Experience the Difference?
                   </h2>
-                  <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
+                  <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
                     The coast is calling. Book direct for the best rates guaranteed.
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">

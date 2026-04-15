@@ -153,8 +153,8 @@ const ServicesPage = () => {
                   whileHover={{ y: -8 }}
                   className="bg-card p-8 rounded-xl shadow-soft hover:shadow-elevated transition-all duration-300 text-center group"
                 >
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-ocean flex items-center justify-center group-hover:bg-ocean/90 transition-colors">
-                    <service.icon className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <service.icon className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
                     {service.title}
@@ -196,8 +196,8 @@ const ServicesPage = () => {
                   className="bg-card p-8 rounded-xl shadow-soft"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-12 h-12 rounded-full bg-ocean flex items-center justify-center">
-                      <category.icon className="w-6 h-6 text-white" />
+                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center">
+                      <category.icon className="w-6 h-6 text-ocean" />
                     </div>
                     <h3 className="font-serif text-xl font-semibold text-foreground">
                       {category.category}

@@ -153,8 +153,6 @@ const ContactPage = () => {
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
-              fetchPriority="high"
-              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/60" />
           </div>
@@ -205,8 +203,8 @@ const ContactPage = () => {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="flex items-start gap-4"
                   >
-                    <div className="w-12 h-12 rounded-full bg-ocean flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-white" />
+                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-ocean" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Location</h3>
@@ -223,8 +221,8 @@ const ContactPage = () => {
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="flex items-start gap-4"
                   >
-                    <div className="w-12 h-12 rounded-full bg-ocean flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 text-white" />
+                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-5 h-5 text-ocean" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
@@ -241,8 +239,8 @@ const ContactPage = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="flex items-start gap-4"
                   >
-                    <div className="w-12 h-12 rounded-full bg-ocean flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-5 h-5 text-white" />
+                    <div className="w-12 h-12 rounded-full bg-ocean/10 flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-5 h-5 text-ocean" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Phone</h3>
@@ -258,19 +256,19 @@ const ContactPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isFormInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.5 }}
-                  className="mt-10 p-6 bg-primary rounded-xl"
+                  className="mt-10 p-6 bg-secondary rounded-xl"
                 >
                   <div className="flex items-center gap-2 mb-3">
-                    <Clock className="w-5 h-5 text-white/70" />
-                    <h3 className="font-semibold text-white">Office Hours</h3>
+                    <Clock className="w-5 h-5 text-ocean" />
+                    <h3 className="font-semibold text-foreground">Office Hours</h3>
                   </div>
-                  <div className="space-y-2 text-sm text-white/70">
+                  <div className="space-y-2 text-sm text-muted-foreground">
                     <p>
-                      <span className="font-medium text-white">General Inquiries:</span><br />
+                      <span className="font-medium text-foreground">General Inquiries:</span><br />
                       Monday - Friday: 9am - 5pm PST
                     </p>
                     <p>
-                      <span className="font-medium text-white">Guest Support:</span><br />
+                      <span className="font-medium text-foreground">Guest Support:</span><br />
                       24/7 for current guests and emergencies
                     </p>
                   </div>
