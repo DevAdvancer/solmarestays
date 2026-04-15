@@ -248,29 +248,20 @@ function generatePage(page) {
     `<link rel="canonical" href="${BASE_URL}${page.route}" />`
   );
 
-  // Replace OG tags
-  html = html.replace(
-    /<meta property="og:title" content="[^"]*"\s*\/?>/,
-    `<meta property="og:title" content="${page.title}" />`
-  );
-  html = html.replace(
-    /<meta property="og:description" content="[^"]*"\s*\/?>/,
-    `<meta property="og:description" content="${page.description}" />`
-  );
-  html = html.replace(
-    /<meta property="og:url" content="[^"]*"\s*\/?>/,
-    `<meta property="og:url" content="${BASE_URL}${page.route}" />`
-  );
-
-  // Replace Twitter tags
-  html = html.replace(
-    /<meta name="twitter:title" content="[^"]*"\s*\/?>/,
-    `<meta name="twitter:title" content="${page.title}" />`
-  );
-  html = html.replace(
-    /<meta name="twitter:description" content="[^"]*"\s*\/?>/,
-    `<meta name="twitter:description" content="${page.description}" />`
-  );
+  // Inject OG and Twitter tags before </head> (removed from static index.html, Helmet handles client-side)
+  const ogTags = [
+    `<meta property="og:title" content="${page.title}" />`,
+    `<meta property="og:description" content="${page.description}" />`,
+    `<meta property="og:url" content="${BASE_URL}${page.route}" />`,
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:site_name" content="Solmaré Stays" />`,
+    page.image ? `<meta property="og:image" content="${page.image}" />` : '',
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${page.title}" />`,
+    `<meta name="twitter:description" content="${page.description}" />`,
+    page.image ? `<meta name="twitter:image" content="${page.image}" />` : '',
+  ].filter(Boolean).join('\n  ');
+  html = html.replace('</head>', `  ${ogTags}\n</head>`);
 
   // Add JSON-LD schema before </head>
   const schemas = [];
@@ -326,16 +317,153 @@ function generatePage(page) {
   return html;
 }
 
-// Generate all pages
-let count = 0;
-for (const page of PAGES) {
-  const html = generatePage(page);
-  const outputDir = join(DIST, page.route);
-  mkdirSync(outputDir, { recursive: true });
-  const outputPath = join(outputDir, 'index.html');
-  writeFileSync(outputPath, html, 'utf-8');
-  console.log(`  ${page.route} -> ${outputPath} (${(html.length / 1024).toFixed(0)}KB)`);
-  count++;
+// --- Fetch properties from Hostaway for property page prerendering ---
+
+function loadEnv() {
+  const envPath = join(__dirname, '..', '.env');
+  const env = {};
+  if (existsSync(envPath)) {
+    const content = readFileSync(envPath, 'utf-8');
+    for (const line of content.split('\n')) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const eqIndex = trimmed.indexOf('=');
+      if (eqIndex === -1) continue;
+      const key = trimmed.slice(0, eqIndex).trim();
+      let value = trimmed.slice(eqIndex + 1).trim();
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+      env[key] = value;
+    }
+  }
+  return env;
 }
 
-console.log(`\nGenerated ${count}/${PAGES.length} SEO pages successfully.`);
+function generateSlug(name) {
+  const baseName = name.split('|')[0].trim();
+  return baseName
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim();
+}
+
+async function fetchProperties() {
+  const env = loadEnv();
+  const token = env.VITE_HOSTAWAY_API_TOKEN || process.env.VITE_HOSTAWAY_API_TOKEN;
+  const apiUrl = env.VITE_HOSTAWAY_API_URL || process.env.VITE_HOSTAWAY_API_URL || 'https://api.hostaway.com/v1';
+
+  if (!token) {
+    console.warn('  Warning: No Hostaway token — skipping property prerendering');
+    return [];
+  }
+
+  try {
+    const res = await fetch(`${apiUrl}/listings`, {
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    });
+    if (!res.ok) {
+      console.warn(`  Warning: Hostaway API returned ${res.status}`);
+      return [];
+    }
+    const data = await res.json();
+    if (data.status === 'success' && Array.isArray(data.result)) {
+      return data.result.filter(l => l.isActive !== 0);
+    }
+    return [];
+  } catch (err) {
+    console.warn('  Warning: Failed to fetch Hostaway listings:', err.message);
+    return [];
+  }
+}
+
+function buildPropertyPage(listing) {
+  const slug = generateSlug(listing.name);
+  const name = listing.name.split('|')[0].trim();
+  const tagline = listing.name.includes('|') ? listing.name.split('|').slice(1).join('|').trim() : '';
+  const city = listing.city || 'Avila Beach';
+  const bedrooms = listing.bedroomsNumber || 0;
+  const bathrooms = listing.bathroomsNumber || 1;
+  const sleeps = listing.personCapacity || 2;
+  const price = listing.price || 0;
+  const description = (listing.description || '').replace(/<[^>]+>/g, '').substring(0, 300).trim();
+  const image = listing.thumbnailUrl || '';
+
+  return {
+    route: `/property/${slug}`,
+    title: `${name} | Vacation Rental in ${city} | Solmaré Stays`,
+    description: description ? `${description.substring(0, 155)}...` : `${name} — ${bedrooms}BR/${bathrooms}BA vacation rental in ${city}. Sleeps ${sleeps}. Book direct with Solmaré Stays.`,
+    image,
+    h1: name,
+    body: `<p>${tagline ? tagline + '. ' : ''}${bedrooms} bedroom${bedrooms !== 1 ? 's' : ''}, ${bathrooms} bathroom${bathrooms !== 1 ? 's' : ''}, sleeps ${sleeps}. Starting from $${price}/night.</p>
+<p>${description}</p>
+<p><a href="/collection">Browse all properties</a> | <a href="/contact">Contact us</a></p>`,
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "VacationRental",
+      "name": listing.name,
+      "description": description,
+      "url": `${BASE_URL}/property/${slug}`,
+      "image": image,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": city,
+        "addressRegion": "CA",
+        "addressCountry": "US",
+      },
+      "numberOfBedrooms": bedrooms,
+      "numberOfBathroomsTotal": bathrooms,
+      "occupancy": { "@type": "QuantitativeValue", "maxValue": sleeps },
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": price,
+          "priceCurrency": "USD",
+          "unitCode": "DAY",
+        },
+      },
+    },
+  };
+}
+
+// Generate all pages
+async function main() {
+  let count = 0;
+
+  // Static pages
+  for (const page of PAGES) {
+    const html = generatePage(page);
+    const outputDir = join(DIST, page.route);
+    mkdirSync(outputDir, { recursive: true });
+    const outputPath = join(outputDir, 'index.html');
+    writeFileSync(outputPath, html, 'utf-8');
+    console.log(`  ${page.route} -> ${outputPath} (${(html.length / 1024).toFixed(0)}KB)`);
+    count++;
+  }
+
+  // Property pages
+  console.log('\nFetching properties from Hostaway...');
+  const listings = await fetchProperties();
+  console.log(`  Found ${listings.length} active listings`);
+
+  for (const listing of listings) {
+    const page = buildPropertyPage(listing);
+    const html = generatePage(page);
+    const outputDir = join(DIST, page.route);
+    mkdirSync(outputDir, { recursive: true });
+    const outputPath = join(outputDir, 'index.html');
+    writeFileSync(outputPath, html, 'utf-8');
+    console.log(`  ${page.route} -> ${outputPath} (${(html.length / 1024).toFixed(0)}KB)`);
+    count++;
+  }
+
+  console.log(`\nGenerated ${count} SEO pages (${PAGES.length} static + ${listings.length} properties).`);
+}
+
+main().catch(err => {
+  console.error('Prerender failed:', err);
+  process.exit(1);
+});
